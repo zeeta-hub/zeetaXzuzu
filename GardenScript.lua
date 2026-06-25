@@ -7,10 +7,6 @@ local playerGui = player:WaitForChild("PlayerGui")
 -- 1. CLEANUP TOTAL
 local GUI_NAME = "ZeetaAtelierGui"
 if playerGui:FindFirstChild(GUI_NAME) then playerGui:FindFirstChild(GUI_NAME):Destroy() end
-if _G.ZeetaConnections then
-    for _, conn in pairs(_G.ZeetaConnections) do conn:Disconnect() end
-end
-_G.ZeetaConnections = {}
 
 -- 2. GUI BASE
 local screenGui = Instance.new("ScreenGui", playerGui)
@@ -33,7 +29,7 @@ menuFrame.Visible = false
 menuFrame.Active = true
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
--- --- HELPER FUNGSI ---
+-- --- FUNGSI HELPER ---
 local function createToggle(parent, name, callback)
     local btn = Instance.new("TextButton", parent)
     btn.Size = UDim2.new(1, -10, 0, 35)
@@ -48,7 +44,7 @@ local function createToggle(parent, name, callback)
     return btn
 end
 
--- --- TAB LOGIC ---
+-- --- TAB SISTEM ---
 local leftFrame = Instance.new("Frame", menuFrame)
 leftFrame.Size = UDim2.new(0.3, 0, 1, 0); leftFrame.BackgroundTransparency = 1
 local rightFrame = Instance.new("Frame", menuFrame)
@@ -135,41 +131,24 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
--- 5. FITUR TELEPORT
--- Tambahkan bagian ini ke dalam setup Teleport Anda
+-- 5. FITUR TELEPORT (Dropdown)
 local tpPage = pages["Teleport"]
-
--- 1. Status Teleport Global
 local teleportEnabled = true
-createToggle(tpPage, "Teleport Status", function(v) teleportEnabled = v end)
+createToggle(tpPage, "Teleport On/Off", function(v) teleportEnabled = v end)
 
--- 2. Dropdown Utama
 local dropdownFrame = Instance.new("Frame", tpPage)
-dropdownFrame.Size = UDim2.new(1, -10, 0, 40)
-dropdownFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-dropdownFrame.BorderSizePixel = 0
-
+dropdownFrame.Size = UDim2.new(1, -10, 0, 35); dropdownFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 local dropdownBtn = Instance.new("TextButton", dropdownFrame)
-dropdownBtn.Size = UDim2.new(1, 0, 1, 0)
-dropdownBtn.Text = "Pilih Lokasi Teleport ▼"
-dropdownBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-dropdownBtn.TextColor3 = Color3.new(1, 1, 1)
-dropdownBtn.Font = Enum.Font.GothamBold
+dropdownBtn.Size = UDim2.new(1, 0, 1, 0); dropdownBtn.Text = "Pilih Lokasi Teleport ▼"
+dropdownBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 50); dropdownBtn.TextColor3 = Color3.new(1, 1, 1)
 
--- 3. Container List Lokasi
 local listFrame = Instance.new("ScrollingFrame", dropdownFrame)
-listFrame.Size = UDim2.new(1, 0, 0, 150)
-listFrame.Position = UDim2.new(0, 0, 1, 5)
-listFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-listFrame.Visible = false
-listFrame.ScrollBarThickness = 5
-Instance.new("UIListLayout", listFrame).Padding = UDim.new(0, 2)
+listFrame.Size = UDim2.new(1, 0, 0, 150); listFrame.Position = UDim2.new(0, 0, 1, 5)
+listFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40); listFrame.Visible = false
+Instance.new("UIListLayout", listFrame)
 
-dropdownBtn.MouseButton1Click:Connect(function() 
-    listFrame.Visible = not listFrame.Visible 
-end)
+dropdownBtn.MouseButton1Click:Connect(function() listFrame.Visible = not listFrame.Visible end)
 
--- 4. Daftar Lokasi
 local locations = {
     ["Seed"] = Vector3.new(265.64, 146.56, -147.83),
     ["Gears"] = Vector3.new(243.08, 146.56, -144.90),
@@ -180,17 +159,14 @@ local locations = {
 
 for name, pos in pairs(locations) do
     local btn = Instance.new("TextButton", listFrame)
-    btn.Size = UDim2.new(1, -5, 0, 30)
-    btn.Text = name
-    btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-    btn.TextColor3 = Color3.new(1, 1, 1)
-    
+    btn.Size = UDim2.new(1, 0, 0, 30); btn.Text = name; btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60); btn.TextColor3 = Color3.new(1, 1, 1)
     btn.MouseButton1Click:Connect(function()
         if teleportEnabled and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
             player.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
-            listFrame.Visible = false -- Tutup otomatis setelah memilih
+            listFrame.Visible = false
         end
     end)
 end
 
+-- Open/Close Menu
 iconButton.MouseButton1Click:Connect(function() menuFrame.Visible = not menuFrame.Visible end)
