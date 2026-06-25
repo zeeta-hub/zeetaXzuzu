@@ -33,30 +33,38 @@ menuFrame.Visible = false
 menuFrame.Active = true
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
--- Title Bar (Area Dragging)
+-- === 2.1 Membuat Title Bar (Judul + Link) ===
 local titleBar = Instance.new("Frame", menuFrame)
-titleBar.Size = UDim2.new(1, 0, 0, 40)
+titleBar.Size = UDim2.new(1, 0, 0, 40) -- Tinggi 40 pixel
 titleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-titleBar.Active = true
+titleBar.Active = true -- Penting untuk dragging
 Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
 
+-- Nama Skrip (Diperbaiki: ukurannya fleksibel)
 local titleText = Instance.new("TextLabel", titleBar)
-titleText.Size = UDim2.new(0.6, 0, 1, 0)
+titleText.Size = UDim2.new(0.6, 0, 1, 0) -- 60% lebar bar
 titleText.Position = UDim2.new(0, 10, 0, 0)
 titleText.Text = "Zeeta Atelier Hub"
 titleText.TextColor3 = Color3.new(1, 1, 1)
 titleText.BackgroundTransparency = 1
 titleText.Font = Enum.Font.GothamBold
+titleText.TextSize = 14 -- Ukuran font agar tidak kepotong
+titleText.TextXAlignment = Enum.TextXAlignment.Left
 
+-- Tombol Discord (Diperbaiki: posisi dan ukurannya proporsional)
 local discordBtn = Instance.new("TextButton", titleBar)
-discordBtn.Size = UDim2.new(0, 80, 0, 25)
-discordBtn.Position = UDim2.new(0.8, 0, 0.15, 0)
+discordBtn.Size = UDim2.new(0, 70, 0, 25) -- Lebar 70px, Tinggi 25px
+discordBtn.Position = UDim2.new(1, -75, 0.5, -12.5) -- Posisi ke kanan, di tengah vertikal
 discordBtn.Text = "Discord"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
 discordBtn.TextColor3 = Color3.new(1, 1, 1)
+discordBtn.Font = Enum.Font.GothamBold
+discordBtn.TextSize = 12
 Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 5)
-discordBtn.MouseButton1Click:Connect(function() setclipboard("https://discord.gg/link-anda") end)
 
+discordBtn.MouseButton1Click:Connect(function() 
+    setclipboard("https://discord.gg/link-anda") 
+end)
 -- LAYOUT KIRI DAN KANAN
 local leftFrame = Instance.new("Frame", menuFrame)
 leftFrame.Size = UDim2.new(0.25, 0, 1, -40)
@@ -68,7 +76,6 @@ local rightFrame = Instance.new("Frame", menuFrame)
 rightFrame.Size = UDim2.new(0.75, 0, 1, -40)
 rightFrame.Position = UDim2.new(0.25, 0, 0, 40)
 rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-
 
 -- Fungsi Dragging Stabil
 local function makeDraggable(object)
