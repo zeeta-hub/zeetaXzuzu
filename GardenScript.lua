@@ -57,3 +57,40 @@ makeDraggable(menuFrame)
 iconButton.MouseButton1Click:Connect(function()
     menuFrame.Visible = not menuFrame.Visible
 end)
+
+-- === 3. Membuat Daftar Pilihan di dalam menuFrame ===
+local scrollingFrame = Instance.new("ScrollingFrame", menuFrame)
+scrollingFrame.Size = UDim2.new(1, -10, 1, -50) -- Mengambil hampir seluruh area menu
+scrollingFrame.Position = UDim2.new(0, 5, 0, 45)
+scrollingFrame.BackgroundTransparency = 1
+scrollingFrame.ScrollBarThickness = 5
+
+-- Fungsi untuk menambah pilihan ke daftar
+local function addOption(name, callback)
+    local btn = Instance.new("TextButton", scrollingFrame)
+    btn.Size = UDim2.new(1, -10, 0, 40)
+    btn.Position = UDim2.new(0, 5, 0, (#scrollingFrame:GetChildren() - 1) * 45) -- Posisi otomatis
+    btn.Text = name
+    btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.Font = Enum.Font.Gotham
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 5)
+    
+    btn.MouseButton1Click:Connect(callback)
+end
+
+-- === MENGGUNAKAN PILIHAN ===
+addOption("Farming Mode", function()
+    print("Farming diaktifkan!")
+end)
+
+addOption("Auto Shovel", function()
+    print("Auto Shovel diaktifkan!")
+end)
+
+addOption("Webhook Settings", function()
+    print("Membuka pengaturan Webhook...")
+end)
+
+-- Update CanvasSize agar bisa di-scroll
+scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, #scrollingFrame:GetChildren() * 45)
