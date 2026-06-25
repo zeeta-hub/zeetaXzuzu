@@ -66,26 +66,37 @@ rightFrame.Size = UDim2.new(0.75, 0, 1, -40)
 rightFrame.Position = UDim2.new(0.25, 0, 0, 40)
 rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 
--- Fungsi Dragging
+-- Fungsi Dragging yang Diperbarui agar lebih stabil
 local function makeDraggable(object)
-    local dragging, dragStart, startPos
+    local dragging = false
+    local dragInput = nil
+    local dragStart = Vector3.new(0,0,0)
+    local startPos = UDim2.new(0,0,0,0)
+
     local c1 = object.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
-            dragging = true; dragStart = input.Position; startPos = object.Position
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = Vector3.new(input.Position.X, input.Position.Y, 0)
+            startPos = object.Position
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
         end
     end)
+
     local c2 = UserInputService.InputChanged:Connect(function(input)
-        if dragging then
-            local delta = input.Position - dragStart
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local delta = Vector3.new(input.Position.X, input.Position.Y, 0) - dragStart
             object.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
         end
     end)
-    local c3 = UserInputService.InputEnded:Connect(function() dragging = false end)
-    table.insert(_G.ZeetaConnections, c1); table.insert(_G.ZeetaConnections, c2); table.insert(_G.ZeetaConnections, c3)
-end
 
-makeDraggable(iconButton)
-makeDraggable(titleBar)
+    table.insert(_G.ZeetaConnections, c1)
+    table.insert(_G.ZeetaConnections, c2)
+end
 
 -- SISTEM TAB
 local pages = {}
