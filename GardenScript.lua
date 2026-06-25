@@ -92,19 +92,39 @@ local function createButton(parent, text, callback)
     btn.MouseButton1Click:Connect(callback)
 end
 
--- 6. Navigasi Tab
-local tabs = {"LocalPlayer", "Webhook", "Settings"}
+-- 6. Navigasi Tab yang Berfungsi
+local currentTab = "LocalPlayer"
+
+-- Buat container untuk setiap tab
+local tabContainers = {}
+for _, name in pairs(tabs) do
+    local container = Instance.new("ScrollingFrame", ContentArea)
+    container.Size = UDim2.new(1, 0, 1, 0)
+    container.BackgroundTransparency = 1
+    container.Visible = (name == "LocalPlayer") -- Hanya LocalPlayer yang muncul saat awal
+    container.Name = name
+    tabContainers[name] = container
+end
+
+-- Fungsi update tampilan
 for _, name in pairs(tabs) do
     createButton(Sidebar, name, function()
-        print("Tab " .. name .. " terpilih")
-        -- Tambahkan logika untuk menampilkan konten tab di sini
+        for tabName, container in pairs(tabContainers) do
+            container.Visible = (tabName == name)
+        end
     end)
 end
 
--- Contoh isi konten LocalPlayer
-createButton(ContentArea, "Toggle NoClip", function() noclipEnabled = not noclipEnabled end)
-createButton(ContentArea, "Toggle Inf Jump", function() infiniteJumpEnabled = not infiniteJumpEnabled end)
+-- Masukkan fitur ke tab yang benar
+createButton(tabContainers["LocalPlayer"], "Toggle NoClip", function() noclipEnabled = not noclipEnabled end)
+createButton(tabContainers["LocalPlayer"], "Toggle Inf Jump", function() infiniteJumpEnabled = not infiniteJumpEnabled end)
 
+-- Contoh isi tab Webhook
+local WebhookBox = Instance.new("TextBox", tabContainers["Webhook"])
+WebhookBox.Size = UDim2.new(0.9, 0, 0, 40)
+WebhookBox.PlaceholderText = "Masukkan Webhook URL..."
+WebhookBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+WebhookBox.TextColor3 = Color3.new(1, 1, 1)
 -- 7. Dragging Logic
 local dragging, dragStart, startPos
 MainFrame.InputBegan:Connect(function(input)
