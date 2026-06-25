@@ -3,7 +3,7 @@ local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- 1. CLEANUP
+-- 1. CLEANUP TOTAL
 local GUI_NAME = "ZeetaAtelierGui"
 if playerGui:FindFirstChild(GUI_NAME) then playerGui:FindFirstChild(GUI_NAME):Destroy() end
 if getgenv().ZeetaConnections then
@@ -37,13 +37,20 @@ titleBar.Size = UDim2.new(1, 0, 0, 40)
 titleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
 
--- Link Discord
+local titleText = Instance.new("TextLabel", titleBar)
+titleText.Size = UDim2.new(0.6, 0, 1, 0)
+titleText.Position = UDim2.new(0, 10, 0, 0)
+titleText.Text = "Zeeta Atelier Hub"
+titleText.TextColor3 = Color3.new(1, 1, 1)
+titleText.BackgroundTransparency = 1
+titleText.Font = Enum.Font.GothamBold
+
 local discordBtn = Instance.new("TextButton", titleBar)
-discordBtn.Size = UDim2.new(0, 100, 0, 30)
-discordBtn.Position = UDim2.new(1, -110, 0.1, 0)
+discordBtn.Size = UDim2.new(0, 80, 0, 25)
+discordBtn.Position = UDim2.new(0.8, 0, 0.15, 0)
 discordBtn.Text = "Discord"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
-discordBtn.Parent = titleBar
+discordBtn.TextColor3 = Color3.new(1, 1, 1)
 discordBtn.MouseButton1Click:Connect(function() setclipboard("https://discord.gg/link-anda") end)
 
 -- KIRI (1/4 Tab)
@@ -59,10 +66,11 @@ rightFrame.Size = UDim2.new(0.75, 0, 1, -40)
 rightFrame.Position = UDim2.new(0.25, 0, 0, 40)
 rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 
--- ScrollingFrame di dalam Kanan
+-- ScrollingFrame di dalam KANAN
 local scrollingFrame = Instance.new("ScrollingFrame", rightFrame)
 scrollingFrame.Size = UDim2.new(1, 0, 1, 0)
 scrollingFrame.BackgroundTransparency = 1
+scrollingFrame.ScrollBarThickness = 5
 Instance.new("UIListLayout", scrollingFrame).Padding = UDim.new(0, 5)
 
 -- Fungsi Dragging
@@ -74,80 +82,34 @@ local function makeDraggable(object)
         end
     end)
     table.insert(getgenv().ZeetaConnections, conn1)
-    -- (tambahkan logika inputChanged & inputEnded yang sama seperti sebelumnya...)
+    
+    local conn2 = UserInputService.InputChanged:Connect(function(input)
+        if dragging then
+            local delta = input.Position - dragStart
+            object.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+    table.insert(getgenv().ZeetaConnections, conn2)
+    
+    local conn3 = UserInputService.InputEnded:Connect(function() dragging = false end)
+    table.insert(getgenv().ZeetaConnections, conn3)
 end
 
 makeDraggable(iconButton)
-makeDraggable(titleBar) -- Geser lewat title bar saja agar lebih enak
+makeDraggable(titleBar) -- Geser hanya lewat title bar
 
-iconButton.MouseButton1Click:Connect(function() menuFrame.Visible = not menuFrame.Visible end)
-
--- 4. FUNGSI BUKA/TUTUP
-iconButton.MouseButton1Click:Connect(function()
-    menuFrame.Visible = not menuFrame.Visible
-end)
-
-print("ZeetaAtelier UI Berhasil Dimuat!")
-
--- === 3. Membuat Daftar Pilihan di dalam menuFrame ===
-local scrollingFrame = Instance.new("ScrollingFrame", menuFrame)
-scrollingFrame.Size = UDim2.new(1, -10, 1, -50) -- Mengambil hampir seluruh area menu
-scrollingFrame.Position = UDim2.new(0, 5, 0, 45)
-scrollingFrame.BackgroundTransparency = 1
-scrollingFrame.ScrollBarThickness = 5
-
--- Fungsi untuk menambah pilihan ke daftar
-local function addOption(name, callback)
-    local btn = Instance.new("TextButton", scrollingFrame)
-    btn.Size = UDim2.new(1, -10, 0, 40)
-    btn.Position = UDim2.new(0, 5, 0, (#scrollingFrame:GetChildren() - 1) * 45) -- Posisi otomatis
-    btn.Text = name
-    btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    btn.Font = Enum.Font.Gotham
-    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 5)
-    
-    btn.MouseButton1Click:Connect(callback)
-end
-
-- Bagian Kiri (List Panel)
-local leftFrame = Instance.new("Frame", menuFrame)
-leftFrame.Size = UDim2.new(0.25, 0, 1, -40) -- 25% lebar, tinggi dikurangi tinggi titleBar
-leftFrame.Position = UDim2.new(0, 0, 0, 40) -- Di bawah titleBar
-leftFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-leftFrame.BorderSizePixel = 0
-
--- Bagian Kanan (Content Panel)
-local rightFrame = Instance.new("Frame", menuFrame)
-rightFrame.Size = UDim2.new(0.75, 0, 1, -40) -- 75% lebar
-rightFrame.Position = UDim2.new(0.25, 0, 0, 40) -- Di samping kiri
-rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-rightFrame.BorderSizePixel = 0
-
--- Contoh menambah tombol di kiri (1/4)
-local function addMenuTab(name, callback)
+-- Fungsi Add Tab
+local function addMenuTab(name)
     local tabBtn = Instance.new("TextButton", leftFrame)
     tabBtn.Size = UDim2.new(1, 0, 0, 40)
     tabBtn.Text = name
     tabBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-    tabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    tabBtn.Font = Enum.Font.Gotham
-
-    -- Mengatur posisi otomatis ke bawah
-    Instance.new("UIListLayout", leftFrame).Padding = UDim.new(0, 5)
-    
-    tabBtn.MouseButton1Click:Connect(callback)
+    tabBtn.TextColor3 = Color3.new(1, 1, 1)
+    return tabBtn
 end
 
--- Menambah tab contoh
-addMenuTab("Farming", function()
-    -- Bersihkan rightFrame lalu isi dengan menu farming
-    print("Membuka menu Farming")
-end)
+-- Contoh isi konten
+addMenuTab("Farming")
+addMenuTab("Combat")
 
-addMenuTab("Combat", function()
-    print("Membuka menu Combat")
-end)
-
--- Update CanvasSize agar bisa di-scroll
-scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, #scrollingFrame:GetChildren() * 45)
+iconButton.MouseButton1Click:Connect(function() menuFrame.Visible = not menuFrame.Visible end)
