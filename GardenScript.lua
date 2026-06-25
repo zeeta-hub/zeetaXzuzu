@@ -1,22 +1,18 @@
 local Players = game:GetService("Players")
-local UserInputService = game:GetService("UserInputService")
+local UserInputService = getgenv().UserInputService or game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- 1. CLEANUP TOTAL
+-- 1. CLEANUP
 local GUI_NAME = "ZeetaAtelierGui"
 if playerGui:FindFirstChild(GUI_NAME) then playerGui:FindFirstChild(GUI_NAME):Destroy() end
-if _G.ZeetaConnections then
-    for _, conn in pairs(_G.ZeetaConnections) do conn:Disconnect() end
-end
-_G.ZeetaConnections = {}
 
 -- 2. GUI BASE
 local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = GUI_NAME
 screenGui.ResetOnSpawn = false
 
--- Ikon Tombol
 local iconButton = Instance.new("ImageButton", screenGui)
 iconButton.Size = UDim2.new(0, 60, 0, 60)
 iconButton.Position = UDim2.new(0.1, 0, 0.1, 0)
@@ -25,84 +21,17 @@ iconButton.Active = true
 iconButton.Draggable = true
 Instance.new("UICorner", iconButton).CornerRadius = UDim.new(1, 0)
 
--- Menu Utama
 local menuFrame = Instance.new("Frame", screenGui)
-menuFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
-menuFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
+menuFrame.Size = UDim2.new(0.4, 0, 0.5, 0)
+menuFrame.Position = UDim2.new(0.3, 0, 0.25, 0)
 menuFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 menuFrame.Visible = false
-menuFrame.Active = true
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
--- Header
-local header = Instance.new("Frame", menuFrame)
-header.Size = UDim2.new(1, 0, 0, 45)
-header.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Instance.new("UICorner", header).CornerRadius = UDim.new(0, 8)
-
-local titleText = Instance.new("TextLabel", header)
-titleText.Size = UDim2.new(1, -100, 1, 0)
-titleText.Position = UDim2.new(0, 15, 0, 0)
-titleText.Text = "Zeeta Atelier Hub"
-titleText.TextColor3 = Color3.new(1, 1, 1)
-titleText.BackgroundTransparency = 1
-titleText.Font = Enum.Font.GothamBold
-titleText.TextSize = 20
-titleText.TextXAlignment = Enum.TextXAlignment.Left
-
--- Dragging Header
-local dragging, dragStart, startPos
-header.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true; dragStart = input.Position; startPos = menuFrame.Position
-    end
-end)
-UserInputService.InputChanged:Connect(function(input)
-    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-        local delta = input.Position - dragStart
-        menuFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-    end
-end)
-UserInputService.InputEnded:Connect(function(input) if input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false end end)
-
--- Panel Konten
-local leftFrame = Instance.new("Frame", menuFrame)
-leftFrame.Size = UDim2.new(0.3, 0, 1, -45)
-leftFrame.Position = UDim2.new(0, 0, 0, 45)
-leftFrame.BackgroundTransparency = 1
-Instance.new("UIListLayout", leftFrame).Padding = UDim.new(0, 5)
-
-local rightFrame = Instance.new("Frame", menuFrame)
-rightFrame.Size = UDim2.new(0.7, 0, 1, -45)
-rightFrame.Position = UDim2.new(0.3, 0, 0, 45)
-rightFrame.BackgroundTransparency = 1
-
--- FUNGSI TAB
-local pages = {}
-local function addMenuTab(name)
-    local tabBtn = Instance.new("TextButton", leftFrame)
-    tabBtn.Size = UDim2.new(1, 0, 0, 40)
-    tabBtn.Text = name
-    tabBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-    tabBtn.TextColor3 = Color3.new(1, 1, 1)
-    
-    local page = Instance.new("ScrollingFrame", rightFrame)
-    page.Size = UDim2.new(1, 0, 1, 0)
-    page.BackgroundTransparency = 1
-    page.Visible = false
-    Instance.new("UIListLayout", page).Padding = UDim.new(0, 5)
-    pages[name] = page
-    
-    tabBtn.MouseButton1Click:Connect(function()
-        for _, p in pairs(pages) do p.Visible = false end
-        page.Visible = true
-    end)
-end
-
--- HELPER UI
+-- --- HELPER FUNGSI ---
 local function createToggle(parent, name, callback)
     local btn = Instance.new("TextButton", parent)
-    btn.Size = UDim2.new(1, -10, 0, 30)
+    btn.Size = UDim2.new(1, -10, 0, 35)
     btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
     btn.Text = name .. " : OFF"
     local isOn = false
@@ -113,44 +42,95 @@ local function createToggle(parent, name, callback)
     end)
 end
 
--- SETUP MENU
-addMenuTab("Local Player")
-addMenuTab("ESP")
+-- --- TAB LOGIC ---
+local leftFrame = Instance.new("Frame", menuFrame)
+leftFrame.Size = UDim2.new(0.3, 0, 1, 0); leftFrame.BackgroundTransparency = 1
+local rightFrame = Instance.new("Frame", menuFrame)
+rightFrame.Size = UDim2.new(0.7, 0, 1, 0); rightFrame.Position = UDim2.new(0.3, 0, 0, 0); rightFrame.BackgroundTransparency = 1
 
--- FITUR LOCAL PLAYER
-local lpPage = pages["Local Player"]
-local infJump = false
-UserInputService.JumpRequest:Connect(function()
-    if infJump then player.Character:FindFirstChild("Humanoid"):ChangeState("Jumping") end
-end)
-createToggle(lpPage, "Infinite Jump", function(v) infJump = v end)
+local pages = {}
+local function addTab(name)
+    local tabBtn = Instance.new("TextButton", leftFrame)
+    tabBtn.Size = UDim2.new(1, 0, 0, 40); tabBtn.Text = name
+    local page = Instance.new("ScrollingFrame", rightFrame)
+    page.Size = UDim2.new(1, 0, 1, 0); page.Visible = false; page.BackgroundTransparency = 1
+    Instance.new("UIListLayout", page).Padding = UDim.new(0, 5)
+    pages[name] = page
+    tabBtn.MouseButton1Click:Connect(function()
+        for _, p in pairs(pages) do p.Visible = false end
+        page.Visible = true
+    end)
+end
 
-local wsInput = Instance.new("TextBox", lpPage)
-wsInput.Size = UDim2.new(1, -10, 0, 30)
-wsInput.PlaceholderText = "Input WalkSpeed"
-wsInput.FocusLost:Connect(function()
-    if player.Character and player.Character:FindFirstChild("Humanoid") then
-        player.Character.Humanoid.WalkSpeed = tonumber(wsInput.Text) or 16
+addTab("Local"); addTab("ESP"); addTab("Teleport")
+
+-- --- FITUR ---
+
+-- 1. LOCAL (Slider Walkspeed)
+local lpPage = pages["Local"]
+local sliderBg = Instance.new("Frame", lpPage)
+sliderBg.Size = UDim2.new(1, -10, 0, 40)
+sliderBg.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+local sliderBar = Instance.new("Frame", sliderBg)
+sliderBar.Size = UDim2.new(0.5, 0, 1, 0); sliderBar.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
+local sliderLabel = Instance.new("TextLabel", sliderBg)
+sliderLabel.Size = UDim2.new(1, 0, 1, 0); sliderLabel.Text = "Walkspeed: 16"; sliderLabel.BackgroundTransparency = 1
+
+sliderBg.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+        local conn
+        conn = RunService.RenderStepped:Connect(function()
+            local relX = math.clamp((mouse.X - sliderBg.AbsolutePosition.X) / sliderBg.AbsoluteSize.X, 0, 1)
+            sliderBar.Size = UDim2.new(relX, 0, 1, 0)
+            local speed = math.floor(relX * 100)
+            sliderLabel.Text = "Walkspeed: " .. speed
+            if player.Character and player.Character:FindFirstChild("Humanoid") then
+                player.Character.Humanoid.WalkSpeed = speed
+            end
+        end)
+        UserInputService.InputEnded:Connect(function(i) if i.UserInputType == Enum.UserInputType.MouseButton1 then conn:Disconnect() end end)
     end
 end)
 
--- FITUR ESP
+-- 2. ESP PLAYER (Name & Distance)
 local espPage = pages["ESP"]
-local function createHighlight(target, color)
-    local h = Instance.new("Highlight", target)
-    h.FillColor = color
-    h.OutlineColor = Color3.new(1, 1, 1)
-    return h
-end
-
-createToggle(espPage, "ESP Players", function(v)
-    for _, p in pairs(Players:GetPlayers()) do
-        if p.Character then
-            if v then createHighlight(p.Character, Color3.fromRGB(255, 0, 0))
-            else if p.Character:FindFirstChild("Highlight") then p.Character.Highlight:Destroy() end end
+local espEnabled = false
+createToggle(espPage, "ESP Player", function(v) 
+    espEnabled = v 
+    if not v then
+        for _, p in pairs(Players:GetPlayers()) do
+            if p.Character and p.Character:FindFirstChild("EspTag") then p.Character.EspTag:Destroy() end
         end
     end
 end)
 
--- Buka Menu
+RunService.RenderStepped:Connect(function()
+    if not espEnabled then return end
+    for _, p in pairs(Players:GetPlayers()) do
+        if p ~= player and p.Character and p.Character:FindFirstChild("Head") and not p.Character:FindFirstChild("EspTag") then
+            local bill = Instance.new("BillboardGui", p.Character)
+            bill.Name = "EspTag"; bill.Size = UDim2.new(0, 100, 0, 50); bill.StudsOffset = Vector3.new(0, 2, 0)
+            local label = Instance.new("TextLabel", bill)
+            label.Size = UDim2.new(1, 0, 1, 0); label.BackgroundTransparency = 1
+            spawn(function()
+                while bill.Parent and espEnabled do
+                    local dist = (player.Character.Head.Position - p.Character.Head.Position).Magnitude
+                    label.Text = p.Name .. "\n" .. math.floor(dist) .. " studs"
+                    task.wait(0.1)
+                end
+            end)
+        end
+    end
+end)
+
+-- 3. TELEPORT
+local tpPage = pages["Teleport"]
+local function addTp(name, pos)
+    local btn = Instance.new("TextButton", tpPage)
+    btn.Size = UDim2.new(1, -10, 0, 30); btn.Text = name
+    btn.MouseButton1Click:Connect(function() player.Character.HumanoidRootPart.CFrame = pos end)
+end
+addTp("Spawn", CFrame.new(0, 5, 0)) -- Sesuaikan koordinat CFrame Anda
+
 iconButton.MouseButton1Click:Connect(function() menuFrame.Visible = not menuFrame.Visible end)
