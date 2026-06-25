@@ -48,7 +48,7 @@ titleText.Text = "Zeeta Atelier Hub"
 titleText.TextColor3 = Color3.new(1, 1, 1)
 titleText.BackgroundTransparency = 1
 titleText.Font = Enum.Font.GothamBold
-titleText.TextSize = 18 -- Ditingkatkan dari 16 ke 18
+titleText.TextSize = 25 -- Ditingkatkan dari 16 ke 18
 titleText.TextXAlignment = Enum.TextXAlignment.Left
 titleText.ZIndex = 6
 
@@ -60,7 +60,7 @@ discordBtn.Text = "Discord"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
 discordBtn.TextColor3 = Color3.new(1, 1, 1)
 discordBtn.Font = Enum.Font.GothamBold
-discordBtn.TextSize = 14 -- Font diperbesar agar lebih terbaca
+discordBtn.TextSize = 25 -- Font diperbesar agar lebih terbaca
 discordBtn.ZIndex = 6
 Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 6)
 discordBtn.MouseButton1Click:Connect(function() setclipboard("https://discord.gg/link-anda") end)
