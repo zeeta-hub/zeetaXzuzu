@@ -3,40 +3,42 @@ local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- 1. Bersihkan GUI lama jika ada
-local oldGui = playerGui:FindFirstChild("ZeetaAtelierGui")
-if oldGui then
-    oldGui:Destroy()
+-- 1. CLEANUP TOTAL (Mencegah Double/Triple UI)
+local GUI_NAME = "ZeetaAtelierGui"
+if playerGui:FindFirstChild(GUI_NAME) then
+    playerGui:FindFirstChild(GUI_NAME):Destroy()
 end
 
--- 2. Buat GUI baru
-local screenGui = Instance.new("ScreenGui", playerGui)
-screenGui.Name = "ZeetaAtelierGui"
+-- Gunakan tabel global untuk melacak koneksi agar bisa dimatikan
+if getgenv().ZeetaConnections then
+    for _, conn in pairs(getgenv().ZeetaConnections) do
+        conn:Disconnect()
+    end
+end
+getgenv().ZeetaConnections = {}
 
--- === PENTING: Gunakan tabel untuk menyimpan koneksi agar bisa dimatikan jika perlu ===
-local connections = {}
--- Lanjutkan ke pembuatan GUI yang baru (kode Anda di bawah ini)
+-- 2. MEMBUAT GUI
 local screenGui = Instance.new("ScreenGui", playerGui)
-screenGui.Name = "ZeetaAtelierGui"
--- ... (dan seterusnya)
--- === 1. Membuat Tombol Ikon ===
+screenGui.Name = GUI_NAME
+
+-- Ikon Tombol
 local iconButton = Instance.new("ImageButton", screenGui)
 iconButton.Size = UDim2.new(0, 60, 0, 60)
 iconButton.Position = UDim2.new(0.1, 0, 0.1, 0)
-iconButton.Image = "rbxassetid://0" -- GANTI ID INI
+iconButton.Image = "rbxassetid://0" -- GANTI DENGAN ID GAMBAR ANDA
 iconButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 iconButton.BorderSizePixel = 0
 Instance.new("UICorner", iconButton).CornerRadius = UDim.new(1, 0)
 
--- === 2. Membuat Menu Utama ===
+-- Menu Utama
 local menuFrame = Instance.new("Frame", screenGui)
-menuFrame.Size = UDim2.new(0, 200, 0, 300)
+menuFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
 menuFrame.Position = UDim2.new(0.5, -100, 0.5, -150)
 menuFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 menuFrame.Visible = false
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
--- 3. Fungsi Dragging (Gunakan fungsi lokal agar tidak menumpuk)
+-- 3. FUNGSI DRAGGING (Dapat digeser)
 local function makeDraggable(object)
     local dragging, dragStart, startPos
     
@@ -47,7 +49,7 @@ local function makeDraggable(object)
             startPos = object.Position
         end
     end)
-    table.insert(connections, conn1)
+    table.insert(getgenv().ZeetaConnections, conn1)
 
     local conn2 = UserInputService.InputChanged:Connect(function(input)
         if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
@@ -55,33 +57,25 @@ local function makeDraggable(object)
             object.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
         end
     end)
-    table.insert(connections, conn2)
+    table.insert(getgenv().ZeetaConnections, conn2)
 
     local conn3 = UserInputService.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = false
         end
     end)
-    table.insert(connections, conn3)
+    table.insert(getgenv().ZeetaConnections, conn3)
 end
 
--- Terapkan fungsi
 makeDraggable(iconButton)
 makeDraggable(menuFrame)
 
--- 4. Jika skrip di-destroy, pastikan semua koneksi mati
-screenGui.AncestryChanged:Connect(function(_, parent)
-    if not parent then
-        for _, conn in pairs(connections) do
-            conn:Disconnect()
-        end
-    end
-end)
-
--- === Fungsi Buka/Tutup Menu ===
+-- 4. FUNGSI BUKA/TUTUP
 iconButton.MouseButton1Click:Connect(function()
     menuFrame.Visible = not menuFrame.Visible
 end)
+
+print("ZeetaAtelier UI Berhasil Dimuat!")
 
 -- === 3. Membuat Daftar Pilihan di dalam menuFrame ===
 local scrollingFrame = Instance.new("ScrollingFrame", menuFrame)
