@@ -49,7 +49,7 @@ titleText.BackgroundTransparency = 1
 titleText.Font = Enum.Font.GothamBold
 
 local discordBtn = Instance.new("TextButton", titleBar)
-discordBtn.Size = UDim2.new(50, 0, 0.15, 25)
+discordBtn.Size = UDim2.new(50, 50, 0.15, 25)
 discordBtn.Position = UDim2.new(0.8, 50, 0.15, 0)
 discordBtn.Text = "DISCORD"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
