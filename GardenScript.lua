@@ -19,13 +19,40 @@ MainFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 MainFrame.Visible = false -- Mulai dalam keadaan tersembunyi
 Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 10)
 
--- 2. Toggle Button (Icon)
+-- 2. Toggle Button dengan Foto Zeeta Atelier
 local ToggleButton = Instance.new("ImageButton", ScreenGui)
-ToggleButton.Size = UDim2.new(0, 50, 0, 50)
-ToggleButton.Position = UDim2.new(0, 20, 0.5, -25)
-ToggleButton.Image = "rbxassetid://1889770842"
-ToggleButton.MouseButton1Click:Connect(function() MainFrame.Visible = not MainFrame.Visible end)
+ToggleButton.Size = UDim2.new(0, 60, 0, 60) -- Ukuran sedikit lebih besar agar gambar jelas
+ToggleButton.Position = UDim2.new(0, 20, 0.5, -30)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Hitam agar menyatu dengan background foto
+ToggleButton.BackgroundTransparency = 1 -- Transparan agar hanya gambar yang terlihat
+ToggleButton.Image = "rbxassetid://1889770842" -- Pastikan ID ini sudah benar di sistem Roblox
+Instance.new("UICorner", ToggleButton).CornerRadius = UDim.new(1, 0) -- Membuatnya bulat
 
+-- Logika Buka/Tutup
+ToggleButton.MouseButton1Click:Connect(function() 
+    MainFrame.Visible = not MainFrame.Visible 
+end)
+
+-- Membuat Tombol Ikon juga bisa digeser (Draggable)
+local dragToggle, startPosToggle, dragStartToggle
+ToggleButton.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragToggle = true
+        dragStartToggle = input.Position
+        startPosToggle = ToggleButton.Position
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if dragToggle and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragStartToggle
+        ToggleButton.Position = UDim2.new(startPosToggle.X.Scale, startPosToggle.X.Offset + delta.X, startPosToggle.Y.Scale, startPosToggle.Y.Offset + delta.Y)
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then dragToggle = false end
+end)
 -- 3. Layout (Sidebar & Content)
 local Sidebar = Instance.new("Frame", MainFrame)
 Sidebar.Size = UDim2.new(0, 120, 1, 0)
