@@ -49,7 +49,7 @@ Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
 local titleText = Instance.new("TextLabel", titleBar)
 titleText.Size = UDim2.new(0.6, -10, 1, 0)
 titleText.Position = UDim2.new(0, 10, 0, 0)
-titleText.Text = "Zeeta Atelier" -- NAMA SKRIP ANDA
+titleText.Text = "Zeeta Atelier Hub" -- NAMA SKRIP ANDA
 titleText.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleText.BackgroundTransparency = 1
 titleText.Font = Enum.Font.GothamBold
@@ -132,17 +132,43 @@ local function addOption(name, callback)
     btn.MouseButton1Click:Connect(callback)
 end
 
--- === MENGGUNAKAN PILIHAN ===
-addOption("Farming Mode", function()
-    print("Farming diaktifkan!")
+- Bagian Kiri (List Panel)
+local leftFrame = Instance.new("Frame", menuFrame)
+leftFrame.Size = UDim2.new(0.25, 0, 1, -40) -- 25% lebar, tinggi dikurangi tinggi titleBar
+leftFrame.Position = UDim2.new(0, 0, 0, 40) -- Di bawah titleBar
+leftFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+leftFrame.BorderSizePixel = 0
+
+-- Bagian Kanan (Content Panel)
+local rightFrame = Instance.new("Frame", menuFrame)
+rightFrame.Size = UDim2.new(0.75, 0, 1, -40) -- 75% lebar
+rightFrame.Position = UDim2.new(0.25, 0, 0, 40) -- Di samping kiri
+rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+rightFrame.BorderSizePixel = 0
+
+-- Contoh menambah tombol di kiri (1/4)
+local function addMenuTab(name, callback)
+    local tabBtn = Instance.new("TextButton", leftFrame)
+    tabBtn.Size = UDim2.new(1, 0, 0, 40)
+    tabBtn.Text = name
+    tabBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    tabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    tabBtn.Font = Enum.Font.Gotham
+
+    -- Mengatur posisi otomatis ke bawah
+    Instance.new("UIListLayout", leftFrame).Padding = UDim.new(0, 5)
+    
+    tabBtn.MouseButton1Click:Connect(callback)
+end
+
+-- Menambah tab contoh
+addMenuTab("Farming", function()
+    -- Bersihkan rightFrame lalu isi dengan menu farming
+    print("Membuka menu Farming")
 end)
 
-addOption("Auto Shovel", function()
-    print("Auto Shovel diaktifkan!")
-end)
-
-addOption("Webhook Settings", function()
-    print("Membuka pengaturan Webhook...")
+addMenuTab("Combat", function()
+    print("Membuka menu Combat")
 end)
 
 -- Update CanvasSize agar bisa di-scroll
