@@ -32,33 +32,37 @@ menuFrame.Visible = false
 menuFrame.Active = true
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
--- HEADER (Title Bar & Discord) - Posisikan paling atas secara visual
+-- === HEADER (Title Bar & Discord) ===
 local header = Instance.new("Frame", menuFrame)
-header.Size = UDim2.new(1, 0, 0, 40)
+header.Size = UDim2.new(1, 0, 0, 45) -- Ditinggikan sedikit menjadi 45px
 header.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 header.Active = true
 header.ZIndex = 5
 Instance.new("UICorner", header).CornerRadius = UDim.new(0, 8)
 
+-- Nama Script (Diperbesar)
 local titleText = Instance.new("TextLabel", header)
 titleText.Size = UDim2.new(0.6, -10, 1, 0)
-titleText.Position = UDim2.new(0, 10, 0, 0)
+titleText.Position = UDim2.new(0, 15, 0, 0) -- Margin kiri ditambah
 titleText.Text = "Zeeta Atelier Hub"
 titleText.TextColor3 = Color3.new(1, 1, 1)
 titleText.BackgroundTransparency = 1
 titleText.Font = Enum.Font.GothamBold
+titleText.TextSize = 18 -- Ditingkatkan dari 16 ke 18
 titleText.TextXAlignment = Enum.TextXAlignment.Left
 titleText.ZIndex = 6
 
+-- Tombol Discord (Diperbesar)
 local discordBtn = Instance.new("TextButton", header)
-discordBtn.Size = UDim2.new(0, 70, 0, 25)
-discordBtn.Position = UDim2.new(1, -80, 0.5, -12.5)
+discordBtn.Size = UDim2.new(0, 90, 0, 30) -- Lebar dan tinggi diperbesar
+discordBtn.Position = UDim2.new(1, -95, 0.5, -15) -- Disesuaikan agar tetap di tengah
 discordBtn.Text = "Discord"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
 discordBtn.TextColor3 = Color3.new(1, 1, 1)
 discordBtn.Font = Enum.Font.GothamBold
+discordBtn.TextSize = 14 -- Font diperbesar agar lebih terbaca
 discordBtn.ZIndex = 6
-Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 5)
+Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 6)
 discordBtn.MouseButton1Click:Connect(function() setclipboard("https://discord.gg/link-anda") end)
 
 -- PANEL KIRI (Tab) & KANAN (Konten) - Ditempatkan di bawah Header
