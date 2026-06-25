@@ -38,6 +38,40 @@ menuFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 menuFrame.Visible = false
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
+-- === 2.1 Membuat Title Bar (Judul + Link) ===
+local titleBar = Instance.new("Frame", menuFrame)
+titleBar.Size = UDim2.new(1, 0, 0, 40)
+titleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+titleBar.BorderSizePixel = 0
+Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
+
+-- Nama Skrip
+local titleText = Instance.new("TextLabel", titleBar)
+titleText.Size = UDim2.new(0.6, -10, 1, 0)
+titleText.Position = UDim2.new(0, 10, 0, 0)
+titleText.Text = "Zeeta Atelier" -- NAMA SKRIP ANDA
+titleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleText.BackgroundTransparency = 1
+titleText.Font = Enum.Font.GothamBold
+titleText.TextSize = 16
+titleText.TextXAlignment = Enum.TextXAlignment.Left
+
+-- Link Discord (Button)
+local discordBtn = Instance.new("TextButton", titleBar)
+discordBtn.Size = UDim2.new(0.4, -10, 0.7, 0)
+discordBtn.Position = UDim2.new(0.6, 0, 0.15, 0)
+discordBtn.Text = "Discord"
+discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218) -- Warna biru Discord
+discordBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+discordBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 5)
+
+-- Aksi Klik Link Discord
+discordBtn.MouseButton1Click:Connect(function()
+    setclipboard("https://discord.gg/link-anda-disini") -- Ganti dengan link Anda
+    print("Link Discord disalin ke clipboard!")
+end)
+
 -- 3. FUNGSI DRAGGING (Dapat digeser)
 local function makeDraggable(object)
     local dragging, dragStart, startPos
