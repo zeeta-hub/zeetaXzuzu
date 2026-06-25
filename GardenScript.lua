@@ -3,10 +3,9 @@ local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- 1. CLEANUP TOTAL (Menggunakan _G untuk kompatibilitas semua executor)
+-- 1. CLEANUP TOTAL (Mencegah Double/Triple UI)
 local GUI_NAME = "ZeetaAtelierGui"
 if playerGui:FindFirstChild(GUI_NAME) then playerGui:FindFirstChild(GUI_NAME):Destroy() end
-
 if _G.ZeetaConnections then
     for _, conn in pairs(_G.ZeetaConnections) do conn:Disconnect() end
 end
@@ -20,8 +19,9 @@ screenGui.Name = GUI_NAME
 local iconButton = Instance.new("ImageButton", screenGui)
 iconButton.Size = UDim2.new(0, 60, 0, 60)
 iconButton.Position = UDim2.new(0.1, 0, 0.1, 0)
-iconButton.Image = "rbxassetid://0" 
+iconButton.Image = "rbxassetid://0" -- GANTI DENGAN ID GAMBAR ANDA
 iconButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+iconButton.Active = true
 Instance.new("UICorner", iconButton).CornerRadius = UDim.new(1, 0)
 
 -- Menu Utama
@@ -30,12 +30,14 @@ menuFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
 menuFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
 menuFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 menuFrame.Visible = false
+menuFrame.Active = true
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
--- Title Bar
+-- Title Bar (Area Dragging)
 local titleBar = Instance.new("Frame", menuFrame)
 titleBar.Size = UDim2.new(1, 0, 0, 40)
 titleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+titleBar.Active = true
 Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
 
 local titleText = Instance.new("TextLabel", titleBar)
@@ -52,6 +54,7 @@ discordBtn.Position = UDim2.new(0.8, 0, 0.15, 0)
 discordBtn.Text = "Discord"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
 discordBtn.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 5)
 discordBtn.MouseButton1Click:Connect(function() setclipboard("https://discord.gg/link-anda") end)
 
 -- LAYOUT KIRI DAN KANAN
@@ -66,41 +69,28 @@ rightFrame.Size = UDim2.new(0.75, 0, 1, -40)
 rightFrame.Position = UDim2.new(0.25, 0, 0, 40)
 rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 
--- Fungsi Dragging yang Diperbarui agar lebih stabil
+-- Fungsi Dragging Stabil
 local function makeDraggable(object)
-    local dragging = false
-    local dragInput = nil
-    local dragStart = Vector3.new(0,0,0)
-    local startPos = UDim2.new(0,0,0,0)
-
+    local dragging, dragStart, startPos
     local c1 = object.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            dragging = true
-            dragStart = Vector3.new(input.Position.X, input.Position.Y, 0)
-            startPos = object.Position
-            
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    dragging = false
-                end
-            end)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true; dragStart = input.Position; startPos = object.Position
         end
     end)
-
     local c2 = UserInputService.InputChanged:Connect(function(input)
-        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-            local delta = Vector3.new(input.Position.X, input.Position.Y, 0) - dragStart
+        if dragging then
+            local delta = input.Position - dragStart
             object.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
         end
     end)
-
-    table.insert(_G.ZeetaConnections, c1)
-    table.insert(_G.ZeetaConnections, c2)
+    local c3 = UserInputService.InputEnded:Connect(function() dragging = false end)
+    table.insert(_G.ZeetaConnections, c1); table.insert(_G.ZeetaConnections, c2); table.insert(_G.ZeetaConnections, c3)
 end
-makeDraggable(iconButton)
-makeDraggable(titleBar) -- Ini akan menggeser seluruh menu melalui Title Bar
 
--- SISTEM TAB
+makeDraggable(iconButton)
+makeDraggable(titleBar)
+
+-- SISTEM TAB (Pages)
 local pages = {}
 local function createPage(name)
     local page = Instance.new("ScrollingFrame", rightFrame)
@@ -123,9 +113,10 @@ local function addMenuTab(name)
     createPage(name)
 end
 
--- INISIALISASI TAB
+-- INISIALISASI
 addMenuTab("Farming")
 addMenuTab("Combat")
 showPage("Farming")
-
 iconButton.MouseButton1Click:Connect(function() menuFrame.Visible = not menuFrame.Visible end)
+
+print("ZeetaAtelier UI Berhasil Dimuat!")
