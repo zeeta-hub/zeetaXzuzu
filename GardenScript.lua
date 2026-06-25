@@ -41,7 +41,7 @@ titleBar.Active = true
 Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
 
 local titleText = Instance.new("TextLabel", titleBar)
-titleText.Size = UDim2.new(50, 0, 1, 0)
+titleText.Size = UDim2.new(0.6, 0, 1, 0)
 titleText.Position = UDim2.new(0, 10, 0, 0)
 titleText.Text = "Zeeta Atelier Hub"
 titleText.TextColor3 = Color3.new(1, 1, 1)
@@ -49,9 +49,9 @@ titleText.BackgroundTransparency = 1
 titleText.Font = Enum.Font.GothamBold
 
 local discordBtn = Instance.new("TextButton", titleBar)
-discordBtn.Size = UDim2.new(50, 100, 0.15, 25)
-discordBtn.Position = UDim2.new(0.8, 50, 0.15, 0)
-discordBtn.Text = "DISCORD"
+discordBtn.Size = UDim2.new(0, 80, 0, 25)
+discordBtn.Position = UDim2.new(0.8, 0, 0.15, 0)
+discordBtn.Text = "Discord"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
 discordBtn.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 5)
@@ -68,6 +68,7 @@ local rightFrame = Instance.new("Frame", menuFrame)
 rightFrame.Size = UDim2.new(0.75, 0, 1, -40)
 rightFrame.Position = UDim2.new(0.25, 0, 0, 40)
 rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+
 
 -- Fungsi Dragging Stabil
 local function makeDraggable(object)
