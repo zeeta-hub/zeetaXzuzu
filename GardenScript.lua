@@ -41,7 +41,7 @@ titleBar.Active = true
 Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
 
 local titleText = Instance.new("TextLabel", titleBar)
-titleText.Size = UDim2.new(0.6, 0, 1, 0)
+titleText.Size = UDim2.new(0.6, 100, 1, 0)
 titleText.Position = UDim2.new(0, 10, 0, 0)
 titleText.Text = "Zeeta Atelier Hub"
 titleText.TextColor3 = Color3.new(1, 1, 1)
