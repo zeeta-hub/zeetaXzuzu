@@ -6,6 +6,18 @@ local playerGui = player:WaitForChild("PlayerGui")
 local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "ZeetaAtelierGui"
 
+-- Cek apakah GUI dengan nama "ZeetaAtelierGui" sudah ada di PlayerGui
+local existingGui = playerGui:FindFirstChild("ZeetaAtelierGui")
+
+-- Jika sudah ada, hapus yang lama agar tidak terjadi duplikasi/bug
+if existingGui then
+    existingGui:Destroy()
+end
+
+-- Lanjutkan ke pembuatan GUI yang baru (kode Anda di bawah ini)
+local screenGui = Instance.new("ScreenGui", playerGui)
+screenGui.Name = "ZeetaAtelierGui"
+-- ... (dan seterusnya)
 -- === 1. Membuat Tombol Ikon ===
 local iconButton = Instance.new("ImageButton", screenGui)
 iconButton.Size = UDim2.new(0, 60, 0, 60)
