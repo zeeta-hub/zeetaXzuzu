@@ -3,7 +3,7 @@ local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- 1. CLEANUP TOTAL (Mencegah Double/Triple UI)
+-- 1. CLEANUP TOTAL
 local GUI_NAME = "ZeetaAtelierGui"
 if playerGui:FindFirstChild(GUI_NAME) then playerGui:FindFirstChild(GUI_NAME):Destroy() end
 if _G.ZeetaConnections then
@@ -19,7 +19,6 @@ screenGui.Name = GUI_NAME
 local iconButton = Instance.new("ImageButton", screenGui)
 iconButton.Size = UDim2.new(0, 60, 0, 60)
 iconButton.Position = UDim2.new(0.1, 0, 0.1, 0)
-iconButton.Image = "rbxassetid://0" -- GANTI DENGAN ID GAMBAR ANDA
 iconButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 iconButton.Active = true
 Instance.new("UICorner", iconButton).CornerRadius = UDim.new(1, 0)
@@ -33,98 +32,83 @@ menuFrame.Visible = false
 menuFrame.Active = true
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
 
--- === 2.1 Membuat Title Bar (Judul + Link) ===
-local titleBar = Instance.new("Frame", menuFrame)
-titleBar.Size = UDim2.new(1, 0, 0, 40) -- Tinggi 40 pixel
-titleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-titleBar.Active = true -- Penting untuk dragging
-Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 8)
+-- HEADER (Title Bar & Discord) - Posisikan paling atas secara visual
+local header = Instance.new("Frame", menuFrame)
+header.Size = UDim2.new(1, 0, 0, 40)
+header.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+header.Active = true
+header.ZIndex = 5
+Instance.new("UICorner", header).CornerRadius = UDim.new(0, 8)
 
--- Nama Skrip (Diperbaiki: ukurannya fleksibel)
-local titleText = Instance.new("TextLabel", titleBar)
-titleText.Size = UDim2.new(0.6, 0, 1, 0) -- 60% lebar bar
+local titleText = Instance.new("TextLabel", header)
+titleText.Size = UDim2.new(0.6, -10, 1, 0)
 titleText.Position = UDim2.new(0, 10, 0, 0)
 titleText.Text = "Zeeta Atelier Hub"
 titleText.TextColor3 = Color3.new(1, 1, 1)
 titleText.BackgroundTransparency = 1
 titleText.Font = Enum.Font.GothamBold
-titleText.TextSize = 14 -- Ukuran font agar tidak kepotong
 titleText.TextXAlignment = Enum.TextXAlignment.Left
+titleText.ZIndex = 6
 
--- Tombol Discord (Diperbaiki: posisi dan ukurannya proporsional)
-local discordBtn = Instance.new("TextButton", titleBar)
-discordBtn.Size = UDim2.new(0, 70, 0, 25) -- Lebar 70px, Tinggi 25px
-discordBtn.Position = UDim2.new(1, -75, 0.5, -12.5) -- Posisi ke kanan, di tengah vertikal
+local discordBtn = Instance.new("TextButton", header)
+discordBtn.Size = UDim2.new(0, 70, 0, 25)
+discordBtn.Position = UDim2.new(1, -80, 0.5, -12.5)
 discordBtn.Text = "Discord"
 discordBtn.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
 discordBtn.TextColor3 = Color3.new(1, 1, 1)
 discordBtn.Font = Enum.Font.GothamBold
-discordBtn.TextSize = 12
+discordBtn.ZIndex = 6
 Instance.new("UICorner", discordBtn).CornerRadius = UDim.new(0, 5)
+discordBtn.MouseButton1Click:Connect(function() setclipboard("https://discord.gg/link-anda") end)
 
-discordBtn.MouseButton1Click:Connect(function() 
-    setclipboard("https://discord.gg/link-anda") 
-end)
--- LAYOUT KIRI DAN KANAN
+-- PANEL KIRI (Tab) & KANAN (Konten) - Ditempatkan di bawah Header
 local leftFrame = Instance.new("Frame", menuFrame)
 leftFrame.Size = UDim2.new(0.25, 0, 1, -40)
 leftFrame.Position = UDim2.new(0, 0, 0, 40)
-leftFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Instance.new("UIListLayout", leftFrame).Padding = UDim.new(0, 5)
+leftFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+leftFrame.BorderSizePixel = 0
 
 local rightFrame = Instance.new("Frame", menuFrame)
 rightFrame.Size = UDim2.new(0.75, 0, 1, -40)
 rightFrame.Position = UDim2.new(0.25, 0, 0, 40)
 rightFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+rightFrame.BorderSizePixel = 0
 
--- Fungsi Dragging Stabil
-local function makeDraggable(object)
-    local dragging, dragStart, startPos
-    local c1 = object.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
-            dragging = true; dragStart = input.Position; startPos = object.Position
-        end
-    end)
-    local c2 = UserInputService.InputChanged:Connect(function(input)
-        if dragging then
-            local delta = input.Position - dragStart
-            object.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-        end
-    end)
-    local c3 = UserInputService.InputEnded:Connect(function() dragging = false end)
-    table.insert(_G.ZeetaConnections, c1); table.insert(_G.ZeetaConnections, c2); table.insert(_G.ZeetaConnections, c3)
-end
+Instance.new("UIListLayout", leftFrame).Padding = UDim.new(0, 5)
 
-makeDraggable(iconButton)
-makeDraggable(titleBar)
+-- Fungsi Dragging (Ditarik lewat Header)
+local dragging, dragStart, startPos
+header.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true; dragStart = input.Position; startPos = menuFrame.Position
+    end
+end)
+UserInputService.InputChanged:Connect(function(input)
+    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragStart
+        menuFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+UserInputService.InputEnded:Connect(function(input) if input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false end end)
 
--- SISTEM TAB (Pages)
+-- FUNGSI TAB
 local pages = {}
-local function createPage(name)
-    local page = Instance.new("ScrollingFrame", rightFrame)
-    page.Size = UDim2.new(1, 0, 1, 0); page.BackgroundTransparency = 1; page.Visible = false
-    Instance.new("UIListLayout", page).Padding = UDim.new(0, 5)
-    pages[name] = page
-    return page
-end
-
-local function showPage(name)
-    for _, p in pairs(pages) do p.Visible = false end
-    if pages[name] then pages[name].Visible = true end
-end
-
 local function addMenuTab(name)
     local tabBtn = Instance.new("TextButton", leftFrame)
     tabBtn.Size = UDim2.new(1, 0, 0, 40); tabBtn.Text = name
     tabBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40); tabBtn.TextColor3 = Color3.new(1, 1, 1)
-    tabBtn.MouseButton1Click:Connect(function() showPage(name) end)
-    createPage(name)
+    
+    local page = Instance.new("ScrollingFrame", rightFrame)
+    page.Size = UDim2.new(1, 0, 1, 0); page.BackgroundTransparency = 1; page.Visible = false
+    Instance.new("UIListLayout", page).Padding = UDim.new(0, 5)
+    pages[name] = page
+    
+    tabBtn.MouseButton1Click:Connect(function()
+        for _, p in pairs(pages) do p.Visible = false end
+        page.Visible = true
+    end)
 end
 
--- INISIALISASI
 addMenuTab("Farming")
 addMenuTab("Combat")
-showPage("Farming")
 iconButton.MouseButton1Click:Connect(function() menuFrame.Visible = not menuFrame.Visible end)
-
-print("ZeetaAtelier UI Berhasil Dimuat!")
