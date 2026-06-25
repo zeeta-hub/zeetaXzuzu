@@ -33,7 +33,7 @@ Instance.new("UICorner", iconButton).CornerRadius = UDim.new(1, 0)
 -- Menu Utama
 local menuFrame = Instance.new("Frame", screenGui)
 menuFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
-menuFrame.Position = UDim2.new(1, 0, 1, 0)
+menuFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
 menuFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 menuFrame.Visible = false
 Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 8)
