@@ -97,6 +97,8 @@ local function makeDraggable(object)
     table.insert(_G.ZeetaConnections, c1)
     table.insert(_G.ZeetaConnections, c2)
 end
+makeDraggable(iconButton)
+makeDraggable(titleBar) -- Ini akan menggeser seluruh menu melalui Title Bar
 
 -- SISTEM TAB
 local pages = {}
