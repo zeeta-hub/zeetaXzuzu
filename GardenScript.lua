@@ -3,16 +3,18 @@ local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
+-- === MEKANISME CLEANUP (PENTING!) ===
+-- Mencari apakah GUI dengan nama "ZeetaAtelierGui" sudah ada di PlayerGui
+local oldGui = playerGui:FindFirstChild("ZeetaAtelierGui")
+if oldGui then
+    oldGui:Destroy() -- Menghapus GUI lama agar tidak double
+end
+
+-- === MULAI MEMBUAT GUI BARU ===
 local screenGui = Instance.new("ScreenGui", playerGui)
 screenGui.Name = "ZeetaAtelierGui"
 
--- Cek apakah GUI dengan nama "ZeetaAtelierGui" sudah ada di PlayerGui
-local existingGui = playerGui:FindFirstChild("ZeetaAtelierGui")
-
--- Jika sudah ada, hapus yang lama agar tidak terjadi duplikasi/bug
-if existingGui then
-    existingGui:Destroy()
-end
+-- (Lanjutkan dengan sisa kode Anda di bawah ini...)
 
 -- Lanjutkan ke pembuatan GUI yang baru (kode Anda di bawah ini)
 local screenGui = Instance.new("ScreenGui", playerGui)
