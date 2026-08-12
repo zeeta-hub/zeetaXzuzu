@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zeeta Shop 🌸 VVIP Store</title>
+    <title>Zeeta Shop ðŸŒ¸ VVIP Store</title>
     <style>
       :root {
         --bg-main: #0b090f;
@@ -339,27 +339,27 @@
         <!-- GEAR MENU ICON -->
         <div class="gear-container" id="gearMenuContainer">
           <button class="gear-btn" onclick="toggleGearMenu()">
-            ⚙️ Menu Utama
+            âš™ï¸ Menu Utama
           </button>
           <div class="gear-dropdown">
             <button onclick="switchTab('home', this)">
-              🏠 Home (Semua Menu)
+              ðŸ  Home (Semua Menu)
             </button>
             <button onclick="switchTab('store', this)">
-              📦 Katalog Produk
+              ðŸ“¦ Katalog Produk
             </button>
-            <button onclick="switchTab('joki', this)">⚔️ Layanan Joki</button>
+            <button onclick="switchTab('joki', this)">âš”ï¸ Layanan Joki</button>
             <button onclick="switchTab('dashboard', this)">
-              📊 Dashboard Toko
+              ðŸ“Š Dashboard Toko
             </button>
             <button onclick="switchTab('taxcalc', this)">
-              🧮 Kalkulator Pajak
+              ðŸ§® Kalkulator Pajak
             </button>
             <button onclick="switchTab('fruitlist', this)">
-              🍎 Blox Fruits List
+              ðŸŽ Blox Fruits List
             </button>
             <button onclick="switchTab('vouch', this)">
-              ⭐ Vouch & Reputasi
+              â­ Vouch & Reputasi
             </button>
           </div>
         </div>
@@ -376,7 +376,7 @@
             font-weight: bold;
           "
         >
-          Hubungi CS 💬
+          Hubungi CS ðŸ’¬
         </button>
         <button
           id="authNavBtn"
@@ -391,16 +391,16 @@
             font-weight: bold;
           "
         >
-          🔑 Masuk Admin
+          ðŸ”‘ Masuk Admin
         </button>
       </div>
 
       <!-- TOMBOL RAHASIA DI BAGIAN KIRI ATAS (KLIK 5 KALI) -->
       <div class="secret-brand" onclick="triggerSecretAdmin()">
-        <h1>🌸 ZEETA SHOP 🌸</h1>
+        <h1>ðŸŒ¸ ZEETA SHOP ðŸŒ¸</h1>
       </div>
       <p style="text-align: center; color: var(--text-muted); margin-top: -5px">
-        ✨ Pusat Top Up Robux, Akun, Joki & Gamepass Terpercaya 🚀
+        âœ¨ Pusat Top Up Robux, Akun, Joki & Gamepass Terpercaya ðŸš€
       </p>
 
       <!-- NOTIFIKASI / INFO SERVER DISCORD RESMI -->
@@ -415,7 +415,7 @@
         "
       >
         <h3 style="color: var(--accent-purple); margin-top: 0">
-          🎮 GABUNG SERVER DISCORD RESMI KAMI!
+          ðŸŽ® GABUNG SERVER DISCORD RESMI KAMI!
         </h3>
         <p
           style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px"
@@ -443,7 +443,7 @@
               text-decoration: none;
             "
           >
-            🚀 ZeetaShop (Official Server)
+            ðŸš€ ZeetaShop (Official Server)
           </a>
           <a
             href="https://discord.gg/Am3HvspbV6"
@@ -456,7 +456,7 @@
               text-decoration: none;
             "
           >
-            ⭐ Zuzustore (Tempat Testimoni)
+            â­ Zuzustore (Tempat Testimoni)
           </a>
         </div>
       </div>
@@ -465,10 +465,10 @@
       <div id="home-section" class="section-view active">
         <!-- Dashboard Mini -->
         <div class="feature-box">
-          <h2>📊 DASHBOARD INFORMASI ZEETA SHOP</h2>
+          <h2>ðŸ“Š DASHBOARD INFORMASI ZEETA SHOP</h2>
           <div class="dashboard-grid">
             <div class="stat-card">
-              <h3>📦 Total Produk Utama</h3>
+              <h3>ðŸ“¦ Total Produk Utama</h3>
               <p
                 id="statTotalProdHome"
                 style="font-size: 22px; font-weight: bold; color: #fff"
@@ -480,7 +480,7 @@
               class="stat-card"
               style="border-left-color: var(--accent-blue)"
             >
-              <h3>🛍️ Total Transaksi Sukses</h3>
+              <h3>ðŸ›ï¸ Total Transaksi Sukses</h3>
               <p
                 style="
                   font-size: 22px;
@@ -495,7 +495,7 @@
               class="stat-card"
               style="border-left-color: var(--accent-purple)"
             >
-              <h3>⚡ Status Toko</h3>
+              <h3>âš¡ Status Toko</h3>
               <p
                 style="
                   font-size: 18px;
@@ -503,13 +503,13 @@
                   color: var(--success);
                 "
               >
-                🟢 ONLINE / BUKA
+                ðŸŸ¢ ONLINE / BUKA
               </p>
             </div>
             <div class="stat-card" style="border-left-color: #ffaa00">
-              <h3>⭐ Rating Toko</h3>
+              <h3>â­ Rating Toko</h3>
               <p style="font-size: 22px; font-weight: bold; color: #fff">
-                ⭐ 5.0 / 5.0
+                â­ 5.0 / 5.0
               </p>
             </div>
           </div>
@@ -517,24 +517,24 @@
 
         <!-- Katalog Produk -->
         <div class="admin-panel" id="adminPanelHome">
-          <h2>🛠️ PANEL KELOLA PRODUK UTAMA</h2>
+          <h2>ðŸ› ï¸ PANEL KELOLA PRODUK UTAMA</h2>
           <form id="addProductFormHome" onsubmit="addProduct(event)">
-            <label>🏷️ Nama Produk:</label>
+            <label>ðŸ·ï¸ Nama Produk:</label>
             <input type="text" id="prodNameHome" required />
-            <label>💰 Harga (Rp):</label>
+            <label>ðŸ’° Harga (Rp):</label>
             <input type="number" id="prodPriceHome" required />
-            <label>📝 Deskripsi:</label>
+            <label>ðŸ“ Deskripsi:</label>
             <textarea id="prodDescHome" required></textarea>
-            <label>🖼️ URL Foto Produk:</label>
+            <label>ðŸ–¼ï¸ URL Foto Produk:</label>
             <input
               type="text"
               id="prodImageHome"
               placeholder="https://... (kosongkan untuk default)"
             />
-            <button type="submit" class="btn">✨ Tambah Produk Baru</button>
+            <button type="submit" class="btn">âœ¨ Tambah Produk Baru</button>
           </form>
         </div>
-        <h2>🔥 PRODUK TERSEDIA</h2>
+        <h2>ðŸ”¥ PRODUK TERSEDIA</h2>
         <div
           class="grid"
           id="productGridHome"
@@ -543,7 +543,7 @@
 
         <!-- Menu Joki Section (Home) -->
         <div class="feature-box" style="margin-top: 30px">
-          <h2>⚔️ LAYANAN JOKI TERPERCAYA</h2>
+          <h2>âš”ï¸ LAYANAN JOKI TERPERCAYA</h2>
           <p
             style="
               color: var(--text-muted);
@@ -552,7 +552,7 @@
               margin-bottom: 20px;
             "
           >
-            🎮 Pilih jenis joki di bawah ini sesuai kebutuhan game kamu:
+            ðŸŽ® Pilih jenis joki di bawah ini sesuai kebutuhan game kamu:
           </p>
 
           <div
@@ -568,21 +568,21 @@
               style="flex: 1; min-width: 200px"
               onclick="switchTab('joki', document.querySelector('.gear-dropdown button:nth-child(3)'))"
             >
-              🍎 Buka Menu Joki Blox Fruits
+              ðŸŽ Buka Menu Joki Blox Fruits
             </button>
             <button
               class="btn"
               style="flex: 1; min-width: 200px; background: var(--accent-blue)"
               onclick="switchTab('joki', document.querySelector('.gear-dropdown button:nth-child(3)'))"
             >
-              💤 Buka Menu Joki AFK
+              ðŸ’¤ Buka Menu Joki AFK
             </button>
           </div>
         </div>
 
         <!-- Blox Fruits List Section -->
         <div class="feature-box" style="margin-top: 30px">
-          <h2>🍎 BLOX FRUITS LIST & STOK</h2>
+          <h2>ðŸŽ BLOX FRUITS LIST & STOK</h2>
           <div
             class="admin-panel"
             id="adminFruitPanelHome"
@@ -592,38 +592,38 @@
               id="fruitFormTitleHome"
               style="color: var(--accent-purple); margin-top: 0"
             >
-              ➕ Tambah Buah Baru
+              âž• Tambah Buah Baru
             </h3>
             <form id="addFruitFormHome" onsubmit="handleFruitForm(event)">
               <input type="hidden" id="editFruitIndexHome" value="-1" />
-              <label>🍎 Nama Buah:</label>
+              <label>ðŸŽ Nama Buah:</label>
               <input
                 type="text"
                 id="fruitNameHome"
                 required
                 placeholder="Contoh: Kitsune"
               />
-              <label>💰 Harga (Rp / Info Harga):</label>
+              <label>ðŸ’° Harga (Rp / Info Harga):</label>
               <input
                 type="text"
                 id="fruitPriceHome"
                 required
                 placeholder="Contoh: Rp 120.000"
               />
-              <label>📦 Stok:</label>
+              <label>ðŸ“¦ Stok:</label>
               <input
                 type="text"
                 id="fruitStockHome"
                 required
                 placeholder="Contoh: Tersedia (3)"
               />
-              <label>📝 Deskripsi Detail:</label>
+              <label>ðŸ“ Deskripsi Detail:</label>
               <textarea
                 id="fruitDescHome"
                 required
                 placeholder="Jelaskan detail buah..."
               ></textarea>
-              <button type="submit" class="btn">💾 Simpan Buah</button>
+              <button type="submit" class="btn">ðŸ’¾ Simpan Buah</button>
               <button
                 type="button"
                 id="cancelFruitEditBtnHome"
@@ -635,7 +635,7 @@
                   display: none;
                 "
               >
-                ❌ Batal Edit
+                âŒ Batal Edit
               </button>
             </form>
           </div>
@@ -648,15 +648,15 @@
 
         <!-- Kalkulator Pajak Section -->
         <div class="feature-box" style="max-width: 500px; margin: 30px auto">
-          <h2>🧮 KALKULATOR PAJAK ROBUX</h2>
-          <label>⚙️ Pilih Mode Hitung:</label>
+          <h2>ðŸ§® KALKULATOR PAJAK ROBUX</h2>
+          <label>âš™ï¸ Pilih Mode Hitung:</label>
           <select id="taxModeHome" onchange="calculateTax()">
             <option value="receive">
-              🔍 Cari tahu berapa Robux yang harus dijual
+              ðŸ” Cari tahu berapa Robux yang harus dijual
             </option>
-            <option value="net">💰 Hitung bersih yang diterima</option>
+            <option value="net">ðŸ’° Hitung bersih yang diterima</option>
           </select>
-          <label>💎 Masukkan Nominal Robux:</label>
+          <label>ðŸ’Ž Masukkan Nominal Robux:</label>
           <input
             type="number"
             id="taxInputHome"
@@ -677,7 +677,7 @@
               style="margin: 5px 0; color: var(--text-muted)"
               id="taxDescLabelHome"
             >
-              📊 Hasil Perhitungan:
+              ðŸ“Š Hasil Perhitungan:
             </p>
             <h3
               id="resultTaxHome"
@@ -690,7 +690,7 @@
 
         <!-- Vouch & Reputasi Section -->
         <div class="feature-box" style="max-width: 600px; margin: 30px auto">
-          <h2>⭐ TESTIMONI & VOUCH ZEETA SHOP</h2>
+          <h2>â­ TESTIMONI & VOUCH ZEETA SHOP</h2>
           <p
             style="
               text-align: center;
@@ -698,4 +698,1730 @@
               font-size: 13px;
               margin-bottom: 15px;
             "
-        
+          >
+            Daftar testimoni kepuasan pelanggan setia Zeeta Shop (Mode Lihat)
+          </p>
+          <div id="vouchListHome" style="margin-bottom: 20px">
+            <div class="vouch-card">
+              <b>@andigamer:</b> "Top up di Zeeta Shop prosesnya kilat banget,
+              gak sampe 5 menit robux masuk! Mantap âœ¨"
+            </div>
+            <div class="vouch-card">
+              <b>@siskastore:</b> "Trusted banget beli buah kitsune di sini,
+              admin ramah dan fast response. ðŸŒŸ"
+            </div>
+          </div>
+          <!-- Form Vouch Khusus Admin -->
+          <div
+            class="admin-panel"
+            id="adminVouchPanelHome"
+            style="
+              background: #0b090f;
+              padding: 15px;
+              border-radius: 8px;
+              border: 1px solid var(--danger);
+              display: none;
+            "
+          >
+            <h3 style="margin-top: 0; color: var(--success)">
+              âœï¸ [Admin] Tambah Vouch / Testimoni Baru
+            </h3>
+            <input
+              type="text"
+              id="vouchNameHome"
+              placeholder="ðŸ‘¤ Nama / Username Customer"
+            />
+            <textarea
+              id="vouchMsgHome"
+              placeholder="ðŸ’¬ Tulis testimoni vouch..."
+            ></textarea>
+            <button
+              onclick="addVouch()"
+              class="btn"
+              style="background: var(--success); color: #000"
+            >
+              â­ Publikasikan Vouch
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. HALAMAN KATALOG PRODUK -->
+      <div id="store-section" class="section-view">
+        <div class="admin-panel" id="adminPanelStore">
+          <h2>ðŸ› ï¸ PANEL KELOLA PRODUK UTAMA</h2>
+          <form id="addProductFormStore" onsubmit="addProduct(event)">
+            <label>ðŸ·ï¸ Nama Produk:</label>
+            <input type="text" id="prodNameStore" required />
+            <label>ðŸ’° Harga (Rp):</label>
+            <input type="number" id="prodPriceStore" required />
+            <label>ðŸ“ Deskripsi:</label>
+            <textarea id="prodDescStore" required></textarea>
+            <label>ðŸ–¼ï¸ URL Foto Produk:</label>
+            <input type="text" id="prodImageStore" placeholder="https://..." />
+            <button type="submit" class="btn">âœ¨ Tambah Produk Baru</button>
+          </form>
+        </div>
+        <h2>ðŸ”¥ PRODUK TERSEDIA</h2>
+        <div class="grid" id="productGridStore"></div>
+      </div>
+
+      <!-- 2. HALAMAN JOKI (3 DROPDOWN DINAMIS) -->
+      <div id="joki-section" class="section-view">
+        <div class="feature-box" style="max-width: 800px; margin: 0 auto">
+          <h2>âš”ï¸ MENU LAYANAN JOKI ZEETA SHOP</h2>
+          <p
+            style="
+              color: var(--text-muted);
+              text-align: center;
+              font-size: 13px;
+              margin-bottom: 20px;
+            "
+          >
+            ðŸ“‹ Silakan pilih Kategori Game, Jenis Layanan, dan Varian Detail
+            melalui 3 dropdown di bawah ini:
+          </p>
+
+          <!-- FORM 3 DROPDOWN BERUNTUN -->
+          <div
+            style="
+              background: #0b090f;
+              border: 1px solid var(--accent-purple);
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 25px;
+            "
+          >
+            <!-- Dropdown 1: Pilih Game / Kategori Utama -->
+            <label>ðŸŽ® 1. Pilih Kategori Game:</label>
+            <select id="jokiCategorySelect" onchange="onCategoryChange()">
+              <option value="bloxfruits">ðŸŽ Blox Fruits</option>
+              <option value="afk">ðŸ’¤ Joki AFK</option>
+            </select>
+
+            <!-- Dropdown 2: Pilih Sub-Layanan -->
+            <label>âš™ï¸ 2. Pilih Jenis Jasa:</label>
+            <select id="jokiSubSelect" onchange="onSubCategoryChange()">
+              <!-- Diisi via Javascript -->
+            </select>
+
+            <!-- Dropdown 3: Pilih Varian Spesifik / Jumlah -->
+            <label>ðŸŽ¯ 3. Pilih Varian / Detail Pilihan:</label>
+            <select id="jokiDetailSelect">
+              <!-- Diisi via Javascript -->
+            </select>
+
+            <button
+              onclick="orderJoki3Dropdown()"
+              class="btn"
+              style="
+                background: #25d366;
+                color: #fff;
+                margin-top: 15px;
+                font-size: 15px;
+              "
+            >
+              ðŸ“± Pesan Joki via WhatsApp
+            </button>
+          </div>
+
+          <hr style="border-color: var(--border-color); margin: 25px 0" />
+
+          <h3 style="color: var(--accent-purple); text-align: center">
+            ðŸ“œ PRICELIST LENGKAP JOKI BLOX FRUITS & AFK
+          </h3>
+
+          <!-- Joki Accordion List -->
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              â˜ ï¸ BOUNTY & HONOR <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>âš”ï¸ 1M Bounty</span
+                ><b style="color: var(--success)">30K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš”ï¸ 5M Bounty</span
+                ><b style="color: var(--success)">150K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš”ï¸ 10M Bounty</span
+                ><b style="color: var(--success)">350K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ›¡ï¸ 1M Honor</span
+                ><b style="color: var(--success)">40K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ›¡ï¸ 5M Honor</span
+                ><b style="color: var(--success)">200K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ›¡ï¸ 10M Honor</span
+                ><b style="color: var(--success)">400K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ”¥ Title Raging Demon</span
+                ><b style="color: var(--success)">15K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ”¥ Title Apex Predator</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--text-muted);
+                  margin-top: 10px;
+                "
+              >
+                âš ï¸ Note: [â€¢] NO!! (Portal, Buddha, Control) [â€¢] Proses Jangan
+                Tabrak[cite: 1]
+              </p>
+            </div>
+          </div>
+
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              ðŸ’ˆ LEVELING <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>ðŸ“ˆ SEA 1 (100 Level)</span
+                ><b style="color: var(--success)">3K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ“ˆ SEA 2 (100 Level)</span
+                ><b style="color: var(--success)">3K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ“ˆ SEA 3 (100 Level)</span
+                ><b style="color: var(--success)">2K</b>[cite: 1]
+              </div>
+            </div>
+          </div>
+
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              ðŸ’µ BELLY <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>ðŸ’° SEA 1 (1M Belly)</span
+                ><b style="color: var(--success)">4K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ’° SEA 2 (1M Belly)</span
+                ><b style="color: var(--success)">3K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ’° SEA 3 (1M Belly)</span
+                ><b style="color: var(--success)">2K</b>[cite: 1]
+              </div>
+            </div>
+          </div>
+
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              ðŸ”‹ MASTERY FS, SWORD, GUN & FRUIT
+              <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>âš¡ 100 Mastery Fighting Style / Sword</span
+                ><b style="color: var(--success)">2K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš¡ 100 Mastery Fruit</span
+                ><b style="color: var(--success)">3K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš¡ 100 Mastery Gun</span
+                ><b style="color: var(--success)">3K</b>[cite: 1]
+              </div>
+            </div>
+          </div>
+
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              ðŸ—¡ï¸ SWORD <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Pole V1</span
+                ><b style="color: var(--success)">4K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Pole V2</span
+                ><b style="color: var(--success)">15K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Saber</span
+                ><b style="color: var(--success)">2K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Saber V2</span
+                ><b style="color: var(--success)">9K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Rengoku</span
+                ><b style="color: var(--success)">5K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Midnight Blade</span
+                ><b style="color: var(--success)">5K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš“ 1 Paket Shark Anchor</span
+                ><b style="color: var(--success)">30K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš“ Shark Anchor (Ada Magnet)</span
+                ><b style="color: var(--success)">15K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Yama</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Tushita</span
+                ><b style="color: var(--success)">15K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Legend Sword</span
+                ><b style="color: var(--success)">5K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ True Triple Katana (TTK)</span
+                ><b style="color: var(--success)">15K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Cursed Dual Katana (CDK)</span
+                ><b style="color: var(--success)">30K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ“œ 1 Scroll</span
+                ><b style="color: var(--success)">3K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Hallow Scythe</span
+                ><b style="color: var(--success)">20K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Dark Blade V2</span
+                ><b style="color: var(--success)">20K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ—¡ï¸ Dark Blade V3</span
+                ><b style="color: var(--success)">90K</b>[cite: 1]
+              </div>
+            </div>
+          </div>
+
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              âš™ï¸ RACE V4 & PULL LEVER <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>ðŸ§¬ Full Gear</span
+                ><b style="color: var(--success)">40K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ§¬ Full Gear + Train (Ready Fragment)</span
+                ><b style="color: var(--success)">55K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ§¬ Full Gear + Train (No Ready Fragment)</span
+                ><b style="color: var(--success)">65K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš™ï¸ Pull Lever</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>âš¡ Trial 1x</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ”„ Train 1x</span
+                ><b style="color: var(--success)">2K</b>[cite: 1]
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--text-muted);
+                  margin-top: 10px;
+                "
+              >
+                âš ï¸ NOTE: Jika frag kurang akan dikenakan biaya tambahan[cite: 1]
+              </p>
+            </div>
+          </div>
+
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              ðŸ‰ NEW DRAGON UPDATE <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>ðŸŒ‹ 1x Volcano Island</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸŒ¸ Fire Flowers (Per biji)</span
+                ><b style="color: var(--success)">2K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ”¥ Blaze Ember (Per 15)</span
+                ><b style="color: var(--success)">5K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span
+                  >ðŸ‰ Get Draco Race (+30k all belt jika belum ada belt)</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ‰ Up V4 Draco (Sudah Freeze Hydra)</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ‰ Up Race Draco V1-V3</span
+                ><b style="color: var(--success)">10K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ‰ Full Gear Draco (Ready Fragment)</span
+                ><b style="color: var(--success)">40K</b>[cite: 1]
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ‰ Full Gear + Full Train (Ready Fragment)</span
+                ><b style="color: var(--success)">46K</b>[cite: 1]
+              </div>
+            </div>
+          </div>
+
+          <div class="joki-category">
+            <div class="joki-header" onclick="toggleJokiAccordion(this)">
+              ðŸ’¤ JOKI AFK (JAM & HARI) <span style="font-size: 12px">â–¼</span>
+            </div>
+            <div class="joki-body">
+              <div class="joki-item-row">
+                <span>â° 1 Jam AFK</span><b style="color: var(--success)">4K</b>
+              </div>
+              <div class="joki-item-row">
+                <span>â° 2 Jam AFK</span><b style="color: var(--success)">7K</b>
+              </div>
+              <div class="joki-item-row">
+                <span>â° 3 Jam AFK</span
+                ><b style="color: var(--success)">10K</b>
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ“… 1 Hari AFK</span
+                ><b style="color: var(--success)">25K</b>
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ“… 2 Hari AFK</span
+                ><b style="color: var(--success)">50K</b>
+              </div>
+              <div class="joki-item-row">
+                <span>ðŸ“… 3 Hari AFK</span
+                ><b style="color: var(--success)">70K</b>
+              </div>
+              <div
+                style="
+                  background: #0b090f;
+                  padding: 10px;
+                  border-radius: 6px;
+                  margin-top: 10px;
+                  font-size: 13px;
+                "
+              >
+                <b>ðŸŒŸ Benefit Blox Fruits AFK:</b>
+                <ul
+                  style="
+                    margin: 5px 0 0 15px;
+                    padding: 0;
+                    color: var(--text-muted);
+                  "
+                >
+                  <li>
+                    ðŸ’° Belly Bertambah Banyak (2x Money bisa sampai 150jt+)
+                  </li>
+                  <li>ðŸ”® Fragment Nambah</li>
+                  <li>
+                    ðŸŽ Dapat random fruit dari gacha, fruit spawn, pirate raid
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. HALAMAN DASHBOARD -->
+      <div id="dashboard-section" class="section-view">
+        <div class="feature-box">
+          <h2>ðŸ“Š DASHBOARD INFORMASI ZEETA SHOP</h2>
+          <div class="dashboard-grid">
+            <div class="stat-card">
+              <h3>ðŸ“¦ Total Produk Utama</h3>
+              <p
+                id="statTotalProdDash"
+                style="font-size: 22px; font-weight: bold; color: #fff"
+              >
+                0
+              </p>
+            </div>
+            <div
+              class="stat-card"
+              style="border-left-color: var(--accent-blue)"
+            >
+              <h3>ðŸ›ï¸ Total Transaksi Sukses</h3>
+              <p
+                style="
+                  font-size: 22px;
+                  font-weight: bold;
+                  color: var(--success);
+                "
+              >
+                800+
+              </p>
+            </div>
+            <div
+              class="stat-card"
+              style="border-left-color: var(--accent-purple)"
+            >
+              <h3>âš¡ Status Toko</h3>
+              <p
+                style="
+                  font-size: 18px;
+                  font-weight: bold;
+                  color: var(--success);
+                "
+              >
+                ðŸŸ¢ ONLINE / BUKA
+              </p>
+            </div>
+            <div class="stat-card" style="border-left-color: #ffaa00">
+              <h3>â­ Rating Toko</h3>
+              <p style="font-size: 22px; font-weight: bold; color: #fff">
+                â­ 5.0 / 5.0
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. HALAMAN KALKULATOR PAJAK -->
+      <div id="taxcalc-section" class="section-view">
+        <div class="feature-box" style="max-width: 500px; margin: 0 auto">
+          <h2>ðŸ§® KALKULATOR PAJAK ROBUX</h2>
+          <label>âš™ï¸ Pilih Mode Hitung:</label>
+          <select id="taxMode" onchange="calculateTax()">
+            <option value="receive">
+              ðŸ” Cari tahu berapa Robux yang harus dijual
+            </option>
+            <option value="net">ðŸ’° Hitung bersih yang diterima</option>
+          </select>
+          <label>ðŸ’Ž Masukkan Nominal Robux:</label>
+          <input
+            type="number"
+            id="taxInput"
+            placeholder="Contoh: 500"
+            oninput="calculateTax()"
+          />
+          <div
+            style="
+              background: #0b090f;
+              padding: 15px;
+              border-radius: 8px;
+              margin-top: 15px;
+              text-align: center;
+              border: 1px solid var(--border-color);
+            "
+          >
+            <p
+              style="margin: 5px 0; color: var(--text-muted)"
+              id="taxDescLabel"
+            >
+              ðŸ“Š Hasil Perhitungan:
+            </p>
+            <h3
+              id="resultTax"
+              style="color: var(--danger); font-size: 24px; margin: 0"
+            >
+              0 Robux
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. HALAMAN BLOX FRUITS LIST -->
+      <div id="fruitlist-section" class="section-view">
+        <div class="feature-box" style="max-width: 800px; margin: 0 auto">
+          <h2>ðŸŽ BLOX FRUITS LIST & STOK</h2>
+          <div
+            class="admin-panel"
+            id="adminFruitPanelStore"
+            style="display: none; margin-bottom: 20px"
+          >
+            <h3
+              id="fruitFormTitle"
+              style="color: var(--accent-purple); margin-top: 0"
+            >
+              âž• Tambah Buah Baru
+            </h3>
+            <form id="addFruitForm" onsubmit="handleFruitForm(event)">
+              <input type="hidden" id="editFruitIndex" value="-1" />
+              <label>ðŸŽ Nama Buah:</label>
+              <input
+                type="text"
+                id="fruitName"
+                required
+                placeholder="Contoh: Kitsune"
+              />
+              <label>ðŸ’° Harga (Rp / Info Harga):</label>
+              <input
+                type="text"
+                id="fruitPrice"
+                required
+                placeholder="Contoh: Rp 120.000"
+              />
+              <label>ðŸ“¦ Stok:</label>
+              <input
+                type="text"
+                id="fruitStock"
+                required
+                placeholder="Contoh: Tersedia (3)"
+              />
+              <label>ðŸ“ Deskripsi Detail:</label>
+              <textarea
+                id="fruitDesc"
+                required
+                placeholder="Jelaskan detail buah..."
+              ></textarea>
+              <button type="submit" class="btn">ðŸ’¾ Simpan Buah</button>
+              <button
+                type="button"
+                id="cancelFruitEditBtn"
+                onclick="resetFruitForm()"
+                class="btn"
+                style="
+                  background: var(--danger);
+                  margin-top: 8px;
+                  display: none;
+                "
+              >
+                âŒ Batal Edit
+              </button>
+            </form>
+          </div>
+          <div
+            class="grid"
+            id="fruitGridContainer"
+            style="margin-top: 15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 6. HALAMAN VOUCH & REPUTASI -->
+      <div id="vouch-section" class="section-view">
+        <div class="feature-box" style="max-width: 600px; margin: 0 auto">
+          <h2>â­ TESTIMONI & VOUCH ZEETA SHOP</h2>
+          <p
+            style="
+              text-align: center;
+              color: var(--text-muted);
+              font-size: 13px;
+              margin-bottom: 15px;
+            "
+          >
+            Daftar testimoni kepuasan pelanggan setia Zeeta Shop (Mode Lihat)
+          </p>
+          <div id="vouchList" style="margin-bottom: 20px">
+            <div class="vouch-card">
+              <b>@andigamer:</b> "Top up di Zeeta Shop prosesnya kilat banget,
+              gak sampe 5 menit robux masuk! Mantap âœ¨"
+            </div>
+            <div class="vouch-card">
+              <b>@siskastore:</b> "Trusted banget beli buah kitsune di sini,
+              admin ramah dan fast response. ðŸŒŸ"
+            </div>
+          </div>
+          <!-- Form Vouch Khusus Admin -->
+          <div
+            class="admin-panel"
+            id="adminVouchPanelStore"
+            style="
+              background: #0b090f;
+              padding: 15px;
+              border-radius: 8px;
+              border: 1px solid var(--danger);
+              display: none;
+            "
+          >
+            <h3 style="margin-top: 0; color: var(--success)">
+              âœï¸ [Admin] Tambah Vouch / Testimoni Baru
+            </h3>
+            <input
+              type="text"
+              id="vouchName"
+              placeholder="ðŸ‘¤ Nama / Username Customer"
+            />
+            <textarea
+              id="vouchMsg"
+              placeholder="ðŸ’¬ Tulis testimoni vouch..."
+            ></textarea>
+            <button
+              onclick="addVouch()"
+              class="btn"
+              style="background: var(--success); color: #000"
+            >
+              â­ Publikasikan Vouch
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL DESKRIPSI & BELI BLOX FRUIT -->
+    <div id="fruitDetailModal" class="modal">
+      <div class="modal-content" style="max-width: 450px; text-align: left">
+        <h2
+          id="modalFruitTitle"
+          style="text-align: center; color: var(--accent-purple); margin-top: 0"
+        >
+          ðŸŽ Nama Buah
+        </h2>
+        <div
+          style="
+            background: #0b090f;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+          "
+        >
+          <p style="margin: 5px 0">
+            <b>ðŸ’° Harga:</b>
+            <span id="modalFruitPrice" style="color: var(--success)">Rp 0</span>
+          </p>
+          <p style="margin: 5px 0">
+            <b>ðŸ“¦ Stok:</b>
+            <span id="modalFruitStock" style="color: #ffaa00">Tersedia</span>
+          </p>
+          <hr style="border-color: var(--border-color); margin: 10px 0" />
+          <p
+            style="margin: 0 0 5px 0; color: var(--text-muted); font-size: 13px"
+          >
+            <b>ðŸ“ Deskripsi Produk:</b>
+          </p>
+          <p
+            id="modalFruitDesc"
+            style="
+              margin: 0;
+              font-size: 14px;
+              white-space: pre-line;
+              color: var(--text-main);
+            "
+          ></p>
+        </div>
+        <button
+          id="modalWhatsAppBtn"
+          class="btn"
+          style="
+            background: #25d366;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 15px;
+          "
+        >
+          ðŸ“± Beli via WhatsApp
+        </button>
+        <div id="modalAdminControls" style="display: none; margin-bottom: 10px">
+          <button
+            onclick="editCurrentFruit()"
+            class="btn"
+            style="background: var(--accent-blue); margin-bottom: 6px"
+          >
+            âœï¸ Edit Buah Ini
+          </button>
+          <button
+            onclick="deleteCurrentFruit()"
+            class="btn"
+            style="background: var(--danger)"
+          >
+            ðŸ—‘ï¸ Hapus Buah Ini
+          </button>
+        </div>
+        <button
+          onclick="document.getElementById('fruitDetailModal').style.display='none'"
+          style="
+            background: #2a223d;
+            color: #fff;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+          "
+        >
+          âŒ Tutup
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL PILIHAN CS -->
+    <div id="csModal" class="modal">
+      <div class="modal-content">
+        <h2>ðŸ’¬ HUBUNGI CUSTOMER SERVICE</h2>
+        <p
+          style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px"
+        >
+          ðŸŽ§ Silakan pilih platform untuk menghubungi kami:
+        </p>
+        <button
+          onclick="contactWhatsApp()"
+          class="btn"
+          style="background: #25d366; margin-bottom: 10px"
+        >
+          ðŸ“± WhatsApp
+        </button>
+        <button
+          onclick="contactDiscord()"
+          class="btn"
+          style="background: #5865f2; margin-bottom: 15px"
+        >
+          ðŸŽ® Discord
+        </button>
+        <button
+          onclick="closeCSModal()"
+          style="
+            background: #2a223d;
+            color: #fff;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+          "
+        >
+          âŒ Tutup
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL LOGIN ADMIN -->
+    <div id="authModal" class="modal">
+      <div class="modal-content">
+        <h2>ðŸ” LOGIN ADMIN PANEL</h2>
+        <p
+          style="color: var(--text-muted); font-size: 12px; margin-bottom: 15px"
+        >
+          ðŸ”‘ Masukkan Username dan Password Admin
+        </p>
+        <input type="text" id="authUser" placeholder="ðŸ‘¤ Username" />
+        <input type="password" id="authPass" placeholder="ðŸ”’ Password" />
+        <button onclick="handleLogin()" class="btn" style="margin-top: 5px">
+          ðŸš€ Masuk Admin
+        </button>
+        <br /><br />
+        <button
+          onclick="closeAuthModal()"
+          style="
+            background: #2a223d;
+            color: #fff;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+          "
+        >
+          âŒ Tutup
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL USER AUTH (MASUK / DAFTAR USER BIASA) -->
+    <div id="userAuthModal" class="modal">
+      <div class="modal-content">
+        <h2 id="userAuthTitle" style="color: var(--accent-purple)">
+          ðŸ‘¤ Masuk Akun
+        </h2>
+        <p
+          id="userAuthDesc"
+          style="color: var(--text-muted); font-size: 12px; margin-bottom: 15px"
+        >
+          Silakan masukkan detail akun Anda
+        </p>
+        <div id="userAuthFormContainer">
+          <!-- Input Form Dinamis -->
+        </div>
+        <button
+          onclick="closeUserAuthModal()"
+          style="
+            background: #2a223d;
+            color: #fff;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+          "
+        >
+          âŒ Tutup
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL PEMBAYARAN VIA WHATSAPP -->
+    <div id="checkoutModal" class="modal">
+      <div class="modal-content">
+        <h2>ðŸ’¬ PEMBAYARAN VIA WHATSAPP</h2>
+        <p
+          id="modalItemInfo"
+          style="color: var(--success); margin-bottom: 10px"
+        ></p>
+        <div class="pay-box">
+          <p style="margin: 0 0 8px 0; color: var(--text-main)">
+            <b>â„¹ï¸ Informasi Pembayaran:</b>
+          </p>
+          <p style="margin: 0; color: var(--text-muted); font-size: 12px">
+            ðŸ›¡ï¸ Seluruh transaksi dan pembayaran produk dilakukan langsung secara
+            aman melalui chat WhatsApp Admin Zeeta Shop.
+          </p>
+        </div>
+        <button
+          id="payActionBtn"
+          class="btn"
+          style="
+            background: #25d366;
+            color: #fff;
+            margin-top: 5px;
+            font-size: 16px;
+          "
+        >
+          ðŸ“± LANJUT PESAN VIA WHATSAPP
+        </button>
+        <br /><br />
+        <button
+          onclick="document.getElementById('checkoutModal').style.display='none'"
+          style="
+            background: #2a223d;
+            color: #fff;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+          "
+        >
+          âŒ Tutup
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const CS_WHATSAPP = "6285136945934";
+      const CS_DISCORD_LINK = "https://discord.gg/AqDzv6C9cV";
+
+      const ADMIN_USER = "Zeetashop";
+      const ADMIN_PASS = "Zeetashop56";
+
+      let secretClickCount = 0;
+      let secretClickTimer = null;
+
+      function triggerSecretAdmin() {
+        secretClickCount++;
+        clearTimeout(secretClickTimer);
+        secretClickTimer = setTimeout(() => {
+          secretClickCount = 0;
+        }, 1000);
+
+        if (secretClickCount >= 5) {
+          secretClickCount = 0;
+          alert(
+            "ðŸ”“ Tombol Rahasia Terdeteksi! Silakan login menggunakan akun admin."
+          );
+          openAuthModal();
+        }
+      }
+
+      let products = JSON.parse(localStorage.getItem("zeeta_products")) || [
+        {
+          id: 1,
+          name: "Robux 400",
+          price: 50000,
+          desc: "Robux legal via Gamepass / Group Funds",
+          image: "https://via.placeholder.com/150?text=Robux",
+        },
+        {
+          id: 2,
+          name: "Blox Fruits - Kitsune",
+          price: 100000,
+          desc: "Permanent / Physical Fruit Blox Fruits",
+          image: "https://via.placeholder.com/150?text=Kitsune",
+        },
+      ];
+
+      let fruitsList = JSON.parse(localStorage.getItem("zeeta_fruits")) || [
+        {
+          name: "Kitsune",
+          price: "Rp 120.000",
+          stock: "Tersedia (Stok: 2)",
+          desc: "Buah mitos terkuat di Blox Fruits dengan mobilitas sangat tinggi dan damage api rubah yang mematikan.",
+        },
+        {
+          name: "Dragon (Rework)",
+          price: "Rp 100.000",
+          stock: "Tersedia (Stok: 1)",
+          desc: "Buah naga legendaris update terbaru. Efek transformasi naga besar dan area skill sangat luas.",
+        },
+        {
+          name: "Leopard",
+          price: "Rp 40.000",
+          stock: "Tersedia (Stok: 5)",
+          desc: "Kecepatan combo luar biasa dan sangat cocok untuk PvP jarak dekat maupun bounty hunter.",
+        },
+        {
+          name: "T-Rex",
+          price: "Rp 20.000",
+          stock: "Tersedia (Stok: 3)",
+          desc: "Buah tipe beast dengan pertahanan tinggi dan efek gigitan stun yang mematikan.",
+        },
+      ];
+
+      let isAdminLoggedIn =
+        JSON.parse(localStorage.getItem("zeeta_admin_logged")) || false;
+      let currentUser =
+        JSON.parse(localStorage.getItem("zeeta_current_user")) || null;
+      let selectedFruitIndex = -1;
+
+      function toggleGearMenu() {
+        document.getElementById("gearMenuContainer").classList.toggle("active");
+      }
+
+      window.onclick = function (event) {
+        if (!event.target.closest(".gear-container")) {
+          document
+            .getElementById("gearMenuContainer")
+            .classList.remove("active");
+        }
+      };
+
+      function switchTab(tabId, btnElement) {
+        document
+          .querySelectorAll(".section-view")
+          .forEach((sec) => sec.classList.remove("active"));
+        document.getElementById(tabId + "-section").classList.add("active");
+        document.getElementById("gearMenuContainer").classList.remove("active");
+        if (tabId === "home") {
+          renderAllSections();
+        }
+      }
+
+      // STRUKTUR DATA 3 DROPDOWN JOKI
+      const jokiData = {
+        bloxfruits: {
+          name: "ðŸŽ Blox Fruits",
+          subcategories: {
+            bounty: {
+              name: "â˜ ï¸ Bounty & Honor",
+              details: [
+                {
+                  label: "âš”ï¸ 1M Bounty - Rp 30.000",
+                  value: "1M Bounty (Rp 30.000)",
+                },
+                {
+                  label: "âš”ï¸ 5M Bounty - Rp 150.000",
+                  value: "5M Bounty (Rp 150.000)",
+                },
+                {
+                  label: "âš”ï¸ 10M Bounty - Rp 350.000",
+                  value: "10M Bounty (Rp 350.000)",
+                },
+                {
+                  label: "ðŸ›¡ï¸ 1M Honor - Rp 40.000",
+                  value: "1M Honor (Rp 40.000)",
+                },
+                {
+                  label: "ðŸ›¡ï¸ 5M Honor - Rp 200.000",
+                  value: "5M Honor (Rp 200.000)",
+                },
+                {
+                  label: "ðŸ›¡ï¸ 10M Honor - Rp 400.000",
+                  value: "10M Honor (Rp 400.000)",
+                },
+                {
+                  label: "ðŸ”¥ Title Raging Demon - Rp 15.000",
+                  value: "Title Raging Demon (Rp 15.000)",
+                },
+                {
+                  label: "ðŸ”¥ Title Apex Predator - Rp 10.000",
+                  value: "Title Apex Predator (Rp 10.000)",
+                },
+              ],
+            },
+            leveling: {
+              name: "ðŸ’ˆ Leveling",
+              details: [
+                {
+                  label: "ðŸ“ˆ SEA 1 (100 Level) - Rp 3.000",
+                  value: "SEA 1 Leveling 100Lvl (Rp 3.000)",
+                },
+                {
+                  label: "ðŸ“ˆ SEA 2 (100 Level) - Rp 3.000",
+                  value: "SEA 2 Leveling 100Lvl (Rp 3.000)",
+                },
+                {
+                  label: "ðŸ“ˆ SEA 3 (100 Level) - Rp 2.000",
+                  value: "SEA 3 Leveling 100Lvl (Rp 2.000)",
+                },
+              ],
+            },
+            belly: {
+              name: "ðŸ’µ Belly",
+              details: [
+                {
+                  label: "ðŸ’° SEA 1 (1M Belly) - Rp 4.000",
+                  value: "SEA 1 Belly 1M (Rp 4.000)",
+                },
+                {
+                  label: "ðŸ’° SEA 2 (1M Belly) - Rp 3.000",
+                  value: "SEA 2 Belly 1M (Rp 3.000)",
+                },
+                {
+                  label: "ðŸ’° SEA 3 (1M Belly) - Rp 2.000",
+                  value: "SEA 3 Belly 1M (Rp 2.000)",
+                },
+              ],
+            },
+            sword: {
+              name: "ðŸ—¡ï¸ Sword & Weapons",
+              details: [
+                {
+                  label: "ðŸ—¡ï¸ Cursed Dual Katana (CDK) - Rp 30.000",
+                  value: "CDK Sword (Rp 30.000)",
+                },
+                {
+                  label: "ðŸ—¡ï¸ True Triple Katana (TTK) - Rp 15.000",
+                  value: "TTK Sword (Rp 15.000)",
+                },
+                {
+                  label: "âš“ Shark Anchor (Ada Magnet) - Rp 15.000",
+                  value: "Shark Anchor (Rp 15.000)",
+                },
+                {
+                  label: "âš“ 1 Paket Shark Anchor - Rp 30.000",
+                  value: "1 Paket Shark Anchor (Rp 30.000)",
+                },
+                {
+                  label: "ðŸ—¡ï¸ Yama - Rp 10.000",
+                  value: "Yama Sword (Rp 10.000)",
+                },
+                {
+                  label: "ðŸ—¡ï¸ Tushita - Rp 15.000",
+                  value: "Tushita Sword (Rp 15.000)",
+                },
+                {
+                  label: "ðŸ—¡ï¸ Hallow Scythe - Rp 20.000",
+                  value: "Hallow Scythe (Rp 20.000)",
+                },
+              ],
+            },
+            racev4: {
+              name: "âš™ï¸ Race V4 & Gear",
+              details: [
+                {
+                  label: "ðŸ§¬ Full Gear - Rp 40.000",
+                  value: "Race V4 Full Gear (Rp 40.000)",
+                },
+                {
+                  label: "ðŸ§¬ Full Gear + Train (Ready Frag) - Rp 55.000",
+                  value: "Race V4 Full Gear + Train (Rp 55.000)",
+                },
+                {
+                  label: "âš™ï¸ Pull Lever - Rp 10.000",
+                  value: "Pull Lever (Rp 10.000)",
+                },
+                {
+                  label: "âš¡ Trial 1x - Rp 10.000",
+                  value: "Trial 1x (Rp 10.000)",
+                },
+              ],
+            },
+          },
+        },
+        afk: {
+          name: "ðŸ’¤ Joki AFK",
+          subcategories: {
+            duration: {
+              name: "â° Durasi AFK",
+              details: [
+                {
+                  label: "â° 1 Jam AFK - Rp 4.000",
+                  value: "Joki AFK 1 Jam (Rp 4.000)",
+                },
+                {
+                  label: "â° 2 Jam AFK - Rp 7.000",
+                  value: "Joki AFK 2 Jam (Rp 7.000)",
+                },
+                {
+                  label: "â° 3 Jam AFK - Rp 10.000",
+                  value: "Joki AFK 3 Jam (Rp 10.000)",
+                },
+                {
+                  label: "ðŸ“… 1 Hari AFK - Rp 25.000",
+                  value: "Joki AFK 1 Hari (Rp 25.000)",
+                },
+                {
+                  label: "ðŸ“… 2 Hari AFK - Rp 50.000",
+                  value: "Joki AFK 2 Hari (Rp 50.000)",
+                },
+                {
+                  label: "ðŸ“… 3 Hari AFK - Rp 70.000",
+                  value: "Joki AFK 3 Hari (Rp 70.000)",
+                },
+              ],
+            },
+          },
+        },
+      };
+
+      function initJokiDropdowns() {
+        const catSelect = document.getElementById("jokiCategorySelect");
+        if (!catSelect) return;
+        catSelect.innerHTML = "";
+        for (let catKey in jokiData) {
+          let opt = document.createElement("option");
+          opt.value = catKey;
+          opt.innerText = jokiData[catKey].name;
+          catSelect.appendChild(opt);
+        }
+        onCategoryChange();
+      }
+
+      function onCategoryChange() {
+        const catKey = document.getElementById("jokiCategorySelect").value;
+        const subSelect = document.getElementById("jokiSubSelect");
+        subSelect.innerHTML = "";
+
+        let subs = jokiData[catKey].subcategories;
+        for (let subKey in subs) {
+          let opt = document.createElement("option");
+          opt.value = subKey;
+          opt.innerText = subs[subKey].name;
+          subSelect.appendChild(opt);
+        }
+        onSubCategoryChange();
+      }
+
+      function onSubCategoryChange() {
+        const catKey = document.getElementById("jokiCategorySelect").value;
+        const subKey = document.getElementById("jokiSubSelect").value;
+        const detailSelect = document.getElementById("jokiDetailSelect");
+        detailSelect.innerHTML = "";
+
+        if (jokiData[catKey] && jokiData[catKey].subcategories[subKey]) {
+          let details = jokiData[catKey].subcategories[subKey].details;
+          details.forEach((item) => {
+            let opt = document.createElement("option");
+            opt.value = item.value;
+            opt.innerText = item.label;
+            detailSelect.appendChild(opt);
+          });
+        }
+      }
+
+      function orderJoki3Dropdown() {
+        const catKey = document.getElementById("jokiCategorySelect").value;
+        const subKey = document.getElementById("jokiSubSelect").value;
+
+        let catName = jokiData[catKey].name;
+        let subName = jokiData[catKey].subcategories[subKey].name;
+        let detailVal = document.getElementById("jokiDetailSelect").value;
+
+        let waMsg = `âœ¨ Halo Admin Zeeta Shop, saya ingin memesan layanan Joki dengan detail berikut:\n\n*Kategori:* ${catName}\n*Jenis Jasa:* ${subName}\n*Pilihan Varian:* ${detailVal}\n\nðŸ™ Mohon bantuannya untuk instruksi pembayaran dan proses pengerjaan selanjutnya ya kak!`;
+        window.open(
+          `https://wa.me/${CS_WHATSAPP}?text=${encodeURIComponent(waMsg)}`,
+          "_blank"
+        );
+      }
+
+      function toggleJokiAccordion(headerEl) {
+        let body = headerEl.nextElementSibling;
+        let arrow = headerEl.querySelector("span");
+        if (body.style.display === "block") {
+          body.style.display = "none";
+          arrow.innerText = "â–¼";
+        } else {
+          body.style.display = "block";
+          arrow.innerText = "â–²";
+        }
+      }
+
+      function openCSModal() {
+        document.getElementById("csModal").style.display = "flex";
+      }
+      function closeCSModal() {
+        document.getElementById("csModal").style.display = "none";
+      }
+      function contactWhatsApp() {
+        let msg = isAdminLoggedIn
+          ? "âœ¨ Halo Kak, saya Admin Zeeta Shop."
+          : "âœ¨ Halo Kak, ingin bertanya seputar produk atau joki Zeeta Shop.";
+        window.open(
+          `https://wa.me/${CS_WHATSAPP}?text=${encodeURIComponent(msg)}`,
+          "_blank"
+        );
+      }
+      function contactDiscord() {
+        window.open(CS_DISCORD_LINK, "_blank");
+      }
+
+      function updateUIState() {
+        const navBtn = document.getElementById("authNavBtn");
+        const userInfo = document.getElementById("userInfoDisplay");
+        const userAuthNav = document.getElementById("userAuthNavContainer");
+
+        const adminPanels = [
+          document.getElementById("adminPanelHome"),
+          document.getElementById("adminPanelStore"),
+          document.getElementById("adminFruitPanelHome"),
+          document.getElementById("adminFruitPanelStore"),
+          document.getElementById("adminVouchPanelHome"),
+          document.getElementById("adminVouchPanelStore"),
+        ];
+
+        document.getElementById("statTotalProdHome").innerText =
+          products.length;
+        document.getElementById("statTotalProdDash").innerText =
+          products.length;
+
+        if (isAdminLoggedIn) {
+          userInfo.innerText = "ðŸ‘¤ Zeetashop (Admin)";
+          navBtn.innerText = "ðŸ”’ Logout Admin";
+          navBtn.style.borderColor = "var(--danger)";
+          navBtn.style.color = "var(--danger)";
+          navBtn.onclick = logoutAdmin;
+          if (userAuthNav) userAuthNav.style.display = "none";
+        } else if (currentUser) {
+          userInfo.innerText = `ðŸ‘‹ Halo, ${currentUser}`;
+          userAuthNav.innerHTML = `<button onclick="logoutUser()" class="btn-user-login" style="border-color:var(--danger); color:var(--danger);">Keluar</button>`;
+          navBtn.innerText = "ðŸ”‘ Masuk Admin";
+          navBtn.style.borderColor = "var(--success)";
+          navBtn.style.color = "var(--success)";
+          navBtn.onclick = openAuthModal;
+        } else {
+          userInfo.innerText = "";
+          if (userAuthNav) {
+            userAuthNav.style.display = "flex";
+            userAuthNav.innerHTML = `
+              <button onclick="showUserAuthModal('login')" class="btn-user-login">Masuk</button>
+              <button onclick="showUserAuthModal('register')" class="btn-user-register">Daftar</button>
+            `;
+          }
+          navBtn.innerText = "ðŸ”‘ Masuk Admin";
+          navBtn.style.borderColor = "var(--success)";
+          navBtn.style.color = "var(--success)";
+          navBtn.onclick = openAuthModal;
+        }
+
+        adminPanels.forEach((panel) => {
+          if (panel) panel.style.display = isAdminLoggedIn ? "block" : "none";
+        });
+
+        renderAllSections();
+      }
+
+      function openAuthModal() {
+        document.getElementById("authUser").value = "";
+        document.getElementById("authPass").value = "";
+        document.getElementById("authModal").style.display = "flex";
+      }
+      function closeAuthModal() {
+        document.getElementById("authModal").style.display = "none";
+      }
+
+      function handleLogin() {
+        let u = document.getElementById("authUser").value.trim();
+        let p = document.getElementById("authPass").value.trim();
+
+        if (u === ADMIN_USER && p === ADMIN_PASS) {
+          isAdminLoggedIn = true;
+          localStorage.setItem("zeeta_admin_logged", "true");
+          closeAuthModal();
+          updateUIState();
+          alert("ðŸŽ‰ Berhasil Login sebagai Admin Zeeta Shop!");
+        } else {
+          alert("âŒ Username atau Password Admin salah!");
+        }
+      }
+
+      function logoutAdmin() {
+        isAdminLoggedIn = false;
+        localStorage.removeItem("zeeta_admin_logged");
+        updateUIState();
+        alert("ðŸ‘‹ Berhasil Logout dari Admin.");
+      }
+
+      // USER AUTH FUNCTIONS
+      function showUserAuthModal(type) {
+        const modal = document.getElementById("userAuthModal");
+        const title = document.getElementById("userAuthTitle");
+        const desc = document.getElementById("userAuthDesc");
+        const formContainer = document.getElementById("userAuthFormContainer");
+
+        if (type === "login") {
+          title.innerText = "ðŸ‘¤ Masuk Akun User";
+          desc.innerText = "Masukkan username Anda untuk masuk ke Zeeta Shop";
+          formContainer.innerHTML = `
+            <input type="text" id="inputUsername" placeholder="ðŸ‘¤ Username" required />
+            <input type="password" id="inputPassword" placeholder="ðŸ”’ Password" required />
+            <button onclick="processUserLogin()" class="btn" style="margin-top: 5px;">Masuk Sekarang</button>
+          `;
+        } else if (type === "register") {
+          title.innerText = "ðŸ“ Daftar Akun Baru";
+          desc.innerText =
+            "Buat akun baru untuk mulai menikmati layanan Zeeta Shop";
+          formContainer.innerHTML = `
+            <input type="text" id="regUsername" placeholder="ðŸ‘¤ Buat Username" required />
+            <input type="password" id="regPassword" placeholder="ðŸ”’ Buat Password" required />
+            <button onclick="processUserRegister()" class="btn" style="margin-top: 5px; background: var(--success); color: #000;">Daftar Sekarang</button>
+          `;
+        }
+        modal.style.display = "flex";
+      }
+
+      function closeUserAuthModal() {
+        document.getElementById("userAuthModal").style.display = "none";
+      }
+
+      function processUserRegister() {
+        let u = document.getElementById("regUsername").value.trim();
+        let p = document.getElementById("regPassword").value.trim();
+        if (!u || !p) {
+          alert("âš ï¸ Username dan password wajib diisi!");
+          return;
+        }
+        localStorage.setItem("zeeta_reg_user_" + u, p);
+        alert(
+          "ðŸŽ‰ Registrasi berhasil! Silakan masuk menggunakan akun baru Anda."
+        );
+        showUserAuthModal("login");
+      }
+
+      function processUserLogin() {
+        let u = document.getElementById("inputUsername").value.trim();
+        let p = document.getElementById("inputPassword").value.trim();
+        let savedPass = localStorage.getItem("zeeta_reg_user_" + u);
+
+        if (savedPass && savedPass === p) {
+          currentUser = u;
+          localStorage.setItem(
+            "zeeta_current_user",
+            JSON.stringify(currentUser)
+          );
+          closeUserAuthModal();
+          updateUIState();
+          alert(`âœ¨ Selamat datang kembali, ${u}!`);
+        } else {
+          alert("âŒ Username atau password salah, atau akun belum terdaftar!");
+        }
+      }
+
+      function logoutUser() {
+        currentUser = null;
+        localStorage.removeItem("zeeta_current_user");
+        updateUIState();
+        alert("ðŸ‘‹ Berhasil keluar dari akun.");
+      }
+
+      function renderAllSections() {
+        renderProductsList("productGridHome");
+        renderProductsList("productGridStore");
+        renderFruitGridList("fruitGridContainerHome");
+        renderFruitGridList("fruitGridContainer");
+      }
+
+      function renderProductsList(containerId) {
+        const grid = document.getElementById(containerId);
+        if (!grid) return;
+        grid.innerHTML = "";
+        products.forEach((p) => {
+          let card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <img src="${p.image}" alt="Product">
+            <h3>ðŸ·ï¸ ${p.name}</h3>
+            <p style="color:var(--text-muted); font-size:13px;">ðŸ“ ${p.desc}</p>
+            <div class="price">ðŸ’° Rp ${Number(p.price).toLocaleString(
+              "id-ID"
+            )}</div>
+            <button class="btn" onclick="buyItem('${p.name}', ${
+            p.price
+          })">ðŸ›’ Beli Sekarang</button>
+            ${
+              isAdminLoggedIn
+                ? `<button onclick="deleteProduct(${p.id})" style="background:none; border:none; color:var(--danger); font-size:12px; cursor:pointer; margin-top:8px;">ðŸ—‘ï¸ [Hapus Produk]</button>`
+                : ""
+            }
+        `;
+          grid.appendChild(card);
+        });
+      }
+
+      function addProduct(e) {
+        e.preventDefault();
+        let name =
+          document.getElementById("prodNameHome").value ||
+          document.getElementById("prodNameStore").value;
+        let price = Number(
+          document.getElementById("prodPriceHome").value ||
+            document.getElementById("prodPriceStore").value
+        );
+        let desc =
+          document.getElementById("prodDescHome").value ||
+          document.getElementById("prodDescStore").value;
+        let image =
+          document.getElementById("prodImageHome").value ||
+          document.getElementById("prodImageStore").value ||
+          "https://via.placeholder.com/150?text=ZeetaShop";
+
+        products.push({ id: Date.now(), name, price, desc, image });
+        localStorage.setItem("zeeta_products", JSON.stringify(products));
+
+        document.querySelectorAll("form").forEach((f) => f.reset());
+        updateUIState();
+      }
+
+      function deleteProduct(id) {
+        products = products.filter((p) => p.id !== id);
+        localStorage.setItem("zeeta_products", JSON.stringify(products));
+        updateUIState();
+      }
+
+      function buyItem(name, price) {
+        currentItemName = name;
+        currentItemPrice = price;
+        document.getElementById(
+          "modalItemInfo"
+        ).innerHTML = `ðŸ“¦ Produk: <b>${name}</b><br>ðŸ’° Total: <b style="color:var(--success)">Rp ${Number(
+          price
+        ).toLocaleString("id-ID")}</b>`;
+
+        const payBtn = document.getElementById("payActionBtn");
+        let waCheckoutMsg = `âœ¨ Halo Admin Zeeta Shop, saya ingin memesan produk:\n\n*Nama Produk:* ${name}\n*Harga:* Rp ${Number(
+          price
+        ).toLocaleString(
+          "id-ID"
+        )}\n\nðŸ™ Mohon bantuannya untuk instruksi pembayaran via WhatsApp selanjutnya ya kak!`;
+
+        payBtn.onclick = function () {
+          window.open(
+            `https://wa.me/${CS_WHATSAPP}?text=${encodeURIComponent(
+              waCheckoutMsg
+            )}`,
+            "_blank"
+          );
+          document.getElementById("checkoutModal").style.display = "none";
+        };
+
+        document.getElementById("checkoutModal").style.display = "flex";
+      }
+
+      function renderFruitGridList(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = "";
+        fruitsList.forEach((fruit, index) => {
+          let card = document.createElement("div");
+          card.className = "card";
+          card.onclick = function () {
+            openFruitDetail(index);
+          };
+          card.innerHTML = `
+            <h3>ðŸŽ ${fruit.name}</h3>
+            <p style="color:#ffaa00; font-weight:bold; margin:6px 0;">ðŸ’° ${fruit.price}</p>
+            <span class="price" style="font-size:13px; color:var(--success);">ðŸ“¦ Stok: ${fruit.stock}</span>
+        `;
+          container.appendChild(card);
+        });
+      }
+
+      function openFruitDetail(index) {
+        selectedFruitIndex = index;
+        let fruit = fruitsList[index];
+
+        document.getElementById("modalFruitTitle").innerText =
+          "ðŸŽ " + fruit.name;
+        document.getElementById("modalFruitPrice").innerText = fruit.price;
+        document.getElementById("modalFruitStock").innerText = fruit.stock;
+        document.getElementById("modalFruitDesc").innerText = fruit.desc;
+
+        let waBtn = document.getElementById("modalWhatsAppBtn");
+        let waMessage = `âœ¨ Halo Admin Zeeta Shop, saya ingin memesan Blox Fruit:\n\n*Nama Buah:* ${fruit.name}\n*Harga:* ${fruit.price}\n*Stok:* ${fruit.stock}\n\nðŸ™ Mohon bantuannya untuk instruksi pembayaran via WhatsApp selanjutnya ya kak!`;
+
+        waBtn.onclick = function () {
+          window.open(
+            `https://wa.me/${CS_WHATSAPP}?text=${encodeURIComponent(
+              waMessage
+            )}`,
+            "_blank"
+          );
+        };
+
+        let adminControls = document.getElementById("modalAdminControls");
+        if (isAdminLoggedIn) {
+          adminControls.style.display = "block";
+        } else {
+          adminControls.style.display = "none";
+        }
+
+        document.getElementById("fruitDetailModal").style.display = "flex";
+      }
+
+      function handleFruitForm(e) {
+        e.preventDefault();
+        let name =
+          document.getElementById("fruitNameHome").value ||
+          document.getElementById("fruitName").value;
+        let price =
+          document.getElementById("fruitPriceHome").value ||
+          document.getElementById("fruitPrice").value;
+        let stock =
+          document.getElementById("fruitStockHome").value ||
+          document.getElementById("fruitStock").value;
+        let desc =
+          document.getElementById("fruitDescHome").value ||
+          document.getElementById("fruitDesc").value;
+        let editIndex = Number(
+          document.getElementById("editFruitIndexHome").value ||
+            document.getElementById("editFruitIndex").value
+        );
+
+        if (editIndex === -1) {
+          fruitsList.push({ name, price, stock, desc });
+          alert("âœ¨ Buah berhasil ditambahkan!");
+        } else {
+          fruitsList[editIndex] = { name, price, stock, desc };
+          alert("âœ¨ Buah berhasil diperbarui!");
+          resetFruitForm();
+        }
+
+        localStorage.setItem("zeeta_fruits", JSON.stringify(fruitsList));
+        document.querySelectorAll("form").forEach((f) => f.reset());
+        renderAllSections();
+      }
+
+      function editCurrentFruit() {
+        let fruit = fruitsList[selectedFruitIndex];
+        document.getElementById("fruitName").value = fruit.name;
+        document.getElementById("fruitPrice").value = fruit.price;
+        document.getElementById("fruitStock").value = fruit.stock;
+        document.getElementById("fruitDesc").value = fruit.desc;
+        document.getElementById("editFruitIndex").value = selectedFruitIndex;
+
+        document.getElementById("fruitFormTitle").innerText =
+          "âœï¸ Edit Blox Fruit";
+        document.getElementById("cancelFruitEditBtn").style.display = "block";
+        document.getElementById("fruitDetailModal").style.display = "none";
+      }
+
+      function deleteCurrentFruit() {
+        if (
+          confirm(
+            `âš ï¸ Yakin ingin menghapus buah ${fruitsList[selectedFruitIndex].name}?`
+          )
+        ) {
+          fruitsList.splice(selectedFruitIndex, 1);
+          localStorage.setItem("zeeta_fruits", JSON.stringify(fruitsList));
+          document.getElementById("fruitDetailModal").style.display = "none";
+          renderAllSections();
+          alert("ðŸ—‘ï¸ Buah berhasil dihapus!");
+        }
+      }
+
+      function resetFruitForm() {
+        document.querySelectorAll("form").forEach((f) => f.reset());
+        document.getElementById("editFruitIndex").value = -1;
+        document.getElementById("editFruitIndexHome").value = -1;
+        document.getElementById("fruitFormTitle").innerText =
+          "âž• Tambah Buah Baru";
+        document.getElementById("fruitFormTitleHome").innerText =
+          "âž• Tambah Buah Baru";
+        document.getElementById("cancelFruitEditBtn").style.display = "none";
+        document.getElementById("cancelFruitEditBtnHome").style.display =
+          "none";
+      }
+
+      function calculateTax() {
+        let mode =
+          document.getElementById("taxModeHome").value ||
+          document.getElementById("taxMode").value;
+        let val =
+          Number(
+            document.getElementById("taxInputHome").value ||
+              document.getElementById("taxInput").value
+          ) || 0;
+        let res = 0;
+        if (mode === "receive") {
+          res = Math.ceil(val / 0.7);
+          document.getElementById("taxDescLabelHome").innerText =
+            "ðŸ·ï¸ Harga jual gamepass yang harus dipasang:";
+          document.getElementById("taxDescLabel").innerText =
+            "ðŸ·ï¸ Harga jual gamepass yang harus dipasang:";
+          document.getElementById("resultTaxHome").innerText =
+            res.toLocaleString("id-ID") + " Robux";
+          document.getElementById("resultTax").innerText =
+            res.toLocaleString("id-ID") + " Robux";
+        } else {
+          res = Math.floor(val * 0.7);
+          document.getElementById("taxDescLabelHome").innerText =
+            "ðŸ’Ž Robux bersih yang diterima penjual:";
+          document.getElementById("taxDescLabel").innerText =
+            "ðŸ’Ž Robux bersih yang diterima penjual:";
+          document.getElementById("resultTaxHome").innerText =
+            res.toLocaleString("id-ID") + " Robux";
+          document.getElementById("resultTax").innerText =
+            res.toLocaleString("id-ID") + " Robux";
+        }
+      }
+
+      function addVouch() {
+        let name =
+          document.getElementById("vouchNameHome").value ||
+          document.getElementById("vouchName").value;
+        let msg =
+          document.getElementById("vouchMsgHome").value ||
+          document.getElementById("vouchMsg").value;
+        if (!name || !msg) {
+          alert("âš ï¸ Nama dan pesan vouch wajib diisi!");
+          return;
+        }
+
+        let vouchListHome = document.getElementById("vouchListHome");
+        let vouchListStore = document.getElementById("vouchList");
+
+        let newCard = document.createElement("div");
+        newCard.className = "vouch-card";
+        newCard.innerHTML = `<b>@${name}:</b> "${msg}"`;
+
+        if (vouchListHome) vouchListHome.prepend(newCard.cloneNode(true));
+        if (vouchListStore) vouchListStore.prepend(newCard);
+
+        document.querySelectorAll("input, textarea").forEach((el) => {
+          if (el.id.includes("vouch")) el.value = "";
+        });
+        alert("âœ¨ Vouch berhasil dipublikasikan oleh Admin.");
+      }
+
+      // Inisialisasi awal sistem
+      initJokiDropdowns();
+      updateUIState();
+    </script>
+  </body>
+</html>
