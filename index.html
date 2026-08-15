@@ -171,12 +171,12 @@
                 <div class="input-box">
                     <label> After Tax </label>
                     <input type="number" id="inputAfter" oninput="calcBefore()" placeholder="Masukkan robux bersih">
-                    <p id="res Set Gamepass" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
+                    <p id="resBefore" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
                 </div>
                 <div class="input-box">
                     <label> Before Tax </label>
                     <input type="number" id="inputBefore" oninput="calcAfter()" placeholder="Masukkan robux total">
-                    <p id="res Set Gamepass" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
+                    <p id="resAfter" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
                 </div>
             </div>
         </div>
@@ -401,18 +401,18 @@
                 return;
             }
 
-            let text = `Halo Admin Zeeta Shop 😈,%0ASaya ingin order dengan detail:%0A- Kategori: ${kat}%0A- Nama List: ${list}%0A- Menu: ${detail}%0A- Username Roblox: ${user}`;
+            let text = `Halo Admin Zeeta Shop ,%0ASaya ingin order dengan detail:%0A- Kategori: ${kat}%0A- Nama List: ${list}%0A- Menu: ${detail}%0A- Username Roblox: ${user}`;
             window.open(`https://wa.me/6285136945934?text=${text}`, '_blank');
         }
 
         // Kalkulator Tax
         function calcBefore() { 
             let val = document.getElementById('inputAfter').value;
-            document.getElementById('resBefore').innerText = "Before: " + (val ? Math.ceil(val / 0.7) : 0);
+            document.getElementById('resBefore').innerText = "Set Gamepass : " + (val ? Math.ceil(val / 0.7) : 0);
         }
         function calcAfter() { 
             let val = document.getElementById('inputBefore').value;
-            document.getElementById('resAfter').innerText = "After: " + (val ? Math.floor(val * 0.7) : 0);
+            document.getElementById('resAfter').innerText = "Set Gamepass : " + (val ? Math.floor(val * 0.7) : 0);
         }
     </script>
 </body>
