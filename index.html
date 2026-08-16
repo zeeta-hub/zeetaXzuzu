@@ -14,8 +14,14 @@
         .brand-icon { background: #0284c7; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1rem; box-shadow: 0 0 15px rgba(2, 132, 199, 0.5); }
         .brand-name { color: white; font-size: 1.25rem; font-weight: 800; letter-spacing: 0.5px; }
 
-        .nav-links { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-        .nav-links a { color: #94a3b8; text-decoration: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; cursor: pointer; transition: color 0.2s; padding: 0.4rem 0.8rem; border-radius: 6px; }
+        /* Hamburger Menu Toggle Button */
+        .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 21px; background: transparent; border: none; cursor: pointer; z-index: 1001; padding: 0; }
+        .menu-toggle span { width: 100%; height: 3px; background: #38bdf8; border-radius: 3px; transition: all 0.3s ease; }
+
+        /* Dropdown Menu Overlay / Drawer */
+        .nav-links { position: absolute; top: 100%; right: 0; left: 0; background: rgba(3, 7, 18, 0.98); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(56, 189, 248, 0.2); flex-direction: column; padding: 1.5rem 2rem; gap: 0.8rem; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .nav-links.active { display: flex; }
+        .nav-links a { color: #94a3b8; text-decoration: none; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; cursor: pointer; transition: color 0.2px, background 0.2s; padding: 0.7rem 1rem; border-radius: 8px; width: 100%; }
         .nav-links a:hover, .nav-links a.active-nav { color: #38bdf8; background: rgba(56, 189, 248, 0.08); }
 
         .container { max-width: 1200px; margin: 2.5rem auto; padding: 0 1.5rem; }
@@ -40,12 +46,12 @@
         .stat-box { background: linear-gradient(145deg, #080d1a, #04060c); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 20px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; transition: border-color 0.2s; }
         .stat-box:hover { border-color: rgba(56, 189, 248, 0.4); }
         .stat-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-        .stat-icon.green { background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.2); }
+        .stat-icon.green { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
         .stat-icon.purple { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
         .stat-icon.blue { background: rgba(96, 165, 250, 0.1); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.2); }
         .stat-info h3 { font-size: 2rem; font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 0.2rem; }
         .stat-info span { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
-        .stat-info span.green { color: #34d399; }
+        .stat-info span.green { color: #38bdf8; }
         .stat-info span.purple { color: #38bdf8; }
         .stat-info span.blue { color: #60a5fa; }
 
@@ -61,12 +67,12 @@
         .step-content p { color: #94a3b8; font-size: 0.85rem; line-height: 1.5; }
         
         .step-done-box { display: flex; gap: 1.25rem; align-items: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.06); }
-        .step-done-icon { width: 36px; height: 36px; background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #34d399; font-weight: bold; flex-shrink: 0; }
+        .step-done-icon { width: 36px; height: 36px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #38bdf8; font-weight: bold; flex-shrink: 0; }
 
         .why-safe-card { background: linear-gradient(145deg, #080d1a, #04060c); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 24px; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
         .why-safe-card h3 { font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .why-safe-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; }
-        .guarantee-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); padding: 0.6rem 1.2rem; border-radius: 12px; color: #34d399; font-weight: 700; font-size: 0.85rem; width: fit-content; }
+        .guarantee-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); padding: 0.6rem 1.2rem; border-radius: 12px; color: #38bdf8; font-weight: 700; font-size: 0.85rem; width: fit-content; }
 
         /* Contact Section Style */
         .contact-hero { text-align: center; margin-bottom: 3rem; }
@@ -79,7 +85,7 @@
         
         .contact-icon-wrapper { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.5rem auto; }
         .contact-icon-wrapper.discord { background: rgba(88, 101, 242, 0.1); color: #5865F2; border: 1px solid rgba(88, 101, 242, 0.2); }
-        .contact-icon-wrapper.whatsapp { background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.2); }
+        .contact-icon-wrapper.whatsapp { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
         .contact-icon-wrapper.channel { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2); }
 
         .contact-card h3 { font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 0.75rem; }
@@ -87,7 +93,7 @@
         
         .contact-link { text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; transition: opacity 0.2s; display: inline-block; }
         .contact-link.discord { color: #5865F2; }
-        .contact-link.whatsapp { color: #34d399; }
+        .contact-link.whatsapp { color: #38bdf8; }
         .contact-link.channel { color: #fbbf24; }
         .contact-link:hover { opacity: 0.8; }
 
@@ -99,7 +105,7 @@
         .robux-badges-container { display: flex; gap: 0.75rem; flex-wrap: wrap; }
         .mini-info-badge { background: #04060c; border: 1px solid rgba(56, 189, 248, 0.25); padding: 0.5rem 0.9rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.1rem; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1); }
         .mini-info-badge .badge-title { font-size: 0.65rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .mini-info-badge .badge-value { font-size: 0.85rem; color: #34d399; font-weight: 800; }
+        .mini-info-badge .badge-value { font-size: 0.85rem; color: #38bdf8; font-weight: 800; }
         .mini-info-badge .badge-value.rate { color: #38bdf8; }
 
         .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
@@ -112,8 +118,8 @@
         
         .btn { background: #0284c7; color: white; border: none; padding: 0.85rem 1.5rem; border-radius: 12px; cursor: pointer; font-weight: bold; width: 100%; text-align: center; display: inline-block; text-decoration: none; transition: background 0.3s; }
         .btn:hover { background: #0369a1; }
-        .btn-wa { background: #059669; margin-top: 10px; }
-        .btn-wa:hover { background: #047857; }
+        .btn-wa { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; margin-top: 10px; backdrop-filter: blur(8px); }
+        .btn-wa:hover { background: rgba(56, 189, 248, 0.3); border-color: #38bdf8; color: #ffffff; }
 
         /* Katalog Produk Grid */
         .catalog-header { margin-bottom: 1.5rem; margin-top: 1.5rem; }
@@ -131,7 +137,16 @@
         .catalog-card:hover .card-arrow { color: #38bdf8; transform: translateX(3px); }
         
         .card-bottom h4 { color: #ffffff; font-size: 1rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
-        .card-bottom span { color: #34d399; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-bottom span { color: #38bdf8; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Fake Purchase Notification Toast */
+        #fake-purchase-toast { position: fixed; bottom: 20px; left: 20px; background: rgba(8, 13, 26, 0.95); border: 1px solid rgba(56, 189, 248, 0.3); backdrop-filter: blur(10px); padding: 0.9rem 1.2rem; border-radius: 16px; display: flex; align-items: center; gap: 0.9rem; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transform: translateY(120%); opacity: 0; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease; max-width: 340px; }
+        #fake-purchase-toast.show { transform: translateY(0); opacity: 1; }
+        .toast-icon { width: 38px; height: 38px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #38bdf8; font-size: 1.1rem; flex-shrink: 0; }
+        .toast-content { display: flex; flex-direction: column; gap: 0.1rem; }
+        .toast-title { font-size: 0.7rem; color: #38bdf8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .toast-text { font-size: 0.82rem; color: #f8fafc; font-weight: 600; line-height: 1.3; }
+        .toast-time { font-size: 0.65rem; color: #94a3b8; }
 
         /* Footer */
         footer { background: #010409; border-top: 1px solid rgba(56, 189, 248, 0.15); padding: 3rem 2rem; margin-top: 3rem; }
@@ -145,8 +160,8 @@
         .footer-links ul li a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; cursor: pointer; }
         .footer-links ul li a:hover { color: #38bdf8; }
 
-        .footer-cs-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: #059669; border: 1px solid #059669; padding: 0.6rem 1.2rem; border-radius: 12px; color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
-        .footer-cs-btn:hover { background: #047857; }
+        .footer-cs-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); padding: 0.6rem 1.2rem; border-radius: 12px; color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; backdrop-filter: blur(8px); }
+        .footer-cs-btn:hover { background: rgba(56, 189, 248, 0.3); border-color: #38bdf8; color: #ffffff; }
 
         @media(max-width: 968px) {
             .mid-home-grid, .contact-grid, .footer-container, .stats-grid { grid-template-columns: 1fr; }
@@ -161,12 +176,20 @@
             <div class="brand-icon">⚡</div>
             <div class="brand-name">Zeeta Shop</div>
         </a>
-        <div class="nav-links">
+        
+        <!-- Tombol Garis 3 (Hamburger Menu) -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
             <a onclick="showSection('dashboard', this)" class="active-nav">HOME</a>
-            <a onclick="showSection('list-product', this)">JOKI GAME</a>
-            <a onclick="showSection('fruit-blox', this)">FRUIT BLOX</a>
-            <a onclick="showSection('robux-5day', this)">ROBUX 5DAY</a>
-            <a onclick="showSection('akun-roblox', this)">AKUN ROBLOX</a>
+            <a onclick="showSection('list-product', this)">JOKI GAME PREMIUM</a>
+            <a onclick="showSection('fruit-blox', this)">FRUIT BLOX FRUITS</a>
+            <a onclick="showSection('robux-5day', this)">ROBUX 5 DAY</a>
+            <a onclick="showSection('akun-roblox', this)">AKUN ROBLOX PREMIUM</a>
             <a onclick="showSection('calculator', this)">CALCULATOR</a>
             <a onclick="showSection('contact', this)">CONTACT</a>
         </div>
@@ -225,16 +248,16 @@
                     <div class="card-top"><div class="card-icon">⭐</div><div class="card-arrow">➔</div></div>
                     <div class="card-bottom"><h4>JOKI GAME PREMIUM</h4><span>READY STOCK</span></div>
                 </div>
-                <div class="catalog-card" onclick="showSection('fruit-blox', document.querySelectorAll('.nav-links a')[2])">
-                    <div class="card-top"><div class="card-icon">🍒</div><div class="card-arrow">➔</div></div>
-                    <div class="card-bottom"><h4>FRUIT BLOX FRUITS</h4><span>READY STOCK</span></div>
+                <div class="catalog-card" onclick="showSection('fruit-blox-fruits', document.querySelectorAll('.nav-links a')[2])">
+                    <div class="card-top"><div class="card-icon">🍎</div><div class="card-arrow">➔</div></div>
+                    <div class="card-bottom"><h4>FRUIT BLOX FRUITS </h4><span>READY STOCK</span></div>
                 </div>
                 <div class="catalog-card" onclick="showSection('robux-5day', document.querySelectorAll('.nav-links a')[3])">
                     <div class="card-top"><div class="card-icon">⚡</div><div class="card-arrow">➔</div></div>
-                    <div class="card-bottom"><h4>ROBUX 5DAY</h4><span>READY STOCK</span></div>
+                    <div class="card-bottom"><h4>ROBUX 5 DAY</h4><span>READY STOCK</span></div>
                 </div>
                 <div class="catalog-card" onclick="showSection('akun-roblox', document.querySelectorAll('.nav-links a')[4])">
-                    <div class="card-top"><div class="card-icon">👤</div><div class="card-arrow">➔</div></div>
+                    <div class="card-top"><div class="card-icon">🍃</div><div class="card-arrow">➔</div></div>
                     <div class="card-bottom"><h4>AKUN ROBLOX PREMIUM</h4><span>READY STOCK</span></div>
                 </div>
             </div>
@@ -322,7 +345,7 @@
         <!-- Fruit Blox Section -->
         <div id="fruit-blox" class="section section-box-dark">
             <div class="section-box-header">
-                <h2>🍒 Fruit Blox Fruits Store</h2>
+                <h2>🍎 Fruit Blox Fruits 🍎</h2>
             </div>
             <p style="margin-top: 1rem; color: #cbd5e1;">Daftar stok buah Blox Fruits terbaik dan termurah siap kirim ke akun Tuan!</p>
             <div style="margin-top: 1.5rem; background: #04060c; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.15); text-align: center;">
@@ -335,7 +358,7 @@
         <div id="robux-5day" class="section section-box-dark">
             <div class="section-box-header">
                 <div>
-                    <h2>⚡ Robux 5Day Service</h2>
+                    <h2>⚡ ROBUX 5 DAY ⚡</h2>
                     <p style="margin-top: 0.5rem; color: #cbd5e1;">Layanan isi Robux aman dengan sistem Gamepass.</p>
                 </div>
                 <div class="robux-badges-container">
@@ -367,7 +390,6 @@
                 <label>Pilih Nominal Robux:</label>
                 <select id="robuxAmount" onchange="calcRobux5Day()">
                     <option value="">-- Pilih Nominal (Kelipatan 100) --</option>
-                    <!-- Opsi kelipatan 100 dari 100 s.d 2000 -->
                     <script>
                         for(let i = 100; i <= 2000; i += 100) {
                             document.write(`<option value="${i}">${i} Robux</option>`);
@@ -385,7 +407,7 @@
             <div id="resultBar" style="background: #04060c; padding: 1.2rem; border-radius: 12px; border: 1px solid #38bdf8; margin: 1.5rem 0; display: none;">
                 <div style="margin-bottom: 0.8rem; border-bottom: 1px solid rgba(56, 189, 248, 0.15); padding-bottom: 0.8rem;">
                     <p style="color: #94a3b8; font-size: 0.85rem;">Total Harga Rupiah:</p>
-                    <h3 id="displayPriceRp" style="color: #34d399; font-size: 1.3rem; margin-top: 0.2rem;">Rp 0</h3>
+                    <h3 id="displayPriceRp" style="color: #38bdf8; font-size: 1.3rem; margin-top: 0.2rem;">Rp 0</h3>
                 </div>
                 <div>
                     <p style="color: #94a3b8; font-size: 0.85rem;">Set harga Gamepass Anda ke:</p>
@@ -399,7 +421,7 @@
         <!-- Akun Roblox Section -->
         <div id="akun-roblox" class="section section-box-dark">
             <div class="section-box-header">
-                <h2>👤 Akun Roblox Ready Stock</h2>
+                <h2>🍃 Akun Roblox Premium 🍃</h2>
             </div>
             <p style="margin-top: 1rem; color: #cbd5e1;">Koleksi akun Roblox pilihan, akun level max, full item, dan akun polos berkualitas.</p>
             <div style="margin-top: 1.5rem; background: #04060c; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.15); text-align: center;">
@@ -475,6 +497,16 @@
 
     </div>
 
+    <!-- Toast Floating Notifikasi Pembelian Palsu -->
+    <div id="fake-purchase-toast">
+        <div class="toast-icon">🏪</div>
+        <div class="toast-content">
+            <div class="toast-title">Transaksi Berhasil</div>
+            <div class="toast-text" id="toastText">User baru saja membeli produk...</div>
+            <div class="toast-time">Baru saja</div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
@@ -505,11 +537,18 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
         function showSection(id, element) { 
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
+            document.getElementById('navLinks').classList.remove('active');
+
             if(element) {
                 document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-nav'));
                 element.classList.add('active-nav');
@@ -636,7 +675,7 @@
                 return; 
             }
 
-            const msg = `Halo Admin Zeeta Shop,\nSaya mau order Robux 5Day.\n- Mode: ${mode}\n- Jumlah Nominal: ${amount} Robux\n- Total Harga: ${rupiah}\n- Username: ${user}\n- Harga Set Gamepass: ${pricePass}`;
+            const msg = `Halo Admin Zeeta Shop,\nSaya mau order ROBUX 5 DAY.\n- Mode: ${mode}\n- Jumlah Nominal: ${amount} Robux\n- Total Harga: ${rupiah}\n- Username: ${user}\n- Harga Set Gamepass: ${pricePass}`;
             window.open(`https://wa.me/6285136945934?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
@@ -650,6 +689,47 @@
             let result = (!isNaN(val) && val > 0) ? Math.floor(val * 0.7) : 0;
             document.getElementById('resAfter').innerText = "Set Gamepass : " + result;
         }
+
+        /* Script Sistem Fake Purchase / Notifikasi Pembelian Realtime */
+        const fakeNames = [
+            "Rafi_Gamer", "DimasID", "FajarBlox", "RizkyPro", "Aditya77", 
+            "BintangX", "ZakyBlox", "BayuZ", "AndikaID", "RehanGanteng", 
+            "SatriaX", "VanzaID", "YogaGamer", "IqbalPro", "AldoRoblox",
+            "NaufalID", "GilangZ", "DafaBlox", "ArifGamer", "PanduX"
+        ];
+
+        const fakeProducts = [
+            "Joki Cursed Dual Katana (CDK)", "ROBUX 5 DAY (500 Robux)", "Joki Godhuman", 
+            "ROBUX 5 DAY (1000 Robux)", "Joki Full Gear Race V4", "Joki Leveling SEA 3", 
+            "ROBUX 5 DAY (200 Robux)", "Joki Soul Guitar", "Joki Sanguine Art", 
+            "ROBUX 5 DAY (300 Robux)", "Joki Shark Anchor", "Joki 10M Bounty"
+        ];
+
+        function triggerFakePurchase() {
+            const randomName = fakeNames[Math.floor(Math.random() * fakeNames.length)];
+            const randomProd = fakeProducts[Math.floor(Math.random() * fakeProducts.length)];
+            
+            const toast = document.getElementById('fake-purchase-toast');
+            const toastText = document.getElementById('toastText');
+            
+            toastText.innerHTML = `<strong>${randomName}</strong> baru saja sukses memesan <strong>${randomProd}</strong>!`;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000); // Hilang setelah 4 detik
+        }
+
+        // Jalankan notifikasi pertama setelah 3 detik halaman dimuat, lalu ulang setiap 7-12 detik secara acak
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                triggerFakePurchase();
+                setInterval(() => {
+                    triggerFakePurchase();
+                }, Math.random() * 5000 + 7000); // Interval random antara 7 sampai 12 detik
+            }, 3000);
+        });
     </script>
 </body>
 </html>
