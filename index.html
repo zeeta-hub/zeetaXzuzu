@@ -3,134 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeeta Shop | Blox Fruit Store</title>
+    <title>Zeeta Shop | Marketplace Roblox Terpercaya</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #020617; color: #f8fafc; }
+        body { background-color: #030712; color: #f8fafc; overflow-x: hidden; }
 
-        /* Tema Warna Biru Laut */
-        nav { background: #0c4a6e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0284c7; position: relative; }
-        nav h1 { color: #38bdf8; font-size: 1.5rem; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+        /* Navbar Tema Hitam Biru Zeeta Shop */
+        nav { background: rgba(3, 7, 18, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(56, 189, 248, 0.15); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; cursor: pointer; }
+        .brand-icon { background: #0284c7; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1rem; box-shadow: 0 0 15px rgba(2, 132, 199, 0.5); }
+        .brand-name { color: white; font-size: 1.25rem; font-weight: 800; letter-spacing: 0.5px; }
 
-        .menu-icon { font-size: 1.8rem; cursor: pointer; color: #38bdf8; }
-        .dropdown-menu { display: none; position: absolute; right: 2rem; top: 4rem; background: #0c4a6e; border: 1px solid #0284c7; border-radius: 8px; width: 200px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
-        .dropdown-menu a { display: block; padding: 1rem; color: #cbd5e1; text-decoration: none; border-bottom: 1px solid #0284c7; cursor: pointer; }
-        .dropdown-menu a:hover { background: #0284c7; color: white; }
+        .nav-links { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+        .nav-links a { color: #94a3b8; text-decoration: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; cursor: pointer; transition: color 0.2s; padding: 0.4rem 0.8rem; border-radius: 6px; }
+        .nav-links a:hover, .nav-links a.active-nav { color: #38bdf8; background: rgba(56, 189, 248, 0.08); }
 
-        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-        .section { display: none; background: #082f49; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid #0369a1; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .container { max-width: 1200px; margin: 2.5rem auto; padding: 0 1.5rem; }
+        .section { display: none; }
         .section.active { display: block; }
+
+        /* Hero Card Style */
+        .hero-card { background: linear-gradient(145deg, #080d1a, #04060c); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 24px; padding: 3rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.05); margin-bottom: 2rem; }
+        .badge-premium { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); padding: 0.35rem 0.9rem; border-radius: 20px; color: #38bdf8; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; width: fit-content; margin-bottom: 1.5rem; }
+        .hero-card h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.15; color: #ffffff; margin-bottom: 1.2rem; letter-spacing: -0.5px; }
+        .hero-card h1 span { background: linear-gradient(90deg, #38bdf8, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-card p { color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
         
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary-action { background: #ffffff; color: #030712; border: none; padding: 0.9rem 1.8rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s, transform 0.2s; text-decoration: none; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); }
+        .btn-primary-action:hover { background: #f1f5f9; transform: translateY(-2px); }
+        .btn-secondary-action { background: rgba(56, 189, 248, 0.05); color: #ffffff; border: 1px solid rgba(56, 189, 248, 0.2); padding: 0.9rem 1.8rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background 0.2s, transform 0.2s; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-secondary-action:hover { background: rgba(56, 189, 248, 0.1); transform: translateY(-2px); }
+
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-box { background: linear-gradient(145deg, #080d1a, #04060c); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 20px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; transition: border-color 0.2s; }
+        .stat-box:hover { border-color: rgba(56, 189, 248, 0.4); }
+        .stat-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .stat-icon.green { background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.2); }
+        .stat-icon.purple { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
+        .stat-icon.blue { background: rgba(96, 165, 250, 0.1); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.2); }
+        .stat-info h3 { font-size: 2rem; font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 0.2rem; }
+        .stat-info span { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+        .stat-info span.green { color: #34d399; }
+        .stat-info span.purple { color: #38bdf8; }
+        .stat-info span.blue { color: #60a5fa; }
+
+        /* Bagian Tengah Home */
+        .mid-home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+        .info-card-dark { background: linear-gradient(145deg, #080d1a, #04060c); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 24px; padding: 2.5rem; }
+        .info-card-dark h2 { font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 1.5rem; }
+        
+        .steps-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .step-item { display: flex; gap: 1.25rem; align-items: flex-start; position: relative; }
+        .step-num { width: 36px; height: 36px; background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #38bdf8; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .step-content h4 { color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .step-content p { color: #94a3b8; font-size: 0.85rem; line-height: 1.5; }
+        
+        .step-done-box { display: flex; gap: 1.25rem; align-items: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+        .step-done-icon { width: 36px; height: 36px; background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #34d399; font-weight: bold; flex-shrink: 0; }
+
+        .why-safe-card { background: linear-gradient(145deg, #080d1a, #04060c); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 24px; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+        .why-safe-card h3 { font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .why-safe-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        .guarantee-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); padding: 0.6rem 1.2rem; border-radius: 12px; color: #34d399; font-weight: 700; font-size: 0.85rem; width: fit-content; }
+
+        /* Contact Section Style */
+        .contact-hero { text-align: center; margin-bottom: 3rem; }
+        .contact-hero h1 { font-size: 3rem; font-weight: 800; color: #ffffff; margin-bottom: 1rem; letter-spacing: -0.5px; }
+        .contact-hero p { color: #94a3b8; font-size: 1rem; max-width: 550px; margin: 0 auto; line-height: 1.6; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .contact-card { background: linear-gradient(145deg, #080d1a, #04060c); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 24px; padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: space-between; text-align: center; min-height: 340px; transition: border-color 0.2s, transform 0.2s; }
+        .contact-card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-3px); }
+        
+        .contact-icon-wrapper { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.5rem auto; }
+        .contact-icon-wrapper.discord { background: rgba(88, 101, 242, 0.1); color: #5865F2; border: 1px solid rgba(88, 101, 242, 0.2); }
+        .contact-icon-wrapper.whatsapp { background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.2); }
+        .contact-icon-wrapper.channel { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2); }
+
+        .contact-card h3 { font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 0.75rem; }
+        .contact-card p { color: #94a3b8; font-size: 0.85rem; line-height: 1.6; margin-bottom: 2rem; }
+        
+        .contact-link { text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; transition: opacity 0.2s; display: inline-block; }
+        .contact-link.discord { color: #5865F2; }
+        .contact-link.whatsapp { color: #34d399; }
+        .contact-link.channel { color: #fbbf24; }
+        .contact-link:hover { opacity: 0.8; }
+
+        /* Styling Form & Komponen Joki */
+        .section-box-dark { background: linear-gradient(145deg, #080d1a, #04060c); padding: 2.5rem; border-radius: 24px; margin-bottom: 2rem; border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 4px 15px rgba(2, 132, 199, 0.05); }
+        .section-box-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .section-box-dark h2 { font-size: 1.8rem; color: #ffffff; font-weight: 800; }
+        
+        .robux-badges-container { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .mini-info-badge { background: #04060c; border: 1px solid rgba(56, 189, 248, 0.25); padding: 0.5rem 0.9rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.1rem; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1); }
+        .mini-info-badge .badge-title { font-size: 0.65rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .mini-info-badge .badge-value { font-size: 0.85rem; color: #34d399; font-weight: 800; }
+        .mini-info-badge .badge-value.rate { color: #38bdf8; }
+
         .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
-        .input-box { background: #0c4a6e; padding: 1rem; border-radius: 8px; border: 1px solid #0284c7; }
+        .input-box { background: #04060c; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.15); }
         
         .form-group { margin-bottom: 1.2rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; color: #38bdf8; font-weight: bold; }
-        select, input { width: 100%; padding: 0.75rem; background: #0c4a6e; color: white; border: 1px solid #0284c7; border-radius: 4px; outline: none; }
-        select:focus, input:focus { border-color: #38bdf8; box-shadow: 0 0 5px rgba(56, 189, 248, 0.5); }
+        select, input { width: 100%; padding: 0.85rem; background: #04060c; color: white; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; outline: none; }
+        select:focus, input:focus { border-color: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.4); }
         
-        .btn { background: #0284c7; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; text-align: center; display: inline-block; text-decoration: none; transition: background 0.3s; }
+        .btn { background: #0284c7; color: white; border: none; padding: 0.85rem 1.5rem; border-radius: 12px; cursor: pointer; font-weight: bold; width: 100%; text-align: center; display: inline-block; text-decoration: none; transition: background 0.3s; }
         .btn:hover { background: #0369a1; }
-        .btn-wa { background: #0284c7; margin-top: 10px; }
+        .btn-wa { background: #059669; margin-top: 10px; }
+        .btn-wa:hover { background: #047857; }
 
-        /* Dashboard Stats */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .stat-card { background: #0c4a6e; padding: 1.5rem; border-radius: 8px; text-align: center; border: 1px solid #0284c7; }
-        .stat-card h3 { color: #38bdf8; font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .stat-card p { font-size: 1.5rem; font-weight: bold; color: white; }
+        /* Katalog Produk Grid */
+        .catalog-header { margin-bottom: 1.5rem; margin-top: 1.5rem; }
+        .catalog-header h2 { font-size: 1.8rem; color: #ffffff; font-weight: 800; }
+        .catalog-header h2 span { color: #38bdf8; }
+        .catalog-header p { color: #94a3b8; font-size: 0.95rem; margin-top: 0.3rem; }
 
-        /* Social Logo Icons CSS */
-        .social-icons-container {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            justify-content: center;
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; margin-bottom: 2rem; }
+        .catalog-card { background: #04060c; border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 16px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; height: 140px; cursor: pointer; transition: all 0.2s ease; position: relative; }
+        .catalog-card:hover { border-color: #38bdf8; background: #080d1a; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(2, 132, 199, 0.2); }
+        
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        .card-icon { width: 35px; height: 35px; background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #38bdf8; font-size: 1rem; }
+        .card-arrow { color: #64748b; font-size: 1.1rem; transition: transform 0.2s; }
+        .catalog-card:hover .card-arrow { color: #38bdf8; transform: translateX(3px); }
+        
+        .card-bottom h4 { color: #ffffff; font-size: 1rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
+        .card-bottom span { color: #34d399; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Footer */
+        footer { background: #010409; border-top: 1px solid rgba(56, 189, 248, 0.15); padding: 3rem 2rem; margin-top: 3rem; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; align-items: start; }
+        .footer-brand h2 { color: #ffffff; font-size: 1.5rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 800; }
+        .footer-brand p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; max-width: 350px; }
+        
+        .footer-links h3 { color: #ffffff; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 0.6rem; }
+        .footer-links ul li a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; cursor: pointer; }
+        .footer-links ul li a:hover { color: #38bdf8; }
+
+        .footer-cs-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: #059669; border: 1px solid #059669; padding: 0.6rem 1.2rem; border-radius: 12px; color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+        .footer-cs-btn:hover { background: #047857; }
+
+        @media(max-width: 968px) {
+            .mid-home-grid, .contact-grid, .footer-container, .stats-grid { grid-template-columns: 1fr; }
         }
-        .social-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            text-decoration: none;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.2s, filter 0.2s;
-        }
-        .social-logo:hover {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-        }
-        .whatsapp-logo { background-color: #25d366; }
-        .discord-logo { background-color: #5865F2; }
     </style>
 </head>
 <body>
 
+    <!-- Navbar Zeeta Shop -->
     <nav>
-        <h1>🌊 Zeeta Shop 🌊</h1>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="dropdown-menu" id="dropdown">
-            <a onclick="showSection('dashboard')">Dashboard</a>
-            <a onclick="showSection('list-product')">List Product</a>
-            <a onclick="showSection('calculator')">Rbx Calculator</a>
+        <a class="nav-brand" onclick="showSection('dashboard', this)">
+            <div class="brand-icon">⚡</div>
+            <div class="brand-name">Zeeta Shop</div>
+        </a>
+        <div class="nav-links">
+            <a onclick="showSection('dashboard', this)" class="active-nav">HOME</a>
+            <a onclick="showSection('list-product', this)">JOKI GAME</a>
+            <a onclick="showSection('fruit-blox', this)">FRUIT BLOX</a>
+            <a onclick="showSection('robux-5day', this)">ROBUX 5DAY</a>
+            <a onclick="showSection('akun-roblox', this)">AKUN ROBLOX</a>
+            <a onclick="showSection('calculator', this)">CALCULATOR</a>
+            <a onclick="showSection('contact', this)">CONTACT</a>
         </div>
     </nav>
 
-<div class="container">
-        <!-- Dashboard Section -->
+    <div class="container">
+        <!-- Home Section -->
         <div id="dashboard" class="section active">
-            <h2>Apa Itu Zeeta Shop</h2>
-            <p style="margin-top: 1rem; line-height: 1.6; color: #cbd5e1;">
-                Selamat datang di <strong>Zeeta Shop</strong>, Tuan! Pusat layanan jasa joki game Blox Fruit dan AFK paling profesional, terdepan, dan terpercaya di Indonesia. Zeeta Shop didirikan khusus untuk membantu para pemain Roblox yang ingin mengembangkan akun mereka secara maksimal tanpa harus menghabiskan waktu berjam-jam untuk melakukan grinding yang membosankan. Kami menyediakan berbagai macam layanan mulai dari leveling SEA, pencarian item langka, mastery senjata, fighting style, raid, race v4, hingga jasa AFK game dengan jaminan kualitas terbaik yang siap memanjakan akun impian Tuan! 💀⚡
-            </p>
-            <p style="margin-top: 1rem; line-height: 1.6; color: #cbd5e1;">
-                Komitmen utama kami adalah memberikan pelayanan yang <strong>Fast (Cepat)</strong> dalam pengerjaan setiap pesanan tanpa menunda-nunda waktu Tuan, <strong>Terpercaya</strong> karena telah dibuktikan oleh ratusan pelanggan setia, dan yang paling penting adalah <strong>100% Aman</strong> demi menjaga keamanan akun Roblox Tuan dari segala risiko. Dengan pencapaian rekor luar biasa mencapai lebih dari <strong>800+ Total Transaksi</strong> sukses, Zeeta Shop terus membuktikan diri sebagai toko game online pilihan utama yang sangat solutif dan profesional. 🌊🔥
-            </p>
             
+            <!-- Hero Card -->
+            <div class="hero-card">
+                <div>
+                    <div class="badge-premium">✨ PREMIUM MARKETPLACE & JOKI</div>
+                    <h1>Zeeta Shop Joki <span>Fast & Trusted</span></h1>
+                    <p>Selamat datang di Zeeta Shop, Tuan! Pusat layanan jasa joki game Blox Fruit dan AFK paling profesional, terdepan, dan terpercaya di Indonesia. Zeeta Shop didirikan khusus untuk membantu para pemain Roblox yang ingin mengembangkan akun mereka secara maksimal tanpa harus menghabiskan waktu berjam-jam untuk melakukan grinding yang membosankan. Kami menyediakan berbagai macam layanan mulai dari leveling SEA, pencarian item langka, mastery senjata, fighting style, raid, race v4, hingga jasa AFK game dengan jaminan kualitas terbaik yang siap memanjakan akun impian Tuan! 💀⚡</p>
+                    <p>Komitmen utama kami adalah memberikan pelayanan yang Fast (Cepat) dalam pengerjaan setiap pesanan tanpa menunda-nunda waktu Tuan, Terpercaya karena telah dibuktikan oleh ratusan pelanggan setia, dan yang paling penting adalah 100% Aman demi menjaga keamanan akun Roblox Tuan dari segala risiko. Dengan pencapaian rekor luar biasa mencapai lebih dari 800+ Total Transaksi sukses, Zeeta Shop terus membuktikan diri sebagai toko game online pilihan utama yang sangat solutif dan profesional. 🌊🔥</p>
+                </div>
+                <div class="hero-buttons">
+                    <a onclick="showSection('list-product', document.querySelectorAll('.nav-links a')[1])" class="btn-primary-action">ORDER JOKI →</a>
+                    <a onclick="showSection('akun-roblox', document.querySelectorAll('.nav-links a')[4])" class="btn-secondary-action">CEK AKUN</a>
+                </div>
+            </div>
+
+            <!-- Stats Box -->
             <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>Status Toko</h3>
-                    <p style="color: #4ade80;">OPEN </p>
+                <div class="stat-box">
+                    <div class="stat-icon green">📦</div>
+                    <div class="stat-info">
+                        <h3>800+</h3>
+                        <span class="green">Transaksi Sukses</span>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>Total Transaksi</h3>
-                    <p style="color: #38bdf8;">800+ Sukses</p>
+                <div class="stat-box">
+                    <div class="stat-icon purple">🏪</div>
+                    <div class="stat-info">
+                        <h3>Status Toko</h3>
+                        <span class="green">OPEN 24/7</span>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>Keamanan Akun</h3>
-                    <p style="color: #38bdf8;">100% Aman 🛡️</p>
+                <div class="stat-box">
+                    <div class="stat-icon blue">🛡️</div>
+                    <div class="stat-info">
+                        <h3>100%</h3>
+                        <span class="blue">Aman & Garansi</span>
+                    </div>
                 </div>
             </div>
 
-            <div style="margin-top: 2rem; background: #0c4a6e; padding: 1.5rem; border-radius: 8px; border: 1px solid #0284c7; text-align: center;">
-                <h3 style="color: #38bdf8; margin-bottom: 0.5rem;">Kontak Resmi & Komunitas Kami</h3>
-                <p style="color: #cbd5e1; margin-bottom: 1rem;">Klik logo di bawah untuk terhubung langsung ke WhatsApp Admin atau Server Discord kami:</p>
-                
-                <!-- Logo WhatsApp & Discord -->
-                <div class="social-icons-container">
-                    <!-- Tombol Logo WhatsApp -->
-                    <a href="https://wa.me/6285136945934" target="_blank" class="social-logo whatsapp-logo" title="WhatsApp Admin">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                        </svg>
-                    </a>
-
-                    <!-- Tombol Logo Discord -->
-                    <a href="https://discord.gg/AqDzv6C9cV" target="_blank" class="social-logo discord-logo" title="Server Discord Kami">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                        </svg>
-                    </a>
+            <!-- Katalog Produk di dalam Home -->
+            <div class="catalog-header">
+                <h2>Katalog <span>Produk</span></h2>
+                <p>Pilih kategori produk atau layanan joki yang Anda butuhkan.</p>
+            </div>
+            <div class="catalog-grid">
+                <div class="catalog-card" onclick="showSection('list-product', document.querySelectorAll('.nav-links a')[1])">
+                    <div class="card-top"><div class="card-icon">⭐</div><div class="card-arrow">➔</div></div>
+                    <div class="card-bottom"><h4>JOKI GAME PREMIUM</h4><span>READY STOCK</span></div>
+                </div>
+                <div class="catalog-card" onclick="showSection('fruit-blox', document.querySelectorAll('.nav-links a')[2])">
+                    <div class="card-top"><div class="card-icon">🍒</div><div class="card-arrow">➔</div></div>
+                    <div class="card-bottom"><h4>FRUIT BLOX FRUITS</h4><span>READY STOCK</span></div>
+                </div>
+                <div class="catalog-card" onclick="showSection('robux-5day', document.querySelectorAll('.nav-links a')[3])">
+                    <div class="card-top"><div class="card-icon">⚡</div><div class="card-arrow">➔</div></div>
+                    <div class="card-bottom"><h4>ROBUX 5DAY</h4><span>READY STOCK</span></div>
+                </div>
+                <div class="catalog-card" onclick="showSection('akun-roblox', document.querySelectorAll('.nav-links a')[4])">
+                    <div class="card-top"><div class="card-icon">👤</div><div class="card-arrow">➔</div></div>
+                    <div class="card-bottom"><h4>AKUN ROBLOX PREMIUM</h4><span>READY STOCK</span></div>
                 </div>
             </div>
+
+            <!-- Bagian Tengah Home -->
+            <div class="mid-home-grid">
+                <div class="info-card-dark">
+                    <h2>Alur Transaksi</h2>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Pilih Layanan / Akun</h4>
+                                <p>Pilih akun atau layanan joki yang Anda inginkan dari katalog stok kami.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Checkout & Chat Seller</h4>
+                                <p>Anda akan langsung terhubung ke WhatsApp Penjual secara otomatis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-done-box">
+                        <div class="step-done-icon">✓</div>
+                        <div class="step-content">
+                            <h4>Terima Pesanan</h4>
+                            <p>Lakukan pembayaran dan pesanan diproses atau akun dikirimkan cepat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="why-safe-card">
+                    <div>
+                        <h3><span>❓</span> Mengapa Zeeta Shop Paling Aman?</h3>
+                        <p>Zeeta Shop memfasilitasi transaksi langsung. Saat Anda mengeklik tombol Beli, Anda akan diarahkan langsung ke WhatsApp <strong>Penjual (Seller)</strong>. Transaksi dilakukan secara langsung. Jika ingin lebih aman, Anda dapat menggunakan layanan <strong>Rekber Resmi</strong> secara opsional!</p>
+                    </div>
+                    <div class="guarantee-badge">
+                        ✓ Garansi 1x24 Jam & Anti-Hackback
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- List Product / Joki Section -->
-        <div id="list-product" class="section">
-            <h2>🛒 Pemesanan Product Zeeta Shop 🛒</h2>
+        <div id="list-product" class="section section-box-dark">
+            <div class="section-box-header">
+                <h2>🛒 Pemesanan Joki Game Zeeta Shop 🛒</h2>
+            </div>
             <p style="margin-bottom: 1.5rem; color: #cbd5e1;">Silakan pilih kategori, jenis list, detail produk, dan masukkan username Anda!</p>
             
             <div class="form-group">
@@ -164,194 +319,230 @@
             <button class="btn btn-wa" onclick="orderWhatsApp()">Beli / Order via WhatsApp</button>
         </div>
 
+        <!-- Fruit Blox Section -->
+        <div id="fruit-blox" class="section section-box-dark">
+            <div class="section-box-header">
+                <h2>🍒 Fruit Blox Fruits Store</h2>
+            </div>
+            <p style="margin-top: 1rem; color: #cbd5e1;">Daftar stok buah Blox Fruits terbaik dan termurah siap kirim ke akun Tuan!</p>
+            <div style="margin-top: 1.5rem; background: #04060c; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.15); text-align: center;">
+                <p style="color: #38bdf8; font-weight: bold; margin-bottom: 1rem;">Silakan hubungi admin langsung via WhatsApp untuk menanyakan stok buah terkini.</p>
+                <a href="https://wa.me/6285136945934?text=Halo%20Admin,%20saya%20mau%20tanya%20stok%20Fruit%20Blox%20Fruits." target="_blank" class="btn btn-wa" style="width: auto;">Tanya Stok Buah via WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Robux 5Day Section -->
+        <div id="robux-5day" class="section section-box-dark">
+            <div class="section-box-header">
+                <div>
+                    <h2>⚡ Robux 5Day Service</h2>
+                    <p style="margin-top: 0.5rem; color: #cbd5e1;">Layanan isi Robux aman dengan sistem Gamepass.</p>
+                </div>
+                <div class="robux-badges-container">
+                    <div class="mini-info-badge">
+                        <span class="badge-title">Rate Robux</span>
+                        <span class="badge-value rate">95</span>
+                    </div>
+                    <div class="mini-info-badge">
+                        <span class="badge-title">Status Robux</span>
+                        <span class="badge-value">Ready</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panduan -->
+            <div style="background: rgba(56, 189, 248, 0.1); padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(56, 189, 248, 0.2);">
+                <p style="font-size: 0.85rem; color: #38bdf8;">Belum tahu cara buat Gamepass? <a href="https://youtu.be/2raxL-VgRWM?si=zQ4yU7DC9hhJKfyV" target="_blank" style="color: #ffffff; font-weight: bold; text-decoration: underline;">Tonton Tutorial Ini</a></p>
+            </div>
+
+            <div class="form-group">
+                <label>Mode Perhitungan:</label>
+                <select id="modeCalc" onchange="calcRobux5Day()">
+                    <option value="after">Saya ingin terima Robux (After Tax)</option>
+                    <option value="before">Saya masukkan total Robux (Before Tax)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Pilih Nominal Robux:</label>
+                <select id="robuxAmount" onchange="calcRobux5Day()">
+                    <option value="">-- Pilih Nominal (Kelipatan 100) --</option>
+                    <!-- Opsi kelipatan 100 dari 100 s.d 2000 -->
+                    <script>
+                        for(let i = 100; i <= 2000; i += 100) {
+                            document.write(`<option value="${i}">${i} Robux</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Username Roblox:</label>
+                <input type="text" id="usernameRobux" placeholder="Contoh: UsernameKamu">
+            </div>
+
+            <!-- Bar Hasil / Informasi Harga & Gamepass -->
+            <div id="resultBar" style="background: #04060c; padding: 1.2rem; border-radius: 12px; border: 1px solid #38bdf8; margin: 1.5rem 0; display: none;">
+                <div style="margin-bottom: 0.8rem; border-bottom: 1px solid rgba(56, 189, 248, 0.15); padding-bottom: 0.8rem;">
+                    <p style="color: #94a3b8; font-size: 0.85rem;">Total Harga Rupiah:</p>
+                    <h3 id="displayPriceRp" style="color: #34d399; font-size: 1.3rem; margin-top: 0.2rem;">Rp 0</h3>
+                </div>
+                <div>
+                    <p style="color: #94a3b8; font-size: 0.85rem;">Set harga Gamepass Anda ke:</p>
+                    <h3 id="displayPricePass" style="color: #38bdf8; font-size: 1.5rem; margin-top: 0.2rem;">0 Robux</h3>
+                </div>
+            </div>
+
+            <button class="btn btn-wa" onclick="orderRobuxWA()">Order via WhatsApp</button>
+        </div>
+
+        <!-- Akun Roblox Section -->
+        <div id="akun-roblox" class="section section-box-dark">
+            <div class="section-box-header">
+                <h2>👤 Akun Roblox Ready Stock</h2>
+            </div>
+            <p style="margin-top: 1rem; color: #cbd5e1;">Koleksi akun Roblox pilihan, akun level max, full item, dan akun polos berkualitas.</p>
+            <div style="margin-top: 1.5rem; background: #04060c; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.15); text-align: center;">
+                <p style="color: #38bdf8; font-weight: bold; margin-bottom: 1rem;">Cek ketersediaan list akun Roblox terbaru langsung dengan admin.</p>
+                <a href="https://wa.me/6285136945934?text=Halo%20Admin,%20saya%20ingin%20melihat%20katalog%20Akun%20Roblox." target="_blank" class="btn btn-wa" style="width: auto;">Cek Akun Roblox via WhatsApp</a>
+            </div>
+        </div>
+
         <!-- Calculator Section -->
-        <div id="calculator" class="section">
-            <h2> Robux Tax Calculator </h2>
+        <div id="calculator" class="section section-box-dark">
+            <div class="section-box-header">
+                <h2>Robux Tax Calculator</h2>
+            </div>
             <div class="calc-grid">
                 <div class="input-box">
-                    <label> After Tax </label>
-                    <input type="number" id="inputAfter" oninput="calcBefore()" placeholder="Masukkan robux bersih">
-                    <p id="res Set Gamepass" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
+                    <label>After Tax</label>
+                    <input type="number" id="inputAfter" oninput="calcBefore()" placeholder="Masukkan robux bersih" min="0">
+                    <p id="resBefore" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
                 </div>
                 <div class="input-box">
-                    <label> Before Tax </label>
-                    <input type="number" id="inputBefore" oninput="calcAfter()" placeholder="Masukkan robux total">
-                    <p id="res Set Gamepass" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
+                    <label>Before Tax</label>
+                    <input type="number" id="inputBefore" oninput="calcAfter()" placeholder="Masukkan robux total" min="0">
+                    <p id="resAfter" style="margin-top:10px; color:#38bdf8; font-weight:bold;">Set Gamepass : 0</p>
                 </div>
             </div>
         </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section">
+            <div class="contact-hero">
+                <h1>Hubungi Admin Kami.</h1>
+                <p>Seluruh transaksi dan layanan bantuan Zeeta Shop terpusat melalui ekosistem resmi demi keamanan dan kecepatan respon. Silakan pilih jalur di bawah ini.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Card 1: Server Discord -->
+                <div class="contact-card">
+                    <div>
+                        <div class="contact-icon-wrapper discord">🎮</div>
+                        <h3>Server Discord</h3>
+                        <p>Gabung ke server Discord resmi kami untuk update info, interaksi komunitas, dan melihat testimoni member.</p>
+                    </div>
+                    <div>
+                        <a href="https://discord.gg/AqDzv6C9cV" target="_blank" class="contact-link discord">JOIN DISCORD →</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Admin Owner -->
+                <div class="contact-card">
+                    <div>
+                        <div class="contact-icon-wrapper whatsapp">💬</div>
+                        <h3>Admin Owner</h3>
+                        <p>Jalur utama untuk transaksi langsung, konfirmasi pembayaran, dan layanan joki tercepat via WhatsApp.</p>
+                    </div>
+                    <div>
+                        <a href="https://wa.me/6285136945934" target="_blank" class="contact-link whatsapp">CHAT OWNER →</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Saluran WhatsApp -->
+                <div class="contact-card">
+                    <div>
+                        <div class="contact-icon-wrapper channel">📡</div>
+                        <h3>Saluran WhatsApp</h3>
+                        <p>Follow Saluran WhatsApp resmi Zeeta Shop untuk notifikasi update stock terbaru & promo diskon dadakan.</p>
+                    </div>
+                    <div>
+                        <a href="https://whatsapp.com/channel/0029VbDEuu29WtCA57e5T61h" target="_blank" class="contact-link channel">FOLLOW SALURAN →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <script>
-        function toggleMenu() { 
-            let menu = document.getElementById('dropdown');
-            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block'; 
-        }
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>⚡ Zeeta Shop</h2>
+                <p>Marketplace terpercaya untuk joki game Blox Fruit dan layanan Roblox. Transaksi aman, instan, dan bergaransi 100%.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Katalog</h3>
+                <ul>
+                    <li><a onclick="showSection('list-product', document.querySelectorAll('.nav-links a')[1])">Joki Game Premium</a></li>
+                    <li><a onclick="showSection('akun-roblox', document.querySelectorAll('.nav-links a')[4])">Akun Roblox Premium</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Bantuan & Support</h3>
+                <ul>
+                    <li><a onclick="showSection('dashboard', document.querySelectorAll('.nav-links a')[0])">Syarat & Ketentuan</a></li>
+                    <li><a onclick="showSection('dashboard', document.querySelectorAll('.nav-links a')[0])">Kebijakan Garansi</a></li>
+                </ul>
+                <div style="margin-top: 1rem;">
+                    <a href="https://wa.me/6285136945934?text=Halo%20Admin%20Zeeta%20Shop,%20saya%20butuh%20bantuan." target="_blank" class="footer-cs-btn">
+                        🎧 Hubungi Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-        function showSection(id) { 
+    <script>
+        function showSection(id, element) { 
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            document.getElementById('dropdown').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            if(element) {
+                document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-nav'));
+                element.classList.add('active-nav');
+            }
         }
 
-        // Database Data Bertingkat Berdasarkan Pricelist
         const databaseJoki = {
             "joki_blox_fruits": {
-                "💈 Leveling": [
-                    "SEA 1 (100/3K)",
-                    "SEA 2 (100/3K)",
-                    "SEA 3 (100/2K)"
-                ],
-                "💵 Belly": [
-                    "SEA 1 (1M/4K)",
-                    "SEA 2 (1M/3K)",
-                    "SEA 3 (1M/2K)"
-                ],
-                "🔋 Mastery": [
-                    "100 Mastery FS & Sword (2k)",
-                    "100 Mastery Fruit (3K)",
-                    "100 Mastery Gun (3k)"
-                ],
-                "🗡️ Sword": [
-                    "Pole V1 (4K)",
-                    "Pole V2 (15K)",
-                    "Saber (2K)",
-                    "Saber V2 (9K)",
-                    "Rengoku (5K)",
-                    "Midnight Blade (5K)",
-                    "1 Paket Shark Anchor (30K)",
-                    "Shark Anchor / Ada Magnet (15K)",
-                    "Yama (10K)",
-                    "Tushita (15K)",
-                    "Legend Sword (5K)",
-                    "TTK (15K)",
-                    "CDK (30K)",
-                    "1 Scrol (3K)",
-                    "Hallow Scythe (20K)",
-                    "DB V2 (20K)",
-                    "DB V3 (90K)"
-                ],
-                "🔫 Gun": [
-                    "Soul Guitar (No Bahan) (18K)",
-                    "Soul Guitar (Ada Bahan) (10K)",
-                    "Kabucha (3K)",
-                    "Achidum Rifle (5K)"
-                ],
-                "🤺 Haki": [
-                    "Normal (3K)",
-                    "Snow White (5K)",
-                    "Pure Red (10K)",
-                    "Winter Sky (15K)",
-                    "Rainbow (10K)"
-                ],
-                "🤼‍♂️ Raid": [
-                    "1K Fragment (1K)",
-                    "Law Raid (2K/raid)",
-                    "Normal (1K)",
-                    "Advance (3K)",
-                    "Unlock Raid Phoenix (20K)",
-                    "Unlock Raid Dough (18K)"
-                ],
-                "🤾‍♂️ Race": [
-                    "V1-V2 (Ready Money) (2K)",
-                    "V2-V3 (Ready Money) (3K)",
-                    "Cyborg (15K)",
-                    "Ghoul (10K)"
-                ],
-                "🪆 Boss Raid": [
-                    "Dough King (15K)",
-                    "Rip_Indra (10K)",
-                    "Dark Beard (10K)",
-                    "Soul Reaper (5K)"
-                ],
-                "🦠 Material": [
-                    "Bones (1K/5K)",
-                    "Ectoplasm (100/2K)",
-                    "Cocoa (2/2K)"
-                ],
-                "⚙️ Race V4 & Pull Lever": [
-                    "Full Gear (40K)",
-                    "Full Gear + Train (Ready Fragment) (55K)",
-                    "Full Gear + Train (No Ready) (65K)",
-                    "Pull Lever (10K)",
-                    "Trial 1x (10K)"
-                ],
-                "🥊 Fighting Style": [
-                    "V1 (5K)",
-                    "Death Step (7K)",
-                    "Sharkman Karate (10K)",
-                    "Superhuman (10K)",
-                    "Electric Claw (15K)",
-                    "Dragon Talon (15K)",
-                    "Godhuman (15K)",
-                    "Sanguine Art (100K)"
-                ],
-                "📜 Quest": [
-                    "Bartilo (5K)",
-                    "Citizen (5K)",
-                    "Don Swan (5K)",
-                    "Elite Hunter (1/1K)"
-                ],
-                "🦊 Kitsune Island": [
-                    "Spawn (7K)",
-                    "1x Gacha (5K)",
-                    "Fox Lamp (40jt)"
-                ],
-                "🦈 Sea Event": [
-                    "Shark Tooth (10/5K)",
-                    "Electric Wing (10/5K)",
-                    "Terror Eye (1/3K)",
-                    "Monster Magnet (20K)"
-                ],
-                "🏝️ Mirage": [
-                    "Buy Fruit Mirage (5K)"
-                ],
-                "☠️ Bounty & Honor": [
-                    "1M Bounty (30k)",
-                    "5M Bounty (150k)",
-                    "10M Bounty (350k)",
-                    "1M Honor (40k)",
-                    "5M Honor (200k)",
-                    "10M Honor (400k)"
-                ],
-                "🐉 New Dragon Update": [
-                    "1x Volcano Island (10k)",
-                    "Fire Flowers (1/2k)",
-                    "Get Draco Race (10k)",
-                    "Full Gear Draco (40k)"
-                ],
-                "🧩 Dojo Quest": [
-                    "Quest 1 [White-Yellow-Orange] (5k)",
-                    "Quest 2 [Green-Blue-Purple] (10k)",
-                    "Quest 3 [Red-Black] (20k)",
-                    "All Quest [White-Black] (30k)"
-                ],
-                "🔫 Dragon Weapon": [
-                    "Dragon Heart (10k)",
-                    "Dragon Storm (20k)"
-                ],
-                "🍒 Get Berry": [
-                    "1 Berry Random (2k)"
-                ]
+                "💈 Leveling": ["SEA 1 (100/3K)", "SEA 2 (100/3K)", "SEA 3 (100/2K)"],
+                "💵 Belly": ["SEA 1 (1M/4K)", "SEA 2 (1M/3K)", "SEA 3 (1M/2K)"],
+                "🔋 Mastery": ["100 Mastery FS & Sword (2k)", "100 Mastery Fruit (3K)", "100 Mastery Gun (3k)"],
+                "🗡️ Sword": ["Pole V1 (4K)", "Pole V2 (15K)", "Saber (2K)", "Saber V2 (9K)", "Rengoku (5K)", "Midnight Blade (5K)", "1 Paket Shark Anchor (30K)", "Shark Anchor / Ada Magnet (15K)", "Yama (10K)", "Tushita (15K)", "Legend Sword (5K)", "TTK (15K)", "CDK (30K)", "1 Scrol (3K)", "Hallow Scythe (20K)", "DB V2 (20K)", "DB V3 (90K)"],
+                "🔫 Gun": ["Soul Guitar (No Bahan) (18K)", "Soul Guitar (Ada Bahan) (10K)", "Kabucha (3K)", "Achidum Rifle (5K)"],
+                "🤺 Haki": ["Normal (3K)", "Snow White (5K)", "Pure Red (10K)", "Winter Sky (15K)", "Rainbow (10K)"],
+                "🤼‍♂️ Raid": ["1K Fragment (1K)", "Law Raid (2K/raid)", "Normal (1K)", "Advance (3K)", "Unlock Raid Phoenix (20K)", "Unlock Raid Dough (18K)"],
+                "🤾‍♂️ Race": ["V1-V2 (Ready Money) (2K)", "V2-V3 (Ready Money) (3K)", "Cyborg (15K)", "Ghoul (10K)"],
+                "🪆 Boss Raid": ["Dough King (15K)", "Rip_Indra (10K)", "Dark Beard (10K)", "Soul Reaper (5K)"],
+                "🦠 Material": ["Bones (1K/5K)", "Ectoplasm (100/2K)", "Cocoa (2/2K)"],
+                "⚙️ Race V4 & Pull Lever": ["Full Gear (40K)", "Full Gear + Train (Ready Fragment) (55K)", "Full Gear + Train (No Ready) (65K)", "Pull Lever (10K)", "Trial 1x (10K)"],
+                "🥊 Fighting Style": ["V1 (5K)", "Death Step (7K)", "Sharkman Karate (10K)", "Superhuman (10K)", "Electric Claw (15K)", "Dragon Talon (15K)", "Godhuman (15K)", "Sanguine Art (100K)"],
+                "📜 Quest": ["Bartilo (5K)", "Citizen (5K)", "Don Swan (5K)", "Elite Hunter (1/1K)"],
+                "🦊 Kitsune Island": ["Spawn (7K)", "1x Gacha (5K)", "Fox Lamp (40jt)"],
+                "🦈 Sea Event": ["Shark Tooth (10/5K)", "Electric Wing (10/5K)", "Terror Eye (1/3K)", "Monster Magnet (20K)"],
+                "🏝️ Mirage": ["Buy Fruit Mirage (5K)"],
+                "☠️ Bounty & Honor": ["1M Bounty (30k)", "5M Bounty (150k)", "10M Bounty (350k)", "1M Honor (40k)", "5M Honor (200k)", "10M Honor (400k)"],
+                "🐉 New Dragon Update": ["1x Volcano Island (10k)", "Fire Flowers (1/2k)", "Get Draco Race (10k)", "Full Gear Draco (40k)"],
+                "🧩 Dojo Quest": ["Quest 1 [White-Yellow-Orange] (5k)", "Quest 2 [Green-Blue-Purple] (10k)", "Quest 3 [Red-Black] (20k)", "All Quest [White-Black] (30k)"],
+                "🔫 Dragon Weapon": ["Dragon Heart (10k)", "Dragon Storm (20k)"],
+                "🍒 Get Berry": ["1 Berry Random (2k)"]
             },
             "joki_afk": {
-                "⏱️ AFK Per Jam": [
-                    "1 Jam (4K)",
-                    "2 Jam (7K)",
-                    "3 Jam (10K)",
-                    "Seterusnya"
-                ],
-                "📅 AFK Per Hari": [
-                    "1 Hari (25K)",
-                    "2 Hari (50K)",
-                    "3 Hari (70K)"
-                ],
-                "🌟 Benefit AFK Blox Fruit": [
-                    "Belly Bertambah Banyak",
-                    "2x Money / Sampai 150jt+",
-                    "Fragment Nambah",
-                    "Dapat random fruit dari gacha/spawn/raid"
-                ]
+                "⏱️ AFK Per Jam": ["1 Jam (4K)", "2 Jam (7K)", "3 Jam (10K)", "Seterusnya"],
+                "📅 AFK Per Hari": ["1 Hari (25K)", "2 Hari (50K)", "3 Hari (70K)"]
             }
         };
 
@@ -391,28 +582,73 @@
         }
 
         function orderWhatsApp() {
-            let kat = document.getElementById('kategori').options[document.getElementById('kategori').selectedIndex].text;
+            let kategoriEl = document.getElementById('kategori');
+            let kat = kategoriEl.selectedIndex > 0 ? kategoriEl.options[kategoriEl.selectedIndex].text : '';
             let list = document.getElementById('namaList').value;
             let detail = document.getElementById('detailItem').value;
-            let user = document.getElementById('username').value;
+            let user = document.getElementById('username').value.trim();
 
             if(!list || !detail || !user) {
-                alert("Harap lengkapi semua pilihan dropdown dan isi username Roblox Tuan!");
+                alert("Harap lengkapi semua pilihan dropdown dan isi username Roblox Anda!");
                 return;
             }
 
-            let text = `Halo Admin Zeeta Shop ,%0ASaya ingin order dengan detail:%0A- Kategori: ${kat}%0A- Nama List: ${list}%0A- Menu: ${detail}%0A- Username Roblox: ${user}`;
-            window.open(`https://wa.me/6285136945934?text=${text}`, '_blank');
+            let pesanText = `Halo Admin Zeeta Shop,\nSaya ingin order dengan detail:\n- Kategori: ${kat}\n- Nama List: ${list}\n- Menu: ${detail}\n- Username Roblox: ${user}`;
+            window.open(`https://wa.me/6285136945934?text=${encodeURIComponent(pesanText)}`, '_blank');
         }
 
-        // Kalkulator Tax
+        function calcRobux5Day() {
+            const mode = document.getElementById('modeCalc').value;
+            const amount = parseFloat(document.getElementById('robuxAmount').value);
+            const resultBar = document.getElementById('resultBar');
+            const displayPriceRp = document.getElementById('displayPriceRp');
+            const displayPricePass = document.getElementById('displayPricePass');
+            
+            if (!amount) {
+                resultBar.style.display = 'none';
+                return;
+            }
+
+            const ratePerRobux = 95; 
+            const totalRupiah = amount * ratePerRobux;
+
+            let finalPricePass;
+            if (mode === 'after') {
+                finalPricePass = Math.ceil(amount / 0.7);
+            } else {
+                finalPricePass = amount;
+            }
+
+            displayPriceRp.innerText = "Rp " + totalRupiah.toLocaleString('id-ID');
+            displayPricePass.innerText = finalPricePass + " Robux";
+            resultBar.style.display = 'block';
+        }
+
+        function orderRobuxWA() {
+            const mode = document.getElementById('modeCalc').value;
+            const amount = document.getElementById('robuxAmount').value;
+            const user = document.getElementById('usernameRobux').value.trim();
+            const rupiah = document.getElementById('displayPriceRp').innerText;
+            const pricePass = document.getElementById('displayPricePass').innerText;
+
+            if (!amount || !user) { 
+                alert("Harap pilih nominal Robux dan isi username Roblox Anda!"); 
+                return; 
+            }
+
+            const msg = `Halo Admin Zeeta Shop,\nSaya mau order Robux 5Day.\n- Mode: ${mode}\n- Jumlah Nominal: ${amount} Robux\n- Total Harga: ${rupiah}\n- Username: ${user}\n- Harga Set Gamepass: ${pricePass}`;
+            window.open(`https://wa.me/6285136945934?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
         function calcBefore() { 
-            let val = document.getElementById('inputAfter').value;
-            document.getElementById('resBefore').innerText = "Set Gamepass : " + (val ? Math.ceil(val / 0.7) : 0);
+            let val = parseFloat(document.getElementById('inputAfter').value);
+            let result = (!isNaN(val) && val > 0) ? Math.ceil(val / 0.7) : 0;
+            document.getElementById('resBefore').innerText = "Set Gamepass : " + result;
         }
         function calcAfter() { 
-            let val = document.getElementById('inputBefore').value;
-            document.getElementById('resAfter').innerText = "Set Gamepass : " + (val ? Math.floor(val * 0.7) : 0);
+            let val = parseFloat(document.getElementById('inputBefore').value);
+            let result = (!isNaN(val) && val > 0) ? Math.floor(val * 0.7) : 0;
+            document.getElementById('resAfter').innerText = "Set Gamepass : " + result;
         }
     </script>
 </body>
