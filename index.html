@@ -11,7 +11,7 @@
         /* Navbar Tema Hitam Biru Zeeta Shop */
         nav { background: rgba(3, 7, 18, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(56, 189, 248, 0.15); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; cursor: pointer; }
-        .brand-icon { background: #0284c7; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1rem; box-shadow: 0 0 15px rgba(2, 132, 199, 0.5); }
+        .brand-logo { height: 38px; width: auto; object-fit: contain; }
         .brand-name { color: white; font-size: 1.25rem; font-weight: 800; letter-spacing: 0.5px; }
 
         /* Hamburger Menu Toggle Button */
@@ -152,6 +152,7 @@
         footer { background: #010409; border-top: 1px solid rgba(56, 189, 248, 0.15); padding: 3rem 2rem; margin-top: 3rem; }
         .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; align-items: start; }
         .footer-brand h2 { color: #ffffff; font-size: 1.5rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 800; }
+        .footer-logo { height: 32px; width: auto; object-fit: contain; }
         .footer-brand p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; max-width: 350px; }
         
         .footer-links h3 { color: #ffffff; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600; }
@@ -173,7 +174,7 @@
     <!-- Navbar Zeeta Shop -->
     <nav>
         <a class="nav-brand" onclick="showSection('dashboard', this)">
-            <div class="brand-icon">⚡</div>
+            <img src="https://www.image2url.com/r2/default/images/1781793736877-cdf956d3-52fc-4813-9282-463b90ebcd55.png" alt="Zeeta Shop Logo" class="brand-logo">
             <div class="brand-name">Zeeta Shop</div>
         </a>
         
@@ -202,9 +203,9 @@
             <!-- Hero Card -->
             <div class="hero-card">
                 <div>
-                    <div class="badge-premium">✨ PREMIUM MARKETPLACE & JOKI</div>
+                    <div class="badge-premium">🥇 PREMIUM MARKETPLACE & JOKI 🥇</div>
                     <h1>Zeeta Shop Joki <span>Fast & Trusted</span></h1>
-                    <p>Selamat datang di Zeeta Shop, Tuan! Pusat layanan jasa joki game Blox Fruit dan AFK paling profesional, terdepan, dan terpercaya di Indonesia. Zeeta Shop didirikan khusus untuk membantu para pemain Roblox yang ingin mengembangkan akun mereka secara maksimal tanpa harus menghabiskan waktu berjam-jam untuk melakukan grinding yang membosankan. Kami menyediakan berbagai macam layanan mulai dari leveling SEA, pencarian item langka, mastery senjata, fighting style, raid, race v4, hingga jasa AFK game dengan jaminan kualitas terbaik yang siap memanjakan akun impian Tuan! 💀⚡</p>
+                    <p>Selamat datang di Zeeta Shop, Pusat layanan jasa joki game Blox Fruit dan AFK paling profesional, terdepan, dan terpercaya di Indonesia. Zeeta Shop didirikan khusus untuk membantu para pemain Roblox yang ingin mengembangkan akun mereka secara maksimal tanpa harus menghabiskan waktu berjam-jam untuk melakukan grinding yang membosankan. Kami menyediakan berbagai macam layanan mulai dari leveling SEA, pencarian item langka, mastery senjata, fighting style, raid, race v4, hingga jasa AFK game dengan jaminan kualitas terbaik yang siap memanjakan akun impian! </p>
                     <p>Komitmen utama kami adalah memberikan pelayanan yang Fast (Cepat) dalam pengerjaan setiap pesanan tanpa menunda-nunda waktu Tuan, Terpercaya karena telah dibuktikan oleh ratusan pelanggan setia, dan yang paling penting adalah 100% Aman demi menjaga keamanan akun Roblox Tuan dari segala risiko. Dengan pencapaian rekor luar biasa mencapai lebih dari 800+ Total Transaksi sukses, Zeeta Shop terus membuktikan diri sebagai toko game online pilihan utama yang sangat solutif dan profesional. 🌊🔥</p>
                 </div>
                 <div class="hero-buttons">
@@ -511,7 +512,10 @@
     <footer>
         <div class="footer-container">
             <div class="footer-brand">
-                <h2>⚡ Zeeta Shop</h2>
+                <h2>
+                    <img src="https://www.image2url.com/r2/default/images/1781793736877-cdf956d3-52fc-4813-9282-463b90ebcd55.png" alt="Zeeta Shop Logo" class="footer-logo">
+                    Zeeta Shop
+                </h2>
                 <p>Marketplace terpercaya untuk joki game Blox Fruit dan layanan Roblox. Transaksi aman, instan, dan bergaransi 100%.</p>
             </div>
             <div class="footer-links">
@@ -654,13 +658,10 @@
             let finalPricePass;
 
             if (mode === 'after') {
-                // Konsep After Tax: Jika user ingin 100 bersih, gamepass dinaikkan pajaknya (100 / 0.7 = 143),
-                // lalu total rupiah dihitung berdasarkan jumlah gamepass yang harus dibeli (143 x rate).
                 finalPricePass = Math.ceil(amount / 0.7);
                 totalRupiah = finalPricePass * ratePerRobux;
                 labelGamepassText.innerText = "Set harga Gamepass Anda ke (Termasuk Pajak Roblox):";
             } else {
-                // Konsep Before Tax: Sesuai jumlah nominal yang dipilih (kotor / langsung dikali rate)
                 finalPricePass = amount;
                 totalRupiah = amount * ratePerRobux;
                 labelGamepassText.innerText = "Set harga Gamepass Anda ke (Sesuai Nominal):";
