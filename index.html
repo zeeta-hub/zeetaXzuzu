@@ -100,7 +100,10 @@
         /* Styling Form & Komponen Joki */
         .section-box-dark { background: linear-gradient(145deg, #080d1a, #04060c); padding: 2.5rem; border-radius: 24px; margin-bottom: 2rem; border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 4px 15px rgba(2, 132, 199, 0.05); }
         .section-box-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .section-box-dark h2 { font-size: 1.8rem; color: #ffffff; font-weight: 800; }
+        
+        .robux-title-wrapper { display: flex; align-items: center; gap: 0.75rem; }
+        .robux-title-wrapper img { width: 32px; height: 32px; object-fit: contain; position: relative; top: -3px; }
+        .section-box-dark h2 { font-size: 1.8rem; color: #ffffff; font-weight: 800; margin: 0; }
         
         .robux-badges-container { display: flex; gap: 0.75rem; flex-wrap: wrap; }
         .mini-info-badge { background: #04060c; border: 1px solid rgba(56, 189, 248, 0.25); padding: 0.5rem 0.9rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.1rem; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1); }
@@ -368,7 +371,11 @@
         <div id="robux-5day" class="section section-box-dark">
             <div class="section-box-header">
                 <div>
-                    <h2>Robux 5 Day</h2>
+                    <div class="robux-title-wrapper">
+                        <img src="https://www.image2url.com/r2/default/images/1787242348859-b53459a3-f0fe-453c-a66f-9a51a0496841.webp" alt="Left Icon">
+                        <h2>Robux 5 Day</h2>
+                        <img src="https://www.image2url.com/r2/default/images/1787242348859-b53459a3-f0fe-453c-a66f-9a51a0496841.webp" alt="Right Icon">
+                    </div>
                     <p style="margin-top: 0.5rem; color: #cbd5e1;">Top up Robux aman pakai sistem gamepass.</p>
                 </div>
                 <div class="robux-badges-container">
@@ -592,16 +599,17 @@
         };
 
         const listFruits = [
-            { name: "Kitsune", price: "Rp 60.000", img: "https://www.image2url.com/r2/default/images/1787239878574-fa1249d3-0a27-436d-9ec3-3f7139c87d04.webp" },
-            { name: "Dragon West", price: "Rp 300.000", img: "https://www.image2url.com/r2/default/images/1787240159620-91c08d6e-61c3-494a-8f62-cfc39c7099f2.webp" },
-            { name: "Dragon East", price: "Rp 250.000", img: "https://www.image2url.com/r2/default/images/1787240203391-8a4d6009-06d5-46c8-930b-9d473f5c5bdb.webp" },
-            { name: "Control", price: "Rp 20.000", img: "https://www.image2url.com/r2/default/images/1787240398936-974f04df-d58a-469b-b35e-120aabd8499a.webp" },
-            { name: "Tiger", price: "Rp 15.000", img: "https://www.image2url.com/r2/default/images/1787240411058-5cfd9c92-9b38-4c0b-8dd2-4da0d90f844c.webp" },
-            { name: "Yeti", price: "Rp 15.000", img: "https://www.image2url.com/r2/default/images/1787240599619-81e4778e-e6bf-4e71-bd9e-db6b6e5729ca.webp" },
-            { name: "Gas", price: "Rp 10.000", img: "https://www.image2url.com/r2/default/images/1787240497170-f645be28-2f9c-4cd2-8d05-52e05c8c716e.webp" },
-            { name: "Dough", price: "Rp 7.000", img: "https://www.image2url.com/r2/default/images/1787240517282-2aa83e1b-ab7e-476d-b346-da4b3d738765.webp" },
-            { name: "T-Rex", price: "Rp 7.000", img: "https://www.image2url.com/r2/default/images/1787240563308-6e6382a5-a725-44cd-a39b-9632b4ddb35a.webp" },
-            { name: "Venom", price: "Rp 5.000", img: "https://www.image2url.com/r2/default/images/1787240621627-cc7a5dfd-8117-4370-8ce5-07513a8c140e.webp" }
+            { name: "Kitsune", price: "Rp 60.000", status: "Sold", img: "https://www.image2url.com/r2/default/images/1787239878574-fa1249d3-0a27-436d-9ec3-3f7139c87d04.webp" },
+            { name: "Dragon West", price: "Rp 300.000", status: "Sold", img: "https://www.image2url.com/r2/default/images/1787240159620-91c08d6e-61c3-494a-8f62-cfc39c7099f2.webp" },
+            { name: "Dragon East", price: "Rp 250.000", status: "Stock", img: "https://www.image2url.com/r2/default/images/1787240203391-8a4d6009-06d5-46c8-930b-9d473f5c5bdb.webp" },
+            { name: "Control", price: "Rp 20.000", status: "Stock", img: "https://www.image2url.com/r2/default/images/1787240398936-974f04df-d58a-469b-b35e-120aabd8499a.webp" },
+            { name: "Tiger", price: "Rp 15.000", status: "Sold", img: "https://www.image2url.com/r2/default/images/1787240411058-5cfd9c92-9b38-4c0b-8dd2-4da0d90f844c.webp" },
+            { name: "Yeti", price: "Rp 15.000", status: "Sold", img: "https://www.image2url.com/r2/default/images/1787240599619-81e4778e-e6bf-4e71-bd9e-db6b6e5729ca.webp" },
+            { name: "Gas", price: "Rp 10.000", status: "Stock", img: "https://www.image2url.com/r2/default/images/1787240497170-f645be28-2f9c-4cd2-8d05-52e05c8c716e.webp" },
+            { name: "Lightning", price: "Rp 10.000", status: "Sold", img: "https://www.image2url.com/r2/default/images/1787241833483-e3f76925-5bf0-44c2-8c2f-206a74ea2558.webp" },
+            { name: "Dough", price: "Rp 7.000", status: "Stock", img: "https://www.image2url.com/r2/default/images/1787240517282-2aa83e1b-ab7e-476d-b346-da4b3d738765.webp" },
+            { name: "T-Rex", price: "Rp 7.000", status: "Stock", img: "https://www.image2url.com/r2/default/images/1787240563308-6e6382a5-a725-44cd-a39b-9632b4ddb35a.webp" },
+            { name: "Venom", price: "Rp 6.000", status: "Stock", img: "https://www.image2url.com/r2/default/images/1787240621627-cc7a5dfd-8117-4370-8ce5-07513a8c140e.webp" }
         ];
 
         function switchKatalog() {
@@ -612,13 +620,17 @@
                 let htmlContent = '';
                 listFruits.forEach(item => {
                     const waText = `Halo admin fell, saya ingin membeli ${item.name} dengan harga ${item.price}`;
+                    const statusColor = item.status === 'Stock' ? '#34d399' : '#f87171'; // hijau untuk stock, merah untuk sold
+                    const statusText = item.status === 'Stock' ? 'Ready Stock' : 'Sold Out';
+                    
                     htmlContent += `
                         <div style="background: #04060c; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 16px; padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                             <div style="display: flex; align-items: center; gap: 1.2rem;">
                                 <img src="${item.img}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.4);">
                                 <div>
                                     <h3 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 0.2rem;">${item.name}</h3>
-                                    <p style="color: #38bdf8; font-weight: bold; font-size: 1rem;">${item.price}</p>
+                                    <p style="color: #38bdf8; font-weight: bold; font-size: 1rem; margin-bottom: 0.3rem;">${item.price}</p>
+                                    <span style="color: ${statusColor}; font-weight: 700; font-size: 0.85rem; background: rgba(0,0,0,0.3); padding: 0.2rem 0.6rem; border-radius: 6px; display: inline-block;">● ${statusText}</span>
                                 </div>
                             </div>
                             <a href="https://wa.me/6285136945934?text=${encodeURIComponent(waText)}" target="_blank" class="btn btn-wa" style="width: auto; padding: 0.75rem 1.5rem;">Beli Sekarang</a>
@@ -753,7 +765,7 @@
         const fakeProducts = [
             "Fruit Kitsune", "Dragon Rework West", "Dragon Rework East", 
             "Fruit Control", "Fruit Tiger", "Fruit Yeti", "Fruit Gas", 
-            "Fruit Dough", "Fruit T-Rex", "Fruit Venom", "Robux 5 Day"
+            "Fruit Lightning", "Fruit Dough", "Fruit T-Rex", "Fruit Venom", "Robux 5 Day"
         ];
 
         function triggerFakePurchase() {
