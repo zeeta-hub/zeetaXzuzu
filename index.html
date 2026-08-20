@@ -248,7 +248,7 @@
                     <div class="card-top"><div class="card-icon">⭐</div><div class="card-arrow">➔</div></div>
                     <div class="card-bottom"><h4>JOKI GAME PREMIUM</h4><span>READY STOCK</span></div>
                 </div>
-                <div class="catalog-card" onclick="showSection('fruit-blox-fruits', document.querySelectorAll('.nav-links a')[2])">
+                <div class="catalog-card" onclick="showSection('fruit-blox', document.querySelectorAll('.nav-links a')[2])">
                     <div class="card-top"><div class="card-icon">🍎</div><div class="card-arrow">➔</div></div>
                     <div class="card-bottom"><h4>FRUIT BLOX FRUITS </h4><span>READY STOCK</span></div>
                 </div>
@@ -381,8 +381,8 @@
             <div class="form-group">
                 <label>Mode Perhitungan:</label>
                 <select id="modeCalc" onchange="calcRobux5Day()">
-                    <option value="after">Saya ingin terima Robux (After Tax)</option>
-                    <option value="before">Saya masukkan total Robux (Before Tax)</option>
+                    <option value="after">Saya ingin robux (After Tax)</option>
+                    <option value="before">Saya ingin robux (Before Tax)</option>
                 </select>
             </div>
 
@@ -410,7 +410,7 @@
                     <h3 id="displayPriceRp" style="color: #38bdf8; font-size: 1.3rem; margin-top: 0.2rem;">Rp 0</h3>
                 </div>
                 <div>
-                    <p style="color: #94a3b8; font-size: 0.85rem;">Set harga Gamepass Anda ke:</p>
+                    <p style="color: #94a3b8; font-size: 0.85rem;" id="labelGamepassText">Set harga Gamepass Anda ke:</p>
                     <h3 id="displayPricePass" style="color: #38bdf8; font-size: 1.5rem; margin-top: 0.2rem;">0 Robux</h3>
                 </div>
             </div>
@@ -642,6 +642,7 @@
             const resultBar = document.getElementById('resultBar');
             const displayPriceRp = document.getElementById('displayPriceRp');
             const displayPricePass = document.getElementById('displayPricePass');
+            const labelGamepassText = document.getElementById('labelGamepassText');
             
             if (!amount) {
                 resultBar.style.display = 'none';
@@ -649,13 +650,20 @@
             }
 
             const ratePerRobux = 95; 
-            const totalRupiah = amount * ratePerRobux;
-
+            let totalRupiah;
             let finalPricePass;
+
             if (mode === 'after') {
+                // Konsep After Tax: Jika user ingin 100 bersih, gamepass dinaikkan pajaknya (100 / 0.7 = 143),
+                // lalu total rupiah dihitung berdasarkan jumlah gamepass yang harus dibeli (143 x rate).
                 finalPricePass = Math.ceil(amount / 0.7);
+                totalRupiah = finalPricePass * ratePerRobux;
+                labelGamepassText.innerText = "Set harga Gamepass Anda ke (Termasuk Pajak Roblox):";
             } else {
+                // Konsep Before Tax: Sesuai jumlah nominal yang dipilih (kotor / langsung dikali rate)
                 finalPricePass = amount;
+                totalRupiah = amount * ratePerRobux;
+                labelGamepassText.innerText = "Set harga Gamepass Anda ke (Sesuai Nominal):";
             }
 
             displayPriceRp.innerText = "Rp " + totalRupiah.toLocaleString('id-ID');
@@ -664,7 +672,8 @@
         }
 
         function orderRobuxWA() {
-            const mode = document.getElementById('modeCalc').value;
+            const modeSelect = document.getElementById('modeCalc');
+            const modeText = modeSelect.options[modeSelect.selectedIndex].text;
             const amount = document.getElementById('robuxAmount').value;
             const user = document.getElementById('usernameRobux').value.trim();
             const rupiah = document.getElementById('displayPriceRp').innerText;
@@ -675,7 +684,7 @@
                 return; 
             }
 
-            const msg = `Halo Admin Zeeta Shop,\nSaya mau order ROBUX 5 DAY.\n- Mode: ${mode}\n- Jumlah Nominal: ${amount} Robux\n- Total Harga: ${rupiah}\n- Username: ${user}\n- Harga Set Gamepass: ${pricePass}`;
+            const msg = `Halo Admin Zeeta Shop,\nSaya mau order ROBUX 5 DAY.\n- Mode: ${modeText}\n- Jumlah Nominal: ${amount} Robux\n- Total Harga: ${rupiah}\n- Username: ${user}\n- Harga Set Gamepass: ${pricePass}`;
             window.open(`https://wa.me/6285136945934?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
@@ -718,16 +727,15 @@
             
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 4000); // Hilang setelah 4 detik
+            }, 4000); 
         }
 
-        // Jalankan notifikasi pertama setelah 3 detik halaman dimuat, lalu ulang setiap 7-12 detik secara acak
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 triggerFakePurchase();
                 setInterval(() => {
                     triggerFakePurchase();
-                }, Math.random() * 5000 + 7000); // Interval random antara 7 sampai 12 detik
+                }, Math.random() * 5000 + 7000);
             }, 3000);
         });
     </script>
